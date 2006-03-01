@@ -1,0 +1,25 @@
+2006-02-20  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf/Service.cs (set_HostTarget): Was still using value
+	to look up host; use the stripped hosttarget string instead
+
+2006-02-20  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf/Service.cs (set_HostTarget): If target ends with .local.,
+	strip it before resolving as System.Net.Dns.GetHostByName will fail to
+	resolve if there is a VPN connection
+
+2006-02-15  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf: Renamed everything from Mono.ZeroConf to Mono.Zeroconf
+	as that's what Apple calls it; cleaned up build system
+
+	* Mono.Zeroconf: First pass at fully-functioning mDNSResponder wrapping;
+	it is ready for inclusion in daap-sharp
+
+2006-01-16  Aaron Bockover  <aaron@aaronbock.net>
+
+	* Mono.ZeroConf: Setup to work with mono build system; initial import
+	into testing SVN for initial development (abock.org)
+
+

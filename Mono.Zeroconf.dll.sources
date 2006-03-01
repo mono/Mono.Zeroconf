@@ -1,0 +1,17 @@
+Assembly/AssemblyInfo.cs
+../../build/common/Consts.cs
+../../build/common/Locale.cs
+Mono.Zeroconf/Mono.ZeroConf/BrowseService.cs
+Mono.Zeroconf/Mono.ZeroConf/Native.cs
+Mono.Zeroconf/Mono.ZeroConf/RegisterService.cs
+Mono.Zeroconf/Mono.ZeroConf/ServiceBrowser.cs
+Mono.Zeroconf/Mono.ZeroConf/ServiceClass.cs
+Mono.Zeroconf/Mono.ZeroConf/Service.cs
+Mono.Zeroconf/Mono.ZeroConf/ServiceError.cs
+Mono.Zeroconf/Mono.ZeroConf/ServiceErrorException.cs
+Mono.Zeroconf/Mono.ZeroConf/ServiceFlags.cs
+Mono.Zeroconf/Mono.ZeroConf/ServiceRef.cs
+Mono.Zeroconf/Mono.ZeroConf/ServiceType.cs
+Mono.Zeroconf/Mono.ZeroConf/TxtRecord.cs
+Mono.Zeroconf/Mono.ZeroConf/TxtRecordEnumerator.cs
+Mono.Zeroconf/Mono.ZeroConf/TxtRecordItem.cs
