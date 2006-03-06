@@ -1,3 +1,18 @@
+2006-03-05  Aaron Bockover  <aaron@abock.org>
+
+	* Test/ZeroConfTest.cs: Added a test call to RefreshTxtRecord()
+
+	* Mono.Zeroconf.mdp: Updated MonoDevelop project
+
+	* Mono.Zeroconf/BrowseService.cs: Allow TXT record refreshing using
+	DNSServiceQueryRecord
+
+	* Mono.Zeroconf/Native.cs: Added support for DNSServiceQueryRecord
+
+	* Mono.Zeroconf/ServiceBrowser.cs:
+	* Mono.Zeroconf/RegisterService.cs: Call Thread.ResetAbort() when
+	handling a ThreadAbortException to allow execution to continue in thread
+
 2006-02-20  Aaron Bockover  <aaron@abock.org>
 
 	* Mono.Zeroconf/Service.cs (set_HostTarget): Was still using value

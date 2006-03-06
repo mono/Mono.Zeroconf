@@ -99,6 +99,7 @@ namespace Mono.Zeroconf
             try {
                 ProcessStart();
             } catch(ThreadAbortException) {
+                Thread.ResetAbort();
             }
             
             thread = null;

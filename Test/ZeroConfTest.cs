@@ -82,10 +82,12 @@ public class DnsTest
     
     private static void OnServiceResolved(object o, EventArgs args)
     {
-        Service service = o as Service;
+        BrowseService service = o as BrowseService;
         Console.WriteLine("Resolved: {0} {1} {2} {3}", service.FullName, service.Port, 
             service.HostTarget, service.HostEntry.AddressList[0]);
         Console.WriteLine(service.TxtRecord);    
+        service.RefreshTxtRecord();
+        Console.WriteLine(service.TxtRecord);
     }
 }
 

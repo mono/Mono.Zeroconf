@@ -75,7 +75,18 @@ namespace Mono.Zeroconf
         public static extern ServiceError DNSServiceRegister(out ServiceRef sdRef, ServiceFlags flags,
             uint interfaceIndex, string name, string regtype, string domain, string host, ushort port,
             ushort txtLen, byte [] txtRecord, DNSServiceRegisterReply callBack, IntPtr context);
-            
+
+        // DNSServiceQueryRecord
+        
+        public delegate void DNSServiceQueryRecordReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,
+            ServiceError errorCode, string fullname, ServiceType rrtype, ServiceClass rrclass, ushort rdlen, 
+            IntPtr rdata, uint ttl, IntPtr context);
+        
+        [DllImport("mdns")]
+        public static extern ServiceError DNSServiceQueryRecord(out ServiceRef sdRef, ServiceFlags flags, 
+            uint interfaceIndex, string fullname, ServiceType rrtype, ServiceClass rrclass, 
+            DNSServiceQueryRecordReply callBack, IntPtr context);
+        
         // TXT Record Handling
         
         [DllImport("mdns")]

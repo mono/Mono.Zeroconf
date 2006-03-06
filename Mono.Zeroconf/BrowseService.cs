@@ -76,6 +76,21 @@ namespace Mono.Zeroconf
             sd_ref.Process();
         }
         
+        public void RefreshTxtRecord()
+        {
+            // Should probably make this async?
+        
+            ServiceRef sd_ref;
+            ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, 0,
+                fullname, ServiceType.TXT, ServiceClass.IN, OnQueryRecordReply, IntPtr.Zero);
+                
+            if(error != ServiceError.NoError) {
+                throw new ServiceErrorException(error);
+            }
+            
+            sd_ref.Process();
+        }
+        
         private void OnResolveReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,
             ServiceError errorCode, string fullname, string hosttarget, ushort port, ushort txtLen, 
             IntPtr txtRecord, IntPtr contex)
@@ -84,14 +99,33 @@ namespace Mono.Zeroconf
             resolve_pending = false;
             
             InterfaceIndex = interfaceIndex;
-            FullName = fullname;
             HostTarget = hosttarget;
+            FullName = fullname;
             this.port = (short)port;
             TxtRecord = new TxtRecord(txtLen, txtRecord);
             
             EventHandler handler = Resolved;
             if(handler != null) {
                 handler(this, new EventArgs());
+            }
+            
+            sdRef.Deallocate();
+        }
+     
+        private void OnQueryRecordReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,
+            ServiceError errorCode, string fullname, ServiceType rrtype, ServiceClass rrclass, ushort rdlen, 
+            IntPtr rdata, uint ttl, IntPtr context)
+        {
+            switch(rrtype) {
+                case ServiceType.TXT:
+                    if(TxtRecord != null) {
+                        TxtRecord.Dispose();
+                    }
+            
+                    TxtRecord = new TxtRecord(rdlen, rdata);
+                    break;
+                default:
+                    break;
             }
             
             sdRef.Deallocate();

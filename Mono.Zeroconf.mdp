@@ -24,7 +24,6 @@
     <File name="./Mono.Zeroconf/ServiceFlags.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf/ServiceRef.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf/ServiceType.cs" subtype="Code" buildaction="Compile" />
-    <File name="./Test/ZeroconfTest.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf/TxtRecord.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf/Native.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf/ServiceBrowser.cs" subtype="Code" buildaction="Compile" />
@@ -32,6 +31,8 @@
     <File name="./Mono.Zeroconf/RegisterService.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf/TxtRecordEnumerator.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf/TxtRecordItem.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Test" subtype="Directory" buildaction="Compile" />
+    <File name="./Test/ZeroConfTest.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="gtk-sharp, Version=2.8.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
