@@ -35,13 +35,13 @@ namespace Mono.Zeroconf
     {
         // ServiceRef
         
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern void DNSServiceRefDeallocate(IntPtr sdRef);
         
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ServiceError DNSServiceProcessResult(IntPtr sdRef);
        
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern int DNSServiceRefSockFD(IntPtr sdRef);
         
         // DNSServiceBrowse
@@ -50,7 +50,7 @@ namespace Mono.Zeroconf
             ServiceError errorCode, string serviceName, string regtype, string replyDomain, 
             IntPtr context);
             
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ServiceError DNSServiceBrowse(out ServiceRef sdRef, ServiceFlags flags,
             uint interfaceIndex, string regtype, string domain, DNSServiceBrowseReply callBack, 
             IntPtr context);
@@ -61,7 +61,7 @@ namespace Mono.Zeroconf
             ServiceError errorCode, string fullname, string hosttarget, ushort port, ushort txtLen, 
             IntPtr txtRecord, IntPtr context);
             
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ServiceError DNSServiceResolve(out ServiceRef sdRef, ServiceFlags flags,
             uint interfaceIndex, string name, string regtype, string domain, DNSServiceResolveReply callBack,
             IntPtr context);
@@ -71,7 +71,7 @@ namespace Mono.Zeroconf
         public delegate void DNSServiceRegisterReply(ServiceRef sdRef, ServiceFlags flags, ServiceError errorCode,
             string name, string regtype, string domain, IntPtr context);
     
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ServiceError DNSServiceRegister(out ServiceRef sdRef, ServiceFlags flags,
             uint interfaceIndex, string name, string regtype, string domain, string host, ushort port,
             ushort txtLen, byte [] txtRecord, DNSServiceRegisterReply callBack, IntPtr context);
@@ -82,37 +82,37 @@ namespace Mono.Zeroconf
             ServiceError errorCode, string fullname, ServiceType rrtype, ServiceClass rrclass, ushort rdlen, 
             IntPtr rdata, uint ttl, IntPtr context);
         
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ServiceError DNSServiceQueryRecord(out ServiceRef sdRef, ServiceFlags flags, 
             uint interfaceIndex, string fullname, ServiceType rrtype, ServiceClass rrclass, 
             DNSServiceQueryRecordReply callBack, IntPtr context);
         
         // TXT Record Handling
         
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern void TXTRecordCreate( IntPtr txtRecord, ushort bufferLen, IntPtr buffer);
     
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern void TXTRecordDeallocate(IntPtr txtRecord);
     
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ServiceError TXTRecordGetItemAtIndex(ushort txtLen, IntPtr txtRecord,
             ushort index, ushort keyBufLen, byte [] key, out byte valueLen, out IntPtr value);
             
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ServiceError TXTRecordSetValue(IntPtr txtRecord, byte [] key, 
             sbyte valueSize, byte [] value);
             
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ServiceError TXTRecordRemoveValue(IntPtr txtRecord, byte [] key);
         
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ushort TXTRecordGetLength(IntPtr txtRecord);
         
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern IntPtr TXTRecordGetBytesPtr(IntPtr txtRecord);
         
-        [DllImport("mdns")]
+        [DllImport("dnssd.dll")]
         public static extern ushort TXTRecordGetCount(ushort txtLen, IntPtr txtRecord);
     }
 }

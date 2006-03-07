@@ -1,3 +1,9 @@
+2006-03-07  James Willcox  <snorp@snorp.net>
+
+	* Mono.Zeroconf/Native.cs: change the P/Invoke dll to
+	dnssd.dll, which works on Windows.
+	* Mono.Zeroconf/Mono.Zeroconf.config: ditto
+
 2006-03-07  Aaron Bockover  <aaron@abock.org>
 
 	* Mono.Zeroconf/BrowseService.cs: Use DNSServiceQueryRecord to run an
