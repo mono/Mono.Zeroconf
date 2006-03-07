@@ -109,15 +109,6 @@ namespace Mono.Zeroconf
         
         public string HostTarget {
             get { return hosttarget; }
-            set { 
-                hosttarget = value;
-                
-                if(hosttarget.EndsWith(".local.")) {
-                    hosttarget = hosttarget.Substring(0, hosttarget.Length - 7);
-                }
-                
-                hostentry = Dns.GetHostByName(hosttarget);
-            }
         }
         
         public IPHostEntry HostEntry {

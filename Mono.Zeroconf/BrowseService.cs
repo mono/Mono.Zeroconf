@@ -27,8 +27,10 @@
 //
 
 using System;
+using System.Net;
 using System.Text;
 using System.Collections;
+using System.Runtime.InteropServices;
 
 namespace Mono.Zeroconf
 {
@@ -99,17 +101,22 @@ namespace Mono.Zeroconf
             resolve_pending = false;
             
             InterfaceIndex = interfaceIndex;
-            HostTarget = hosttarget;
             FullName = fullname;
             this.port = (short)port;
             TxtRecord = new TxtRecord(txtLen, txtRecord);
+
+            sdRef.Deallocate();
             
-            EventHandler handler = Resolved;
-            if(handler != null) {
-                handler(this, new EventArgs());
+            // Run an A query to resolve the IP address
+            ServiceRef sd_ref;
+            ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, 0,
+                hosttarget, ServiceType.A, ServiceClass.IN, OnQueryRecordReply, IntPtr.Zero);
+                
+            if(error != ServiceError.NoError) {
+                throw new ServiceErrorException(error);
             }
             
-            sdRef.Deallocate();
+            sd_ref.Process();
         }
      
         private void OnQueryRecordReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,
@@ -117,6 +124,32 @@ namespace Mono.Zeroconf
             IntPtr rdata, uint ttl, IntPtr context)
         {
             switch(rrtype) {
+                case ServiceType.A:
+                    if(rdlen != 4) {
+                        break;
+                    }
+                    
+                    IPAddress address = new IPAddress(Marshal.ReadInt32(rdata));
+                    
+                    if(hostentry == null) {
+                        hostentry = new IPHostEntry();
+                        hostentry.HostName = hosttarget;
+                    }
+                    
+                    if(hostentry.AddressList != null) {
+                        ArrayList list = new ArrayList(hostentry.AddressList);
+                        list.Add(address);
+                        hostentry.AddressList = list.ToArray(typeof(IPAddress)) as IPAddress [];
+                    } else {
+                        hostentry.AddressList = new IPAddress [] { address };
+                    }
+                    
+                    EventHandler handler = Resolved;
+                    if(handler != null) {
+                        handler(this, new EventArgs());
+                    }
+                    
+                    break;
                 case ServiceType.TXT:
                     if(TxtRecord != null) {
                         TxtRecord.Dispose();

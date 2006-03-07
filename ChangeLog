@@ -1,3 +1,11 @@
+2006-03-07  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf/BrowseService.cs: Use DNSServiceQueryRecord to run an
+	A query to resolve IP addresses
+
+	* Mono.Zeroconf/Service.cs (set_HostTarget): Removed set modifier; no
+	.local. stripping and do not try to resolve using gethostbyname
+
 2006-03-05  Aaron Bockover  <aaron@abock.org>
 
 	* Test/ZeroConfTest.cs: Added a test call to RefreshTxtRecord()
