@@ -109,7 +109,7 @@ namespace Mono.Zeroconf
             
             // Run an A query to resolve the IP address
             ServiceRef sd_ref;
-            ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, 0,
+            ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, interfaceIndex,
                 hosttarget, ServiceType.A, ServiceClass.IN, OnQueryRecordReply, IntPtr.Zero);
                 
             if(error != ServiceError.NoError) {
