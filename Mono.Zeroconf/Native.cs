@@ -44,6 +44,9 @@ namespace Mono.Zeroconf
         [DllImport("dnssd.dll")]
         public static extern int DNSServiceRefSockFD(IntPtr sdRef);
         
+        [DllImport("dnssd.dll")]
+        public static extern ServiceError DNSServiceCreateConnection(out ServiceRef sdRef);
+        
         // DNSServiceBrowse
         
         public delegate void DNSServiceBrowseReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,

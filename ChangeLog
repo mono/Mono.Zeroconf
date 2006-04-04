@@ -1,3 +1,13 @@
+2006-04-04  Aaron Bockover  <aaron@abock.org>
+
+	* Mono.Zeroconf/Native.cs: Added DNSServiceCreateConnection
+
+	* Mono.Zeroconf/Service.cs: Added a static Zeroconf class with a 
+	simple Initialize method to test creating and destroying a connection
+	to the daemon
+
+	* Test/ZeroConfTest.cs: Added a test call to Zeroconf.Initialize() 
+
 2006-03-11  James Willcox  <snorp@snorp.net>
 
 	* Mono.Zeroconf/BrowseService.cs: pass the interface index

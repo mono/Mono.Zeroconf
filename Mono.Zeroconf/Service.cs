@@ -31,6 +31,23 @@ using System.Net;
 
 namespace Mono.Zeroconf
 {
+    public static class Zeroconf
+    {
+        public static void Initialize()
+        {
+            ServiceRef sd_ref;
+            ServiceError error = Native.DNSServiceCreateConnection(out sd_ref);
+            
+            if(error != ServiceError.NoError) {
+                throw new ServiceErrorException(error);
+            }
+            
+            sd_ref.Deallocate();
+            
+            return;
+        }
+    }
+    
     public abstract class Service
     {
         protected ServiceFlags flags = ServiceFlags.None;

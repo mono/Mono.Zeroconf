@@ -35,6 +35,9 @@ public class DnsTest
     public static void Main()
     {
         Application.Init();
+        
+        // Create a test connection to daemon
+        Zeroconf.Initialize();
 
         // Register a sample service
         RegisterService service = new RegisterService("Fruity Music", null, "_daap._tcp");
