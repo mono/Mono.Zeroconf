@@ -1,3 +1,11 @@
+2006-04-07  James Willcox  <snorp@snorp.net>
+
+	* Mono.Zeroconf/ServiceType.cs: the enum should use
+	a ushort as its value.
+	* Mono.Zeroconf/ServiceClass.cs: ditto
+
+	Make stuff work on win32
+
 2006-04-04  Aaron Bockover  <aaron@abock.org>
 
 	* Mono.Zeroconf/Native.cs: Added DNSServiceCreateConnection

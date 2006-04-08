@@ -28,7 +28,7 @@
 
 namespace Mono.Zeroconf
 {
-    public enum ServiceClass {
+    public enum ServiceClass : ushort {
         IN = 1 /* Internet */
     }
 }

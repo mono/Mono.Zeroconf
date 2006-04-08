@@ -28,7 +28,7 @@
 
 namespace Mono.Zeroconf
 {
-    public enum ServiceType {
+    public enum ServiceType : ushort {
         A         = 1,      /* Host address. */
         NS        = 2,      /* Authoritative server. */
         MD        = 3,      /* Mail destination. */
