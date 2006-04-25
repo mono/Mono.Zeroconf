@@ -1,3 +1,18 @@
+2006-04-24  Aaron Bockover  <aaron@abock.org>
+
+	* Test/ZeroConfTest.cs: removed
+
+	* Test/ZeroconfClient.cs: Added new replacement client (mzclient) for the 
+	mDNSClient tool that ships with Bonjour on UNIX. mzclient supports 
+	service resolving and publishing, unlinke mDNSClient
+
+	* Test/mzclient.in: Added wrapper script for mzclient.exe
+
+	* Mono.Zeroconf/Makefile: Build mzclient.exe and added install-client
+	rule for installing mzclient into /usr (hardcoded for now)
+
+	* Mono.Zeroconf.mdp: Updated MonoDevelop project
+
 2006-04-07  James Willcox  <snorp@snorp.net>
 
 	* Mono.Zeroconf/ServiceType.cs: the enum should use
