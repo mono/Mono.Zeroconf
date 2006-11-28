@@ -1,5 +1,5 @@
 //
-// ServiceException.cs
+// IResolvableService.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -27,17 +27,35 @@
 //
 
 using System;
+using System.Net;
 
 namespace Mono.Zeroconf
-{
-    internal class ServiceErrorException : Exception
+{    
+    public class ServiceResolvedEventArgs
     {
-        internal ServiceErrorException(ServiceError error) : base(error.ToString())
+        private IResolvableService service;
+        
+        public ServiceResolvedEventArgs(IResolvableService service)
         {
+            this.service = service;
         }
         
-        internal ServiceErrorException(string error) : base(error)
-        {
+        public IResolvableService Service {
+            get { return service; }
         }
+    }
+
+    public delegate void ServiceResolvedEventHandler(object o, ServiceResolvedEventArgs args);
+
+    public interface IResolvableService : IService
+    {
+        event ServiceResolvedEventHandler Resolved;
+        
+        void Resolve();
+        
+        string FullName { get; }
+        IPHostEntry HostEntry { get; }
+        string HostTarget { get; }
+        short Port { get; }
     }
 }

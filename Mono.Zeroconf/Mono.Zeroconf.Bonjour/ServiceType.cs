@@ -26,7 +26,7 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Bonjour
 {
     public enum ServiceType : ushort {
         A         = 1,      /* Host address. */

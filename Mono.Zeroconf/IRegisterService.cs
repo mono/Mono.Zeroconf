@@ -1,5 +1,5 @@
 //
-// TxtRecordEnumerator.cs
+// IRegisterService.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -27,39 +27,17 @@
 //
 
 using System;
-using System.Collections;
 
-namespace Mono.Zeroconf.Bonjour
+namespace Mono.Zeroconf
 {
-    internal class TxtRecordEnumerator : IEnumerator
+    public interface IRegisterService : IService
     {
-        private TxtRecord record;
-        private TxtRecordItem current_item;
-        private int index;
+        void Register();
         
-        public TxtRecordEnumerator(TxtRecord record)
-        {
-            this.record = record;
-        }
+        new string Name { get; set; }
+        new string RegType { get; set; }
+        new string ReplyDomain { get; set; }
         
-        public void Reset()
-        {
-            index = 0;
-            current_item = null;
-        }
-        
-        public bool MoveNext()
-        {
-            if(index < 0 || index >= record.Count) {
-                return false;
-            }
-            
-            current_item = record.GetItemAt(index++);
-            return current_item != null;
-        }
-        
-        public object Current {
-            get { return current_item; }
-        }
+        short Port { get; set; }
     }
 }

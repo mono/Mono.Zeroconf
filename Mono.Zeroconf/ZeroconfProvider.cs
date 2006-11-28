@@ -1,5 +1,5 @@
 //
-// TxtRecordEnumerator.cs
+// ZeroconfProvider.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -29,37 +29,47 @@
 using System;
 using System.Collections;
 
-namespace Mono.Zeroconf.Bonjour
+namespace Mono.Zeroconf
 {
-    internal class TxtRecordEnumerator : IEnumerator
+    public interface IZeroconfProvider
     {
-        private TxtRecord record;
-        private TxtRecordItem current_item;
-        private int index;
-        
-        public TxtRecordEnumerator(TxtRecord record)
-        {
-            this.record = record;
-        }
-        
-        public void Reset()
-        {
-            index = 0;
-            current_item = null;
-        }
-        
-        public bool MoveNext()
-        {
-            if(index < 0 || index >= record.Count) {
-                return false;
+        void Initialize();
+        Type ServiceBrowser { get; }
+        Type RegisterService { get; }
+        Type TxtRecord { get; }
+    }
+
+    public static class ZeroconfProvider
+    {
+        private static IZeroconfProvider [] providers;
+        private static IZeroconfProvider selected_provider;
+    
+        public static IZeroconfProvider DefaultProvider {
+            get {
+                if(providers == null) {
+                    GetProviders();
+                }
+                
+                return providers[0];
             }
-            
-            current_item = record.GetItemAt(index++);
-            return current_item != null;
         }
         
-        public object Current {
-            get { return current_item; }
+        public static IZeroconfProvider SelectedProvider {
+            get { return selected_provider == null ? DefaultProvider : selected_provider; }
+            set { selected_provider = value; }
+        }
+    
+        public static IZeroconfProvider [] GetProviders()
+        {
+            if(providers != null) {
+                return providers;
+            }
+        
+            ArrayList providers_list = new ArrayList();
+            providers_list.Add(new Mono.Zeroconf.Bonjour.ZeroconfProvider());
+            providers = providers_list.ToArray(typeof(IZeroconfProvider)) as IZeroconfProvider [];
+            
+            return providers;
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-// TxtRecordEnumerator.cs
+// ServiceError.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -26,40 +26,31 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Collections;
-
 namespace Mono.Zeroconf.Bonjour
 {
-    internal class TxtRecordEnumerator : IEnumerator
-    {
-        private TxtRecord record;
-        private TxtRecordItem current_item;
-        private int index;
-        
-        public TxtRecordEnumerator(TxtRecord record)
-        {
-            this.record = record;
-        }
-        
-        public void Reset()
-        {
-            index = 0;
-            current_item = null;
-        }
-        
-        public bool MoveNext()
-        {
-            if(index < 0 || index >= record.Count) {
-                return false;
-            }
-            
-            current_item = record.GetItemAt(index++);
-            return current_item != null;
-        }
-        
-        public object Current {
-            get { return current_item; }
-        }
+    public enum ServiceError {
+        NoError             = 0,
+        Unknown             = -65537,       /* 0xFFFE FFFF */
+        NoSuchName          = -65538,
+        NoMemory            = -65539,
+        BadParam            = -65540,
+        BadReference        = -65541,
+        BadState            = -65542,
+        BadFlags            = -65543,
+        Unsupported         = -65544,
+        NotInitialized      = -65545,
+        AlreadyRegistered   = -65547,
+        NameConflict        = -65548,
+        Invalid             = -65549,
+        Firewall            = -65550,
+        Incompatible        = -65551,        /* client library incompatible with daemon */
+        BadInterfaceIndex   = -65552,
+        Refused             = -65553,
+        NoSuchRecord        = -65554,
+        NoAuth              = -65555,
+        NoSuchKey           = -65556,
+        NATTraversal        = -65557,
+        DoubleNAT           = -65558,
+        BadTime             = -65559
     }
 }

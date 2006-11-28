@@ -29,7 +29,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Bonjour
 {
     public static class Native
     {

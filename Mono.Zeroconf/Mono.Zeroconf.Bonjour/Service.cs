@@ -29,26 +29,11 @@
 using System;
 using System.Net;
 
-namespace Mono.Zeroconf
+using Mono.Zeroconf;
+
+namespace Mono.Zeroconf.Bonjour
 {
-    public static class Zeroconf
-    {
-        public static void Initialize()
-        {
-            ServiceRef sd_ref;
-            ServiceError error = Native.DNSServiceCreateConnection(out sd_ref);
-            
-            if(error != ServiceError.NoError) {
-                throw new ServiceErrorException(error);
-            }
-            
-            sd_ref.Deallocate();
-            
-            return;
-        }
-    }
-    
-    public abstract class Service
+    public abstract class Service : IService
     {
         protected ServiceFlags flags = ServiceFlags.None;
         protected string name;
@@ -56,7 +41,7 @@ namespace Mono.Zeroconf
         protected string regtype;
         protected uint interface_index;
         
-        protected TxtRecord txt_record;
+        protected ITxtRecord txt_record;
         protected string fullname;
         protected string hosttarget;
         protected short port;
@@ -114,7 +99,7 @@ namespace Mono.Zeroconf
         
         // Resolved Properties
          
-        public TxtRecord TxtRecord {
+        public ITxtRecord TxtRecord {
             get { return txt_record; }
             set { txt_record = value; }
         }

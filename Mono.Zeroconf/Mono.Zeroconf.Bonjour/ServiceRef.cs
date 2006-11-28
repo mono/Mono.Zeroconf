@@ -31,7 +31,7 @@ using System.Threading;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Bonjour
 {
     public struct ServiceRef
     {

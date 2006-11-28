@@ -32,7 +32,7 @@ using System.Text.RegularExpressions;
 
 using Mono.Zeroconf;
 
-public class DnsTest 
+public class MZClient 
 {
     private static bool resolve_shares = false; 
     private static string app_name = "mzclient";
@@ -80,14 +80,14 @@ public class DnsTest
             Console.WriteLine("The TXT record is optional.\n");
             Console.WriteLine("    <type> <port> <name> TXT [ <key>='<value>', ... ]\n");
             Console.WriteLine("For example:\n");
-            Console.WriteLine("    _http._tcp 80 Simple Web Server");
-            Console.WriteLine("    _daap._tcp 3689 Aaron's Music TXT [ Password='false', Machine Name='Aaron's Box', txtvers='1' ]");
+            Console.WriteLine("    -p \"_http._tcp 80 Simple Web Server\"");
+            Console.WriteLine("    -p \"_daap._tcp 3689 Aaron's Music TXT [ Password='false', Machine Name='Aaron's Box', txtvers='1' ]\"");
             Console.WriteLine("");
             return 1;
         }
         
         // Create a test connection to daemon
-        Zeroconf.Initialize();
+        ZeroconfProvider.SelectedProvider.Initialize();
 
         if(services.Count > 0) {
             foreach(string service_description in services) {
@@ -95,10 +95,10 @@ public class DnsTest
             }
         } else {
            // Listen for events of some service type
-            ServiceBrowser browser = new ServiceBrowser(type);
+            ServiceBrowser browser = new ServiceBrowser();
             browser.ServiceAdded += OnServiceAdded;
             browser.ServiceRemoved += OnServiceRemoved;
-            browser.StartAsync();
+            browser.Browse(type, "local");
             
             Console.WriteLine("Hit ^C when you're bored waiting for responses.");
         }
@@ -114,7 +114,7 @@ public class DnsTest
         if(match.Groups.Count < 4) {
             throw new ApplicationException("Invalid service description syntax");
         }
-        
+        Console.WriteLine(serviceDescription);
         string type = match.Groups[1].Value.Trim();
         short port = Convert.ToInt16(match.Groups[2].Value);
         string name = match.Groups[3].Value.Trim();
@@ -131,9 +131,12 @@ public class DnsTest
             }
         }
                 
-        RegisterService service = new RegisterService(name, null, type);
-        service.Port = port;
+        RegisterService service = new RegisterService();
+        service.Name = name;
+        service.RegType = type;
         service.ReplyDomain = "local.";
+        service.Port = port;
+
         TxtRecord record = null;
         
         if(txt_data != null) {
@@ -171,7 +174,7 @@ public class DnsTest
             service.TxtRecord = record;
         }
         
-        service.RegisterAsync();
+        service.Register();
         Console.WriteLine("*** Registered name = '{0}', type = '{1}', domain = '{2}'", 
             service.Name,
             service.RegType,
@@ -199,13 +202,13 @@ public class DnsTest
             args.Service.ReplyDomain);    
     }
     
-    private static void OnServiceResolved(object o, EventArgs args)
+    private static void OnServiceResolved(object o, ServiceResolvedEventArgs args)
     {
-        BrowseService service = o as BrowseService;
+        IResolvableService service = o as IResolvableService;
         Console.Write("*** Resolved name = '{0}', host = '{1}', port = '{2}'", 
             service.FullName, service.HostEntry.AddressList[0], service.Port);
         
-        TxtRecord record = service.TxtRecord;
+        ITxtRecord record = service.TxtRecord;
         int record_count = record.Count;
         if(record != null && record_count > 0) {
             Console.Write(", TXT Record = [");

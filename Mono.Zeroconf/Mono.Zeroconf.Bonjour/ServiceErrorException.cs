@@ -1,5 +1,5 @@
 //
-// TxtRecordEnumerator.cs
+// ServiceException.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -27,39 +27,17 @@
 //
 
 using System;
-using System.Collections;
 
 namespace Mono.Zeroconf.Bonjour
 {
-    internal class TxtRecordEnumerator : IEnumerator
+    internal class ServiceErrorException : Exception
     {
-        private TxtRecord record;
-        private TxtRecordItem current_item;
-        private int index;
-        
-        public TxtRecordEnumerator(TxtRecord record)
+        internal ServiceErrorException(ServiceError error) : base(error.ToString())
         {
-            this.record = record;
         }
         
-        public void Reset()
+        internal ServiceErrorException(string error) : base(error)
         {
-            index = 0;
-            current_item = null;
-        }
-        
-        public bool MoveNext()
-        {
-            if(index < 0 || index >= record.Count) {
-                return false;
-            }
-            
-            current_item = record.GetItemAt(index++);
-            return current_item != null;
-        }
-        
-        public object Current {
-            get { return current_item; }
         }
     }
 }

@@ -1,14 +1,16 @@
-thisdir = class/Mono.Zeroconf
-SUBDIRS = 
-include ../../build/rules.make
+SUBDIRS = Mono.Zeroconf Test
+LIBRARY_SOURCES_FILE = Mono.Zeroconf.dll.sources
+LIBRARY_BUILD_SOURCES = \
+	Assembly/AssemblyInfo.cs \
+	../../build/common/Consts.cs \
+	../../build/common/Locale.cs
 
-LIBRARY = Mono.Zeroconf.dll
-LIB_MCS_FLAGS = -r:System
+all:
+	@for i in $(SUBDIRS); do (cd $$i && $(MAKE)) || exit 1; done
 
-TEST_MCS_FLAGS = $(LIB_MCS_FLAGS)
+clean:
+	@rm -f *.pidb && for i in $(SUBDIRS); do (cd $$i && $(MAKE) clean) || exit 1; done
 
-EXTRA_DISTFILES = Test/ZeroConfTest.cs
-
-include ../../build/library.make
-
-
+update-sources:
+	(for source in $(LIBRARY_BUILD_SOURCES); do (echo "$$source"); done) > $(LIBRARY_SOURCES_FILE); \
+	(find Mono.Zeroconf -iregex ".*\.cs$$") >> $(LIBRARY_SOURCES_FILE)

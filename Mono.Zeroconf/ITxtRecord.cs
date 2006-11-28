@@ -1,5 +1,5 @@
 //
-// TxtRecordEnumerator.cs
+// ITxtRecord.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -29,37 +29,21 @@
 using System;
 using System.Collections;
 
-namespace Mono.Zeroconf.Bonjour
+namespace Mono.Zeroconf
 {
-    internal class TxtRecordEnumerator : IEnumerator
+    public interface ITxtRecord : IEnumerable, IDisposable
     {
-        private TxtRecord record;
-        private TxtRecordItem current_item;
-        private int index;
+        void Add(string key, string value);
+        void Add(string key, byte [] value);
+        void Add(TxtRecordItem item);
         
-        public TxtRecordEnumerator(TxtRecord record)
-        {
-            this.record = record;
-        }
+        void Remove(string key);
         
-        public void Reset()
-        {
-            index = 0;
-            current_item = null;
-        }
+        TxtRecordItem GetItemAt(int index);
         
-        public bool MoveNext()
-        {
-            if(index < 0 || index >= record.Count) {
-                return false;
-            }
-            
-            current_item = record.GetItemAt(index++);
-            return current_item != null;
-        }
+        TxtRecordItem this[string index] { get; }
+        int Count { get; }
         
-        public object Current {
-            get { return current_item; }
-        }
+        ITxtRecord BaseRecord { get; }
     }
 }

@@ -32,14 +32,14 @@ using System.Text;
 using System.Collections;
 using System.Runtime.InteropServices;
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Bonjour
 {
-    public sealed class BrowseService : Service
+    public sealed class BrowseService : Service, IResolvableService
     {
         private bool is_resolved = false;
         private bool resolve_pending = false;
         
-        public event EventHandler Resolved;
+        public event ServiceResolvedEventHandler Resolved;
 
         public BrowseService()
         {
@@ -144,9 +144,9 @@ namespace Mono.Zeroconf
                         hostentry.AddressList = new IPAddress [] { address };
                     }
                     
-                    EventHandler handler = Resolved;
+                    ServiceResolvedEventHandler handler = Resolved;
                     if(handler != null) {
-                        handler(this, new EventArgs());
+                        handler(this, new ServiceResolvedEventArgs(this));
                     }
                     
                     break;

@@ -1,5 +1,5 @@
 //
-// TxtRecordEnumerator.cs
+// IServiceBrowser.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -26,40 +26,29 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-using System.Collections;
-
-namespace Mono.Zeroconf.Bonjour
+namespace Mono.Zeroconf
 {
-    internal class TxtRecordEnumerator : IEnumerator
+    public class ServiceBrowseEventArgs
     {
-        private TxtRecord record;
-        private TxtRecordItem current_item;
-        private int index;
+        private IResolvableService service;
         
-        public TxtRecordEnumerator(TxtRecord record)
+        public ServiceBrowseEventArgs(IResolvableService service)
         {
-            this.record = record;
+            this.service = service;
         }
         
-        public void Reset()
-        {
-            index = 0;
-            current_item = null;
+        public IResolvableService Service {
+            get { return service; }
         }
+    }
+
+    public delegate void ServiceBrowseEventHandler(object o, ServiceBrowseEventArgs args);
+
+    public interface IServiceBrowser
+    {
+        event ServiceBrowseEventHandler ServiceAdded;
+        event ServiceBrowseEventHandler ServiceRemoved;
         
-        public bool MoveNext()
-        {
-            if(index < 0 || index >= record.Count) {
-                return false;
-            }
-            
-            current_item = record.GetItemAt(index++);
-            return current_item != null;
-        }
-        
-        public object Current {
-            get { return current_item; }
-        }
+        void Browse(string domain, string type);
     }
 }

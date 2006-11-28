@@ -28,7 +28,7 @@
 
 using System;
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Bonjour
 {
     [Flags]
     public enum ServiceFlags {

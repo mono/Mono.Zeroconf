@@ -27,150 +27,32 @@
 //
 
 using System;
-using System.Collections;
-using System.Threading;
 
 namespace Mono.Zeroconf
 {
-    public class ServiceBrowseEventArgs : EventArgs
+    public class ServiceBrowser : IServiceBrowser
     {
-        public BrowseService Service;
-        public bool MoreComing;
-    }
-
-    public delegate void ServiceBrowseEventHandler(object o, ServiceBrowseEventArgs args);
-
-    public class ServiceBrowser : IEnumerable, IDisposable
-    {
-        private uint interface_index;
-        private string regtype;
-        private string domain;
+        private IServiceBrowser browser;
         
-        private ServiceRef sd_ref = ServiceRef.Zero;
-        private Hashtable service_table = new Hashtable();
-        
-        private Thread thread;
-        
-        public event ServiceBrowseEventHandler ServiceAdded;
-        public event ServiceBrowseEventHandler ServiceRemoved;
-        
-        public ServiceBrowser(string regtype) : this(0, regtype, null)
+        public ServiceBrowser()
         {
+            browser = (IServiceBrowser)Activator.CreateInstance(
+                ZeroconfProvider.SelectedProvider.ServiceBrowser);
         }
         
-        public ServiceBrowser(uint interfaceIndex, string regtype, string domain)
+        public void Browse(string regtype, string domain)
         {
-            this.interface_index = interfaceIndex;
-            this.regtype = regtype;
-            this.domain = domain;
-            
-            if(regtype == null) {
-                throw new ArgumentNullException("regtype");
-            }
+            browser.Browse(regtype, domain);
         }
         
-        public void Start(bool async)
-        {
-            if(thread != null) {
-                throw new InvalidOperationException("ServiceBrowser is already started");
-            }
-            
-            if(async) {
-                thread = new Thread(new ThreadStart(ThreadedStart));
-                thread.IsBackground = true;
-                thread.Start();
-            } else {
-                ProcessStart();
-            }
+        public event ServiceBrowseEventHandler ServiceAdded {
+            add { browser.ServiceAdded += value; }
+            remove { browser.ServiceRemoved -= value; }
         }
         
-        public void Start()
-        {
-            Start(false);
-        }
-        
-        public void StartAsync()
-        {
-            Start(true);
-        }
-        
-        private void ThreadedStart()
-        {
-            try {
-                ProcessStart();
-            } catch(ThreadAbortException) {
-                Thread.ResetAbort();
-            }
-            
-            thread = null;
-        }
-
-        private void ProcessStart()
-        {
-            ServiceError error = Native.DNSServiceBrowse(out sd_ref, ServiceFlags.Default,
-                interface_index, regtype,  domain, OnBrowseReply, IntPtr.Zero);
-
-            if(error != ServiceError.NoError) {
-                throw new ServiceErrorException(error);
-            }
-
-            sd_ref.Process();
-        }
-        
-        public void Stop()
-        {
-            if(sd_ref != ServiceRef.Zero) {
-                sd_ref.Deallocate();
-                sd_ref = ServiceRef.Zero;
-            }
-            
-            if(thread != null) {
-                thread.Abort();
-                thread = null;
-            }
-        }
-        
-        public void Dispose()
-        {
-            Stop();
-        }
-        
-        public IEnumerator GetEnumerator()
-        {
-            return service_table.Values.GetEnumerator();
-        }
-        
-        private void OnBrowseReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex, ServiceError errorCode, 
-            string serviceName, string regtype, string replyDomain, IntPtr context)
-        {
-            BrowseService service = new BrowseService();
-            service.Flags = flags;
-            service.Name = serviceName;
-            service.RegType = regtype;
-            service.ReplyDomain = replyDomain;
-            service.InterfaceIndex = interfaceIndex;
-            
-            ServiceBrowseEventArgs args = new ServiceBrowseEventArgs();
-            args.Service = service;
-            args.MoreComing = (flags & ServiceFlags.MoreComing) != 0;
-            
-            if((flags & ServiceFlags.Add) != 0) {
-                lock(service_table.SyncRoot) {
-                    service_table[serviceName] = service;
-                }
-                ServiceBrowseEventHandler handler = ServiceAdded;
-                if(handler != null) {
-                    handler(this, args);
-                }
-            } else {
-                lock(service_table.SyncRoot) {
-                    service_table.Remove(serviceName);
-                }
-                ServiceBrowseEventHandler handler = ServiceRemoved;
-                if(handler != null) {
-                    handler(this, args);
-                }
-            }
+        public event ServiceBrowseEventHandler ServiceRemoved {
+            add { browser.ServiceRemoved += value; }
+            remove { browser.ServiceRemoved -= value; }
         }
     }
 }

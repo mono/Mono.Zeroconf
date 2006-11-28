@@ -1,5 +1,5 @@
 //
-// TxtRecordEnumerator.cs
+// ZeroconfProvider.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -27,39 +27,45 @@
 //
 
 using System;
-using System.Collections;
+
+using Mono.Zeroconf;
 
 namespace Mono.Zeroconf.Bonjour
 {
-    internal class TxtRecordEnumerator : IEnumerator
+    public static class Zeroconf
     {
-        private TxtRecord record;
-        private TxtRecordItem current_item;
-        private int index;
-        
-        public TxtRecordEnumerator(TxtRecord record)
+        public static void Initialize()
         {
-            this.record = record;
-        }
-        
-        public void Reset()
-        {
-            index = 0;
-            current_item = null;
-        }
-        
-        public bool MoveNext()
-        {
-            if(index < 0 || index >= record.Count) {
-                return false;
+            ServiceRef sd_ref;
+            ServiceError error = Native.DNSServiceCreateConnection(out sd_ref);
+            
+            if(error != ServiceError.NoError) {
+                throw new ServiceErrorException(error);
             }
             
-            current_item = record.GetItemAt(index++);
-            return current_item != null;
+            sd_ref.Deallocate();
+            
+            return;
+        }
+    }
+
+    public class ZeroconfProvider : IZeroconfProvider
+    {
+        public void Initialize()
+        {
+            Zeroconf.Initialize();
         }
         
-        public object Current {
-            get { return current_item; }
+        public Type ServiceBrowser {
+            get { return typeof(Mono.Zeroconf.Bonjour.ServiceBrowser); }
+        }
+        
+        public Type RegisterService {
+            get { return typeof(Mono.Zeroconf.Bonjour.RegisterService); }
+        }
+        
+        public Type TxtRecord {
+            get { return typeof(Mono.Zeroconf.Bonjour.TxtRecord); }
         }
     }
 }

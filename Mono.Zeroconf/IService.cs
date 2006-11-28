@@ -1,5 +1,5 @@
 //
-// ServiceClass.cs
+// IService.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -28,7 +28,11 @@
 
 namespace Mono.Zeroconf
 {
-    public enum ServiceClass : ushort {
-        IN = 1 /* Internet */
+    public interface IService
+    {
+        string Name { get; }
+        string RegType { get; }
+        string ReplyDomain { get; }
+        ITxtRecord TxtRecord { get; set; }
     }
 }

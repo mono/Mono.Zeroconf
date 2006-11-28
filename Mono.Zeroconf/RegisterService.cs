@@ -27,134 +27,47 @@
 //
 
 using System;
-using System.Threading;
-using System.Runtime.InteropServices;
 
 namespace Mono.Zeroconf
 {
-    public delegate void RegisterServiceEventHandler(object o, RegisterServiceEventArgs args);
-
-    public class RegisterServiceEventArgs : EventArgs
+    public class RegisterService : IRegisterService
     {
-        public RegisterService Service;
-        public bool IsRegistered;
-        public bool NameConflict;
-        public ServiceError Error;
-    }
-
-    public sealed class RegisterService : Service, IDisposable
-    {
-        private Thread thread;
-        private ServiceRef sd_ref;
-        private bool auto_rename = true;
-    
-        public event RegisterServiceEventHandler Response;
-    
+        private IRegisterService register_service;
+        
         public RegisterService()
         {
-        }
-        
-        public RegisterService(string name, string replyDomain, string regtype) : base(name, replyDomain, regtype)
-        {
+            register_service = (IRegisterService)Activator.CreateInstance(
+                ZeroconfProvider.SelectedProvider.RegisterService);
         }
         
         public void Register()
         {
-            Register(false);
-        }
-    
-        public void Register(bool async)
-        {
-            if(thread != null) {
-                throw new InvalidOperationException("RegisterService registration already in process");
-            }
-            
-            if(async) {
-                thread = new Thread(new ThreadStart(ThreadedRegister));
-                thread.IsBackground = true;
-                thread.Start();
-            } else {
-                ProcessRegister();
-            }
+            register_service.Register();
         }
         
-        public void RegisterAsync()
-        {
-            Register(true);
-        }
-    
-        private void ThreadedRegister()
-        {
-            try {
-                ProcessRegister();
-            } catch(ThreadAbortException) {
-                Thread.ResetAbort();
-            }
-            
-            thread = null;
-        }
-    
-        public void ProcessRegister()
-        {
-            ushort txt_rec_length = 0;
-            byte [] txt_rec = null;
-            
-            if(TxtRecord != null) {
-                txt_rec_length = TxtRecord.RawLength;
-                txt_rec = new byte[txt_rec_length];
-                Marshal.Copy(TxtRecord.RawBytes, txt_rec, 0, txt_rec_length);
-            }
-            
-            ServiceError error = Native.DNSServiceRegister(out sd_ref, 
-                auto_rename ? ServiceFlags.None : ServiceFlags.NoAutoRename, InterfaceIndex,
-                Name, RegType, ReplyDomain, HostTarget, (ushort)port, txt_rec_length, txt_rec,
-                OnRegisterReply, IntPtr.Zero);
-
-            if(error != ServiceError.NoError) {
-                throw new ServiceErrorException(error);
-            }
-            
-            sd_ref.Process();
+        public string Name {
+            get { return register_service.Name; }
+            set { register_service.Name = value; }
         }
         
-        public void Dispose()
-        {
-            if(thread != null) {
-                thread.Abort();
-                thread = null;
-            }
-            
-            sd_ref.Deallocate();
+        public string RegType {
+            get { return register_service.RegType; }
+            set { register_service.RegType = value; }
         }
         
-        private void OnRegisterReply(ServiceRef sdRef, ServiceFlags flags, ServiceError errorCode,
-            string name, string regtype, string domain, IntPtr context)
-        {
-            RegisterServiceEventArgs args = new RegisterServiceEventArgs();
-            
-            args.Service = this;
-            args.IsRegistered = false;
-            args.NameConflict = false;
-            args.Error = errorCode;
-            
-            if(errorCode == ServiceError.NoError) {
-                Name = name;
-                RegType = regtype;
-                ReplyDomain = domain;
-                args.IsRegistered = true;
-            } else if(errorCode == ServiceError.NameConflict) {
-                args.NameConflict = true;
-            } 
-            
-            RegisterServiceEventHandler handler = Response;
-            if(handler != null) {
-                handler(this, args);
-            }
+        public string ReplyDomain {
+            get { return register_service.ReplyDomain; }
+            set { register_service.ReplyDomain = value; }
         }
         
-        public bool AutoRename {
-            get { return auto_rename; }
-            set { auto_rename = value; }
+        public ITxtRecord TxtRecord { 
+            get { return register_service.TxtRecord; }
+            set { register_service.TxtRecord = value; }
+        }
+        
+        public short Port {
+            get { return register_service.Port; }
+            set { register_service.Port = value; }
         }
     }
 }
