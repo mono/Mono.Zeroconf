@@ -6,9 +6,7 @@ Mono.Zeroconf/IServiceBrowser.cs
 Mono.Zeroconf/IResolvableService.cs
 Mono.Zeroconf/IService.cs
 Mono.Zeroconf/ITxtRecord.cs
-Mono.Zeroconf/ITxtRecordItem.cs
 Mono.Zeroconf/TxtRecordItem.cs
-Mono.Zeroconf/TxtRecordEnumerator.cs
 Mono.Zeroconf/ZeroconfProvider.cs
 Mono.Zeroconf/RegisterService.cs
 Mono.Zeroconf/TxtRecord.cs
@@ -26,3 +24,4 @@ Mono.Zeroconf/Mono.Zeroconf.Bonjour/ServiceRef.cs
 Mono.Zeroconf/Mono.Zeroconf.Bonjour/ServiceType.cs
 Mono.Zeroconf/Mono.Zeroconf.Bonjour/TxtRecord.cs
 Mono.Zeroconf/Mono.Zeroconf.Bonjour/ZeroconfProvider.cs
+Mono.Zeroconf/Mono.Zeroconf.Bonjour/TxtRecordEnumerator.cs

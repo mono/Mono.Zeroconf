@@ -1,5 +1,5 @@
 //
-// ITxtRecordItem.cs
+// ZeroconfProvider.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -26,13 +26,29 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-namespace Mono.Zeroconf
+using System;
+using System.Collections;
+
+[assembly:Mono.Zeroconf.ZeroconfProvider(typeof(Mono.Zeroconf.Avahi.ZeroconfProvider))]
+
+namespace Mono.Zeroconf.Avahi
 {
-    public interface ITxtRecordItem
+    public class ZeroconfProvider : IZeroconfProvider
     {
-        void Add(string key, string value);
-        void Add(string key, byte [] value);
-        void Remove(string key);
+        public void Initialize()
+        {
+        }
         
+        public Type ServiceBrowser { 
+            get { return typeof(Mono.Zeroconf.Avahi.ServiceBrowser); }
+        }
+        
+        public Type RegisterService { 
+            get { return typeof(Mono.Zeroconf.Avahi.TxtRecord); }
+        }
+        
+        public Type TxtRecord {
+            get { return null; }
+        }
     }
 }

@@ -41,7 +41,7 @@ namespace Mono.Zeroconf
         
         TxtRecordItem GetItemAt(int index);
         
-        TxtRecordItem this[string index] { get; }
+        TxtRecordItem this[string key] { get; }
         int Count { get; }
         
         ITxtRecord BaseRecord { get; }

@@ -1,5 +1,5 @@
 //
-// ServiceBrowser.cs
+// Service.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
@@ -27,37 +27,35 @@
 //
 
 using System;
+using AV=Avahi;
+using Mono.Zeroconf;
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Avahi
 {
-    public class ServiceBrowser : IServiceBrowser
+    public class Service : Mono.Zeroconf.IService
     {
-        private IServiceBrowser browser;
-        
-        public ServiceBrowser()
+        protected AV.ServiceInfo service;
+    
+        public Service(AV.ServiceInfo service)
         {
-            browser = (IServiceBrowser)Activator.CreateInstance(
-                ZeroconfProvider.SelectedProvider.ServiceBrowser);
+            this.service = service;
         }
         
-        public void Dispose()
-        {
-            browser.Dispose();
+        public string Name {
+            get { return service.Name; }
         }
         
-        public void Browse(string regtype, string domain)
-        {
-            browser.Browse(regtype, domain);
+        public string RegType {
+            get { return service.ServiceType; }
         }
         
-        public event ServiceBrowseEventHandler ServiceAdded {
-            add { browser.ServiceAdded += value; }
-            remove { browser.ServiceRemoved -= value; }
+        public string ReplyDomain {
+            get { return service.Domain; }
         }
         
-        public event ServiceBrowseEventHandler ServiceRemoved {
-            add { browser.ServiceRemoved += value; }
-            remove { browser.ServiceRemoved -= value; }
+        public ITxtRecord TxtRecord {
+            get { return new TxtRecord(service.Text); }
+            set { }
         }
     }
 }

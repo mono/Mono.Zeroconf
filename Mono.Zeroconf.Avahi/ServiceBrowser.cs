@@ -27,37 +27,58 @@
 //
 
 using System;
+using AV=Avahi;
+using Mono.Zeroconf;
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Avahi
 {
     public class ServiceBrowser : IServiceBrowser
     {
-        private IServiceBrowser browser;
-        
+        private AV.Client client;
+        private AV.ServiceBrowser browser;
+    
+        public event ServiceBrowseEventHandler ServiceAdded;
+        public event ServiceBrowseEventHandler ServiceRemoved;
+    
         public ServiceBrowser()
         {
-            browser = (IServiceBrowser)Activator.CreateInstance(
-                ZeroconfProvider.SelectedProvider.ServiceBrowser);
         }
         
         public void Dispose()
         {
-            browser.Dispose();
+            if(client != null) {
+                client.Dispose();
+                client = null;
+            }
+            
+            if(browser != null) {
+                browser.Dispose();
+                browser = null;
+            }
         }
-        
+    
         public void Browse(string regtype, string domain)
         {
-            browser.Browse(regtype, domain);
+            Dispose();
+            
+            client = new AV.Client();
+            
+            browser = new AV.ServiceBrowser(client, regtype, domain);
+            browser.ServiceAdded += OnServiceAdded;
+            browser.ServiceRemoved += OnServiceRemoved;
         }
         
-        public event ServiceBrowseEventHandler ServiceAdded {
-            add { browser.ServiceAdded += value; }
-            remove { browser.ServiceRemoved -= value; }
+        private void OnServiceAdded(object o, AV.ServiceInfoArgs args)
+        {
+            ServiceBrowseEventHandler handler = ServiceAdded;
+            if(handler != null) {
+                handler(this, new ServiceBrowseEventArgs(new ResolvableService(client, args.Service)));
+            }
         }
         
-        public event ServiceBrowseEventHandler ServiceRemoved {
-            add { browser.ServiceRemoved += value; }
-            remove { browser.ServiceRemoved -= value; }
+        private void OnServiceRemoved(object o, AV.ServiceInfoArgs args)
+        {
+            
         }
     }
 }

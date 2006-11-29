@@ -27,6 +27,8 @@
 //
 
 using System;
+using System.IO;
+using System.Reflection;
 using System.Collections;
 
 namespace Mono.Zeroconf
@@ -37,6 +39,20 @@ namespace Mono.Zeroconf
         Type ServiceBrowser { get; }
         Type RegisterService { get; }
         Type TxtRecord { get; }
+    }
+
+    public class ZeroconfProviderAttribute : Attribute
+    {
+        private Type provider;
+        
+        public ZeroconfProviderAttribute(Type provider)
+        {
+            this.provider = provider;
+        }
+        
+        public Type Provider {
+            get { return provider; }
+        }
     }
 
     public static class ZeroconfProvider
@@ -66,6 +82,34 @@ namespace Mono.Zeroconf
             }
         
             ArrayList providers_list = new ArrayList();
+            ArrayList directories = new ArrayList();
+            
+            string this_asm_path = Assembly.GetExecutingAssembly().Location;
+            directories.Add(Path.GetDirectoryName(this_asm_path));
+            
+            string env_path = Environment.GetEnvironmentVariable("MONO_ZEROCONF_PROVIDERS");
+            if(env_path != null && env_path != String.Empty) {
+                foreach(string path in env_path.Split(':')) {
+                    if(Directory.Exists(path)) {
+                        directories.Add(path);
+                    }
+                }
+            }
+            
+            foreach(string directory in directories) {
+                foreach(string file in Directory.GetFiles(directory, "Mono.Zeroconf.*.dll")) {
+                    if(Path.GetFileName(file) != Path.GetFileName(this_asm_path)) {
+                        Assembly provider_asm = Assembly.LoadFile(file);
+                        foreach(Attribute attr in provider_asm.GetCustomAttributes(false)) {
+                            if(attr is ZeroconfProviderAttribute) {
+                                Type type = (attr as ZeroconfProviderAttribute).Provider;
+                                providers_list.Add(Activator.CreateInstance(type));
+                            }
+                        }
+                    }
+                }
+            }
+            
             providers_list.Add(new Mono.Zeroconf.Bonjour.ZeroconfProvider());
             providers = providers_list.ToArray(typeof(IZeroconfProvider)) as IZeroconfProvider [];
             

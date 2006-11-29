@@ -1,5 +1,16 @@
 2006-11-28  Aaron Bockover  <abockover@novell.com>
 
+	* Mono.Zeroconf.Avahi/*: Initial Avahi implementation (no registration yet)
+
+	* Mono.Zeroconf/ZeroconfProvider.cs: Load providers at runtime (Avahi)
+
+	* Mono.Zeroconf/*.cs: 
+	* Test/Makefile: 
+	* Makefile:
+	* Mono.Zeroconf.mds: Updated
+
+2006-11-28  Aaron Bockover  <abockover@novell.com>
+
 	* Mono.Zeroconf/*.cs: New generic API/wrapper layer around MDNS provider
 	layers. The top-level Mono.Zeroconf namespace is now the preferred API
 	for applications. This API does runtime provider detection.

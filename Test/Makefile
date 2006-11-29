@@ -1,5 +1,5 @@
 ASM = ../Mono.Zeroconf/Mono.Zeroconf.dll
-MZCLIENT_SOURCES=../Test/ZeroconfClient.cs
+MZCLIENT_SOURCES=*.cs
 MZCLIENT_ASSEMBLY=mzclient.exe
 MONO = mono --debug 
 MCS = mcs -debug
@@ -12,6 +12,9 @@ $(MZCLIENT_ASSEMBLY): $(MZCLIENT_SOURCES)
 
 clean: 
 	rm -f $(MZCLIENT_ASSEMBLY) *.{dll,config,mdb,pidb}
+
+run:
+	$(MONO) $(MZCLIENT_ASSEMBLY) -t _airport._tcp -r
 
 install-client:
 	mkdir -p /usr/lib/mzclient;

@@ -26,6 +26,8 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+using System;
+
 namespace Mono.Zeroconf
 {
     public class ServiceBrowseEventArgs
@@ -44,7 +46,7 @@ namespace Mono.Zeroconf
 
     public delegate void ServiceBrowseEventHandler(object o, ServiceBrowseEventArgs args);
 
-    public interface IServiceBrowser
+    public interface IServiceBrowser : IDisposable
     {
         event ServiceBrowseEventHandler ServiceAdded;
         event ServiceBrowseEventHandler ServiceRemoved;

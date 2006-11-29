@@ -34,13 +34,12 @@
     <File name="./IService.cs" subtype="Code" buildaction="Compile" />
     <File name="./IServiceBrowser.cs" subtype="Code" buildaction="Compile" />
     <File name="./ITxtRecord.cs" subtype="Code" buildaction="Compile" />
-    <File name="./ITxtRecordItem.cs" subtype="Code" buildaction="Compile" />
     <File name="./RegisterService.cs" subtype="Code" buildaction="Compile" />
     <File name="./ServiceBrowser.cs" subtype="Code" buildaction="Compile" />
     <File name="./TxtRecord.cs" subtype="Code" buildaction="Compile" />
-    <File name="./TxtRecordEnumerator.cs" subtype="Code" buildaction="Compile" />
     <File name="./TxtRecordItem.cs" subtype="Code" buildaction="Compile" />
     <File name="./ZeroconfProvider.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Mono.Zeroconf.Bonjour/TxtRecordEnumerator.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=1.0.5000.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
