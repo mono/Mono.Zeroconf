@@ -14,7 +14,7 @@ clean:
 	rm -f $(MZCLIENT_ASSEMBLY) *.{dll,config,mdb,pidb}
 
 run:
-	$(MONO) $(MZCLIENT_ASSEMBLY) -t _airport._tcp -r
+	$(MONO) $(MZCLIENT_ASSEMBLY) -t _daap._tcp -r
 
 install-client:
 	mkdir -p /usr/lib/mzclient;
