@@ -78,9 +78,9 @@ AC_DEFUN([SHAMROCK_CHECK_MONO_2_0_GAC_ASSEMBLIES],
 AC_DEFUN([SHAMROCK_CHECK_MONODOC],
 [
 	AC_ARG_ENABLE(docs, AC_HELP_STRING([--disable-docs], 
-		[Do not build documentation]), with_docs=no, with_docs=yes)
+		[Do not build documentation]), , enable_docs=yes)
 
-	if test "x$with_docs" = "xyes"; then
+	if test "x$enable_docs" = "xyes"; then
 		AC_PATH_PROG(MONODOCER, monodocer, no)
 		if test "x$MONODOCER" = "xno"; then
 			AC_MSG_ERROR([You need to install monodoc, or pass --disable-docs to configure to skip documentation installation])

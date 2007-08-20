@@ -48,9 +48,10 @@ docs/Makefile
 ])
 
 echo "
-    Installation Prefix:  ${prefix}
-    C# Compiler:          ${MCS}
+    Installation Prefix:     ${prefix}
+    C# Compiler:             ${MCS}
 
-    Avahi Support:        ${enable_avahi}
+    Avahi Support:           ${enable_avahi}
+    Developer Documentation: ${enable_docs}
 "
 

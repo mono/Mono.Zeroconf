@@ -1,9 +1,6 @@
 ASSEMBLY_NAME = Mono.Zeroconf.Avahi
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 
-assemblydir = $(libdir)/mono-zeroconf
-assembly_SCRIPTS = $(ASSEMBLY)
-
 MONO_ZEROCONF_AVAHI_SRC = \
 	Mono.Zeroconf.Avahi/ResolvableService.cs \
 	Mono.Zeroconf.Avahi/ServiceBrowser.cs \
@@ -17,6 +14,9 @@ SOURCES_PRE = \
 SOURCES = $(foreach source,$(SOURCES_PRE),$(srcdir)/$(source))
 
 if BUILD_AVAHI
+
+assemblydir = $(libdir)/mono-zeroconf
+assembly_SCRIPTS = $(ASSEMBLY)
 
 all: $(ASSEMBLY)
 
