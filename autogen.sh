@@ -52,7 +52,7 @@ check_autotool_version autoconf 2.13
 
 run aclocal -I .
 run autoconf
-run automake -a
+run automake -a --gnu
 
 if [ $# = 0 ]; then
 	echo "WARNING: I am going to run configure without any arguments."

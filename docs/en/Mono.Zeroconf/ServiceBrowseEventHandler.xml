@@ -1,0 +1,23 @@
+<Type Name="ServiceBrowseEventHandler" FullName="Mono.Zeroconf.ServiceBrowseEventHandler">
+  <TypeSignature Language="C#" Value="public delegate void ServiceBrowseEventHandler(object o, ServiceBrowseEventArgs args);" />
+  <AssemblyInfo>
+    <AssemblyName>Mono.Zeroconf</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Delegate</BaseTypeName>
+  </Base>
+  <Parameters>
+    <Parameter Name="o" Type="System.Object" />
+    <Parameter Name="args" Type="Mono.Zeroconf.ServiceBrowseEventArgs" />
+  </Parameters>
+  <ReturnValue>
+    <ReturnType>System.Void</ReturnType>
+  </ReturnValue>
+  <Docs>
+    <param name="o">To be added.</param>
+    <param name="args">To be added.</param>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+</Type>

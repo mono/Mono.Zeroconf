@@ -1,0 +1,29 @@
+<Type Name="ServiceBrowseEventArgs" FullName="Mono.Zeroconf.ServiceBrowseEventArgs">
+  <TypeSignature Language="C#" Value="public class ServiceBrowseEventArgs" />
+  <AssemblyInfo>
+    <AssemblyName>Mono.Zeroconf</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Base>
+    <BaseTypeName>System.Object</BaseTypeName>
+  </Base>
+  <Interfaces />
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    
+    <Member MemberName=".ctor">
+      <MemberSignature Language="C#" Value="public ServiceBrowseEventArgs (Mono.Zeroconf.IResolvableService service);" />
+      <MemberType>Constructor</MemberType>
+      <Parameters><Parameter Name="service" Type="Mono.Zeroconf.IResolvableService" /></Parameters>
+      <Docs><param name="service">To be added.</param><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
+    </Member><Member MemberName="Service">
+      <MemberSignature Language="C#" Value="public Mono.Zeroconf.IResolvableService Service { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue><ReturnType>Mono.Zeroconf.IResolvableService</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
+    </Member>
+  </Members>
+</Type>

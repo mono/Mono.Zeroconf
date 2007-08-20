@@ -1,0 +1,37 @@
+<Type Name="IServiceBrowser" FullName="Mono.Zeroconf.IServiceBrowser">
+  <TypeSignature Language="C#" Value="public interface IServiceBrowser : IDisposable" />
+  <AssemblyInfo>
+    <AssemblyName>Mono.Zeroconf</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    
+    
+    <Member MemberName="Browse">
+      <MemberSignature Language="C#" Value="public void Browse (string domain, string type);" />
+      <MemberType>Method</MemberType>
+      <ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue>
+      <Parameters><Parameter Name="domain" Type="System.String" /><Parameter Name="type" Type="System.String" /></Parameters>
+      <Docs><param name="domain">To be added.</param><param name="type">To be added.</param><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
+    </Member><Member MemberName="ServiceAdded">
+      <MemberSignature Language="C#" Value="public event Mono.Zeroconf.ServiceBrowseEventHandler ServiceAdded;" />
+      <MemberType>Event</MemberType>
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceBrowseEventHandler</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
+    </Member><Member MemberName="ServiceRemoved">
+      <MemberSignature Language="C#" Value="public event Mono.Zeroconf.ServiceBrowseEventHandler ServiceRemoved;" />
+      <MemberType>Event</MemberType>
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceBrowseEventHandler</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
+    </Member>
+  </Members>
+</Type>

@@ -1,5 +1,6 @@
 SUBDIRS = \
-	src
+	src \
+	docs
 
 MAINTAINERCLEANFILES = \
 	Makefile.in \

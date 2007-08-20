@@ -44,6 +44,7 @@ src/Mono.Zeroconf/Makefile
 src/Mono.Zeroconf.Avahi/Makefile
 src/MZClient/Makefile
 src/MZClient/mzclient
+docs/Makefile
 ])
 
 echo "

@@ -1,0 +1,55 @@
+<Type Name="IResolvableService" FullName="Mono.Zeroconf.IResolvableService">
+  <TypeSignature Language="C#" Value="public interface IResolvableService : Mono.Zeroconf.IService" />
+  <AssemblyInfo>
+    <AssemblyName>Mono.Zeroconf</AssemblyName>
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </AssemblyInfo>
+  <Interfaces>
+    <Interface>
+      <InterfaceName>Mono.Zeroconf.IService</InterfaceName>
+    </Interface>
+  </Interfaces>
+  <Docs>
+    <summary>To be added.</summary>
+    <remarks>To be added.</remarks>
+  </Docs>
+  <Members>
+    
+    
+    
+    
+    
+    <Member MemberName="FullName">
+      <MemberSignature Language="C#" Value="public string FullName { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
+    </Member><Member MemberName="HostEntry">
+      <MemberSignature Language="C#" Value="public System.Net.IPHostEntry HostEntry { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue><ReturnType>System.Net.IPHostEntry</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
+    </Member><Member MemberName="HostTarget">
+      <MemberSignature Language="C#" Value="public string HostTarget { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
+    </Member><Member MemberName="Port">
+      <MemberSignature Language="C#" Value="public short Port { get; };" />
+      <MemberType>Property</MemberType>
+      <ReturnValue><ReturnType>System.Int16</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
+    </Member><Member MemberName="Resolve">
+      <MemberSignature Language="C#" Value="public void Resolve ();" />
+      <MemberType>Method</MemberType>
+      <ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue>
+      <Parameters />
+      <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
+    </Member><Member MemberName="Resolved">
+      <MemberSignature Language="C#" Value="public event Mono.Zeroconf.ServiceResolvedEventHandler Resolved;" />
+      <MemberType>Event</MemberType>
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceResolvedEventHandler</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
+    </Member>
+  </Members>
+</Type>
