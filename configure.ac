@@ -15,12 +15,12 @@ AC_PROG_INSTALL
 SHAMROCK_CHECK_MONO_MODULE(1.1.10)
 SHAMROCK_FIND_MONO_2_0_COMPILER
 SHAMROCK_FIND_MONO_RUNTIME
+SHAMROCK_CHECK_MONODOC
 SHAMROCK_CHECK_MONO_2_0_GAC_ASSEMBLIES([
 	System
 	System.Web
 	Mono.Posix
 ])
-SHAMROCK_CHECK_MONODOC
 
 AC_ARG_ENABLE(avahi, AC_HELP_STRING([--disable-avahi],
 	[Do not build with Avahi support]), , enable_avahi=yes)
@@ -34,11 +34,16 @@ else
 	AM_CONDITIONAL(BUILD_AVAHI, false)
 fi
 
+SHAMROCK_EXPAND_LIBDIR
+
 AC_OUTPUT([
 Makefile
 src/Makefile
+src/mono-zeroconf.pc
 src/Mono.Zeroconf/Makefile
 src/Mono.Zeroconf.Avahi/Makefile
+src/MZClient/Makefile
+src/MZClient/mzclient
 ])
 
 echo "

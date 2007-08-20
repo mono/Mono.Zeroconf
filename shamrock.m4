@@ -1,3 +1,19 @@
+AC_DEFUN([SHAMROCK_EXPAND_LIBDIR],
+[	
+	expanded_libdir=`(
+		case $prefix in 
+			NONE) prefix=$ac_default_prefix ;; 
+			*) ;; 
+		esac
+		case $exec_prefix in 
+			NONE) exec_prefix=$prefix ;; 
+			*) ;; 
+		esac
+		eval echo $libdir
+	)`
+	AC_SUBST(expanded_libdir)
+])
+
 AC_DEFUN([SHAMROCK_FIND_PROGRAM],
 [
 	AC_PATH_PROG($1, $2, $3)

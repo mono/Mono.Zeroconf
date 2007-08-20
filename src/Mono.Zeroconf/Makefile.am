@@ -1,6 +1,9 @@
 ASSEMBLY_NAME = Mono.Zeroconf
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 
+assemblydir = $(libdir)/mono-zeroconf
+assembly_SCRIPTS = $(ASSEMBLY) $(ASSEMBLY).config
+
 MONO_ZEROCONF_SRC = \
 	Mono.Zeroconf/IRegisterService.cs \
 	Mono.Zeroconf/IResolvableService.cs \
@@ -29,9 +32,11 @@ MONO_ZEROCONF_BONJOUR_SRC = \
 	Mono.Zeroconf.Bonjour/TxtRecordEnumerator.cs \
 	Mono.Zeroconf.Bonjour/ZeroconfProvider.cs
 
-SOURCES = \
+SOURCES_PRE = \
 	$(MONO_ZEROCONF_SRC) \
 	$(MONO_ZEROCONF_BONJOUR_SRC)
+
+SOURCES = $(foreach source,$(SOURCES_PRE),$(srcdir)/$(source))
 
 all: $(ASSEMBLY)
 

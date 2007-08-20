@@ -1,0 +1,10 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+
+Name: Mono.Zeroconf
+Description: Mono library for universal cross platform Zeroconf support via a unified API with built in support for mdnsd and optional support for Avahi.
+Version: @VERSION@
+Requires:
+Libs: -r:${libdir}/mono-zeroconf/Mono.Zeroconf.dll
+
