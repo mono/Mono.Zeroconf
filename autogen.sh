@@ -32,7 +32,7 @@ function check_autotool_version () {
 function run () {
 	echo "Running $@ ..."
 	$@ 2>.autogen.log || {
-		echo .autogen.log 1>&2
+		cat .autogen.log 1>&2
 		rm .autogen.log
 		error "Could not run $1, which is required to configure $PROJECT"
 	}
@@ -58,5 +58,5 @@ if [ $# = 0 ]; then
 	echo "WARNING: I am going to run configure without any arguments."
 fi
 
-run ./configure $@
+run ./configure --enable-maintainer-mode $@
 

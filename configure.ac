@@ -22,8 +22,29 @@ SHAMROCK_CHECK_MONO_2_0_GAC_ASSEMBLIES([
 ])
 SHAMROCK_CHECK_MONODOC
 
+AC_ARG_ENABLE(avahi, AC_HELP_STRING([--disable-avahi],
+	[Do not build with Avahi support]), , enable_avahi=yes)
+
+if test "x$enable_avahi" = "xyes"; then
+	PKG_CHECK_MODULES(AVAHI, avahi-sharp >= 0.6)
+	AC_SUBST(AVAHI_LIBS)
+	AM_CONDITIONAL(BUILD_AVAHI, true)
+else
+	AC_MSG_NOTICE([not building Avahi support])
+	AM_CONDITIONAL(BUILD_AVAHI, false)
+fi
+
 AC_OUTPUT([
 Makefile
 src/Makefile
+src/Mono.Zeroconf/Makefile
+src/Mono.Zeroconf.Avahi/Makefile
 ])
+
+echo "
+    Installation Prefix:  ${prefix}
+    C# Compiler:          ${MCS}
+
+    Avahi Support:        ${enable_avahi}
+"
 
