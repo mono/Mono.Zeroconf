@@ -94,13 +94,14 @@ public class MZClient
                 RegisterService(service_description);
             }
         } else {
-           // Listen for events of some service type
+            Console.WriteLine("Hit ^C when you're bored waiting for responses.");
+            Console.WriteLine();
+            
+			// Listen for events of some service type
             ServiceBrowser browser = new ServiceBrowser();
             browser.ServiceAdded += OnServiceAdded;
             browser.ServiceRemoved += OnServiceRemoved;
             browser.Browse(type, "local");
-            
-            Console.WriteLine("Hit ^C when you're bored waiting for responses.");
         }
        
         while(true) {
