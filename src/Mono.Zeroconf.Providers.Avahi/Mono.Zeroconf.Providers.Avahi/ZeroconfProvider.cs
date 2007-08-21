@@ -40,11 +40,11 @@ namespace Mono.Zeroconf.Providers.Avahi
         }
         
         public Type ServiceBrowser { 
-            get { return typeof(Mono.Zeroconf.Avahi.ServiceBrowser); }
+            get { return typeof(Mono.Zeroconf.Providers.Avahi.ServiceBrowser); }
         }
         
         public Type RegisterService { 
-            get { return typeof(Mono.Zeroconf.Avahi.TxtRecord); }
+            get { return typeof(Mono.Zeroconf.Providers.Avahi.TxtRecord); }
         }
         
         public Type TxtRecord {
