@@ -4,7 +4,7 @@
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -30,7 +30,7 @@ using System;
 
 using Mono.Zeroconf;
 
-namespace Mono.Zeroconf.Bonjour
+namespace Mono.Zeroconf.Providers.Bonjour
 {
     public static class Zeroconf
     {
@@ -57,15 +57,15 @@ namespace Mono.Zeroconf.Bonjour
         }
         
         public Type ServiceBrowser {
-            get { return typeof(Mono.Zeroconf.Bonjour.ServiceBrowser); }
+            get { return typeof(ServiceBrowser); }
         }
         
         public Type RegisterService {
-            get { return typeof(Mono.Zeroconf.Bonjour.RegisterService); }
+            get { return typeof(RegisterService); }
         }
         
         public Type TxtRecord {
-            get { return typeof(Mono.Zeroconf.Bonjour.TxtRecord); }
+            get { return typeof(TxtRecord); }
         }
     }
 }

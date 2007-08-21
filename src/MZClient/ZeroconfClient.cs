@@ -86,9 +86,6 @@ public class MZClient
             return 1;
         }
         
-        // Create a test connection to daemon
-        ZeroconfProvider.SelectedProvider.Initialize();
-
         if(services.Count > 0) {
             foreach(string service_description in services) {
                 RegisterService(service_description);

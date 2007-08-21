@@ -4,7 +4,7 @@
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -27,6 +27,7 @@
 //
 
 using System;
+using Mono.Zeroconf.Providers;
 
 namespace Mono.Zeroconf
 {
@@ -37,7 +38,7 @@ namespace Mono.Zeroconf
         public ServiceBrowser()
         {
             browser = (IServiceBrowser)Activator.CreateInstance(
-                ZeroconfProvider.SelectedProvider.ServiceBrowser);
+                ProviderFactory.SelectedProvider.ServiceBrowser);
         }
         
         public void Dispose()
