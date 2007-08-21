@@ -28,7 +28,7 @@
 
 using System;
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Providers
 {
     public interface IZeroconfProvider
     {

@@ -28,7 +28,7 @@
 
 using System;
 
-using Mono.Zeroconf;
+[assembly:Mono.Zeroconf.Providers.ZeroconfProvider(typeof(Mono.Zeroconf.Providers.Bonjour.ZeroconfProvider))]
 
 namespace Mono.Zeroconf.Providers.Bonjour
 {

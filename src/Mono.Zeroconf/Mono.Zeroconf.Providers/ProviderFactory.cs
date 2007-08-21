@@ -75,7 +75,7 @@ namespace Mono.Zeroconf.Providers
             }
             
             foreach(string directory in directories) {
-                foreach(string file in Directory.GetFiles(directory, "Mono.Zeroconf.*.dll")) {
+                foreach(string file in Directory.GetFiles(directory, "*.dll")) {
                     if(Path.GetFileName(file) != Path.GetFileName(this_asm_path)) {
                         Assembly provider_asm = Assembly.LoadFile(file);
                         foreach(Attribute attr in provider_asm.GetCustomAttributes(false)) {
