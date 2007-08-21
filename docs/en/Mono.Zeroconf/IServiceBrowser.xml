@@ -1,5 +1,5 @@
 <Type Name="IServiceBrowser" FullName="Mono.Zeroconf.IServiceBrowser">
-  <TypeSignature Language="C#" Value="public interface IServiceBrowser : IDisposable" />
+  <TypeSignature Language="C#" Value="public interface IServiceBrowser : System.IDisposable" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
     <AssemblyVersion>0.0.0.0</AssemblyVersion>

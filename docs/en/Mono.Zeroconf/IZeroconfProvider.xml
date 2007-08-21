@@ -20,17 +20,17 @@
       <Parameters />
       <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
     </Member><Member MemberName="RegisterService">
-      <MemberSignature Language="C#" Value="public Type RegisterService { get; };" />
+      <MemberSignature Language="C#" Value="public System.Type RegisterService { get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Type</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
     </Member><Member MemberName="ServiceBrowser">
-      <MemberSignature Language="C#" Value="public Type ServiceBrowser { get; };" />
+      <MemberSignature Language="C#" Value="public System.Type ServiceBrowser { get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Type</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
     </Member><Member MemberName="TxtRecord">
-      <MemberSignature Language="C#" Value="public Type TxtRecord { get; };" />
+      <MemberSignature Language="C#" Value="public System.Type TxtRecord { get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Type</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>

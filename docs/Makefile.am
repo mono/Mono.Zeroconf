@@ -1,4 +1,4 @@
-DOC_UPDATER = @MONODOCER@ -delete -namespace:Mono.Zeroconf
+DOC_UPDATER = @MONODOCER@ -delete
 DOC_ASSEMBLER = @MDASSEMBLER@ --out mono-zeroconf-docs --ecma
 
 ASSEMBLIES = \
@@ -19,7 +19,7 @@ monodoc_DATA = \
 	mono-zeroconf-docs.tree \
 	mono-zeroconf-docs.source
 
-mono-zeroconf-docs.zip mono-zeroconf-docs.tree: $(srcdir)/en/*/*.xml
+mono-zeroconf-docs.zip mono-zeroconf-docs.tree: $(srcdir)/en/*/*.xml $(srcdir)/en/*.xml
 	$(DOC_ASSEMBLER) $(srcdir)/en
 
 install-data-hook:
@@ -29,13 +29,23 @@ uninstall-hook:
 	$(MONO) $(top_builddir)/docs/MonodocNodeConfig.exe --remove classlib-mono-zeroconf $(DOCDIR)/../monodoc.xml
 
 update-docs: $(ASSEMBLIES)
-	mkdir -p en/Mono.Zeroconf
 	$(DOC_UPDATER) $(ASSEMBLIES_BUILD) -path:en/
+
+update-svn:
+	@for remove in $$(find en -iregex .*\.remove$$); do \
+		real_remove=$${remove%.remove}; \
+		mv $$remove $$real_remove; \
+		svn delete $$real_remove; \
+	done; \
+	for add in $$(svn status | grep ^? | awk '{print $$2}'); do \
+		svn add $$add; \
+	done;
 
 endif
 
 EXTRA_DIST = \
 	$(srcdir)/en/*/*.xml \
+	$(srcdir)/en/*.xml \
 	mono-zeroconf-docs.source \
 	MonodocNodeConfig.cs
 	

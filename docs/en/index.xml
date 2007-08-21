@@ -1,0 +1,29 @@
+<Overview>
+  <Assemblies>
+    <Assembly Name="Mono.Zeroconf" Version="0.0.0.0" />
+  </Assemblies>
+  <Remarks>To be added.</Remarks>
+  <Copyright>To be added.</Copyright>
+  <Types>
+    <Namespace Name="Mono.Zeroconf">
+      <Type Name="IRegisterService" />
+      <Type Name="IService" />
+      <Type Name="IResolvableService" />
+      <Type Name="IServiceBrowser" />
+      <Type Name="ITxtRecord" />
+      <Type Name="RegisterService" />
+      <Type Name="ServiceBrowseEventArgs" />
+      <Type Name="ServiceBrowser" />
+      <Type Name="ServiceResolvedEventArgs" />
+      <Type Name="TxtRecord" />
+      <Type Name="TxtRecordItem" />
+      <Type Name="ServiceBrowseEventHandler" />
+      <Type Name="ServiceResolvedEventHandler" />
+    </Namespace>
+    <Namespace Name="Mono.Zeroconf.Providers">
+      <Type Name="ZeroconfProviderAttribute" />
+      <Type Name="IZeroconfProvider" />
+    </Namespace>
+  </Types>
+  <Title>Mono.Zeroconf</Title>
+</Overview>
