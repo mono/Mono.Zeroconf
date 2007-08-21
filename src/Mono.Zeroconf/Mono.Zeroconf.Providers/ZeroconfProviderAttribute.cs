@@ -30,6 +30,7 @@ using System;
 
 namespace Mono.Zeroconf.Providers
 {
+    [AttributeUsage(AttributeTargets.Assembly)]
     public class ZeroconfProviderAttribute : Attribute
     {
         private Type provider_type;

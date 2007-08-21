@@ -28,7 +28,9 @@ SOURCES_PRE = \
 	$(MONO_ZEROCONF_SRC) \
 	$(MONO_ZEROCONF_PROVIDERS_SRC)
 
-SOURCES = $(foreach source,$(SOURCES_PRE),$(srcdir)/$(source))
+SOURCES = \
+	$(top_srcdir)/src/AssemblyInfo.cs \
+	$(foreach source,$(SOURCES_PRE),$(srcdir)/$(source))
 
 all: $(ASSEMBLY)
 

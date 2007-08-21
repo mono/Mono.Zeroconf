@@ -1,15 +1,27 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="Mono.Zeroconf" Version="0.0.0.0">
+    <Assembly Name="Mono.Zeroconf" Version="0.8.1.30538">
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
         </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCompany("Novell, Inc")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2006-2007 Novell, Inc.")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyDescription("Cross Platform Zeroconf for .NET")</AttributeName>
+        </Attribute>
+        <Attribute>
+          <AttributeName>System.Reflection.AssemblyTitle("Mono.Zeroconf")</AttributeName>
+        </Attribute>
       </Attributes>
     </Assembly>
   </Assemblies>
-  <Remarks>To be added.</Remarks>
-  <Copyright>To be added.</Copyright>
+  <Remarks>Cross Platform Zeroconf for .NET.</Remarks>
+  <Copyright>Copyright (C) 2006-2007 Novell, Inc.</Copyright>
   <Types>
     <Namespace Name="Mono.Zeroconf">
       <Type Name="IRegisterService" />

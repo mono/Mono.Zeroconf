@@ -1,3 +1,10 @@
+2007-08-21  Aaron Bockover  <abockover@novell.com>
+
+	* Mono.Zeroconf: Tons of reorg, cleanup, etc. Mono.Zeroconf will soon
+	be released alongside Mono - preparing for this
+
+	* docs/: Initial work on filling in documentation
+
 2006-11-28  Aaron Bockover  <abockover@novell.com>
 
 	* Mono.Zeroconf.Avahi/*: Initial Avahi implementation (no registration yet)

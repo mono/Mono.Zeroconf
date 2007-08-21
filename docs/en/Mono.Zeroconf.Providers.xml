@@ -1,6 +1,9 @@
 <Namespace Name="Mono.Zeroconf.Providers">
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>API for implementing new Zeroconf/mDNS providers, such as Bonjour and Avahi.</summary>
+    <remarks>
+      <para>Zeroconf providers for Mono.Zeroconf are written as plugins. Provider assemblies are loaded at runtime by Mono.Zeroconf.</para>
+      <para>Each provider must implement a plugin &quot;entry point&quot; by implementing <see cref="T:Mono.Zeroconf.Providers.IZeroconfProvider" />, providing classes that implement interfaces from <see cref="N:Mono.Zeroconf" />, and applying the assembly level attribute, <see cref="T:Mono.Zeroconf.Providers.ZeroconfProviderAttribute" /> to the provider assembly.</para>
+    </remarks>
   </Docs>
 </Namespace>

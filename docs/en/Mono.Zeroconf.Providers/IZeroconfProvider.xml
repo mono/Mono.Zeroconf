@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public interface IZeroconfProvider" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <AssemblyVersion>0.8.1.30538</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Members>
@@ -11,29 +11,58 @@
       <MemberType>Method</MemberType>
       <ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue>
       <Parameters />
-      <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
+      <Docs><summary>Method to perform any kind of subsystem initialization and sanity check.</summary><remarks>This method is responsible for ensuring the underlying Zeroconf subsystem is running. If the subsystem cannot be contacted, this method should throw an exception. In the Bonjour implementation, this method opens and closes a test connection to the mDNSResponder daemon to ensure it is running.</remarks></Docs>
     </Member>
     <Member MemberName="RegisterService">
       <MemberSignature Language="C#" Value="public System.Type RegisterService { get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Type</ReturnType></ReturnValue>
-      <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
+      <Docs><summary>Type of provider's <see cref="T:Mono.Zeroconf.IRegisterService" /></summary><value>A type which implements <see cref="T:Mono.Zeroconf.IRegisterService" /></value><remarks>To be added.</remarks></Docs>
     </Member>
     <Member MemberName="ServiceBrowser">
       <MemberSignature Language="C#" Value="public System.Type ServiceBrowser { get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Type</ReturnType></ReturnValue>
-      <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
+      <Docs><summary>Type of provider's <see cref="T:Mono.Zeroconf.IServiceBrowser" /></summary><value>A type which implements <see cref="T:Mono.Zeroconf.IServiceBrowser" /></value><remarks>To be added.</remarks></Docs>
     </Member>
     <Member MemberName="TxtRecord">
       <MemberSignature Language="C#" Value="public System.Type TxtRecord { get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Type</ReturnType></ReturnValue>
-      <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
+      <Docs><summary>Type of provider's <see cref="T:Mono.Zeroconf.ITxtRecord" /></summary><value>A type which implements <see cref="T:Mono.Zeroconf.ITxtRecord" /></value><remarks>To be added.</remarks></Docs>
     </Member>
   </Members>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>The "entry point" interface for Zeroconf provider assemblies.</summary>
+    <remarks>
+      <para>Example stub code for a Zeroconf provider. The provider would implement the types <c>MyServiceBrowser</c>, <c>MyRegisterService</c>, and <c>MyTxtRecord</c>, which must implement the respecitve interfaces in <see cref="N:Mono.Zeroconf" />.</para>
+	  <example>
+        <code lang="C#">
+using System;
+using Mono.Zeroconf.Providers
+	
+[assembly:ZeroconfProvider(typeof(MyZeroconfProvider))]
+	
+public class MyZeroconfProvider : IZeroconfProvider
+{
+	public void Initialize()
+	{
+	}
+
+	public Type ServiceBrowser {
+		get { return typeof(MyServiceBrowser); }
+	}
+
+	public Type RegisterService {
+		get { return typeof(MyRegisterService); }
+	}
+
+	public Type TxtRecord {
+		get { return typeof(MyTxtRecord); }
+	}
+}
+        </code>
+      </example>
+	</remarks>
   </Docs>
 </Type>

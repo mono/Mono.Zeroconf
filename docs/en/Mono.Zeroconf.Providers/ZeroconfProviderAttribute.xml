@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public class ZeroconfProviderAttribute : System.Attribute" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <AssemblyVersion>0.8.1.30538</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Attribute</BaseTypeName>
@@ -13,17 +13,34 @@
       <MemberSignature Language="C#" Value="public ZeroconfProviderAttribute (System.Type providerType);" />
       <MemberType>Constructor</MemberType>
       <Parameters><Parameter Name="providerType" Type="System.Type" /></Parameters>
-      <Docs><param name="providerType">To be added.</param><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
+      <Docs><param name="providerType">Type of the provider bound to the assembly</param><summary>This type must implement <see cref="T:Mono.Zeroconf.Proviers.IZeroconfService" />.</summary><remarks>To be added.</remarks></Docs>
     </Member>
     <Member MemberName="ProviderType">
       <MemberSignature Language="C#" Value="public System.Type ProviderType { get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Type</ReturnType></ReturnValue>
-      <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
+      <Docs><summary>Type of the provider bound to the assembly</summary><value>Value passed to the constructor.</value><remarks>This property is only used by the internal Mono.Zeroconf factory that loads Zeroconf providers.</remarks></Docs>
     </Member>
   </Members>
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>Assembly level attribute required for Zeroconf provider assemblies</summary>
+    <remarks>
+      <para>Assemblies implementing a Zeroconf provider (by way of <see cref="T:Mono.Zeroconf.Providers.IZeroconfProvider" />) must apply this attribute to the assembly.</para>
+      <example>
+        <code lang="C#">
+using System;
+using Mono.Zeroconf.Providers;
+
+[assembly:ZeroconfProvider(typeof(MyZeroconfProvider))]
+
+...
+        </code>
+      </example>
+    </remarks>
   </Docs>
+  <Attributes>
+    <Attribute>
+      <AttributeName>System.AttributeUsage(System.AttributeTargets.Assembly)</AttributeName>
+    </Attribute>
+  </Attributes>
 </Type>

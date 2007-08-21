@@ -19,7 +19,6 @@ SHAMROCK_CHECK_MONODOC
 SHAMROCK_CHECK_MONO_2_0_GAC_ASSEMBLIES([
 	System
 	System.Web
-	Mono.Posix
 ])
 
 AC_ARG_ENABLE(avahi, AC_HELP_STRING([--disable-avahi],
@@ -40,6 +39,7 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 src/mono-zeroconf.pc
+src/AssemblyInfo.cs
 src/Mono.Zeroconf/Makefile
 src/Mono.Zeroconf.Providers.Bonjour/Makefile
 src/Mono.Zeroconf.Providers.Avahi/Makefile

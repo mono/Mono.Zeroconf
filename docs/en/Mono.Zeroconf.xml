@@ -1,6 +1,6 @@
 <Namespace Name="Mono.Zeroconf">
   <Docs>
-    <summary>To be added.</summary>
-    <remarks>To be added.</remarks>
+    <summary>User level API for browsing and publishing mDNS records.</summary>
+    <remarks>None.</remarks>
   </Docs>
 </Namespace>

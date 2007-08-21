@@ -19,7 +19,9 @@ MONO_ZEROCONF_PROVIDERS_BONJOUR_SRC = \
 
 SOURCES_PRE = \
 	$(foreach source,$(MONO_ZEROCONF_PROVIDERS_BONJOUR_SRC),Mono.Zeroconf.Providers.Bonjour/$(source))
-SOURCES = $(foreach source,$(SOURCES_PRE),$(srcdir)/$(source))
+SOURCES = \
+	$(top_srcdir)/src/AssemblyInfo.cs \
+	$(foreach source,$(SOURCES_PRE),$(srcdir)/$(source))
 
 assemblydir = $(libdir)/mono-zeroconf
 assembly_SCRIPTS = $(ASSEMBLY) $(ASSEMBLY).mdb $(ASSEMBLY).config

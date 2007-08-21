@@ -7,7 +7,9 @@ assembly_SCRIPTS = $(ASSEMBLY)
 wrapperdir = $(bindir)
 wrapper_SCRIPTS = mzclient
 
-SOURCES = $(srcdir)/ZeroconfClient.cs
+SOURCES = \
+	$(top_srcdir)/src/AssemblyInfo.cs \
+	$(srcdir)/ZeroconfClient.cs
 
 all: $(ASSEMBLY)
 
