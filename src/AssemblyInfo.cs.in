@@ -1,0 +1,9 @@
+using System.Reflection;
+using System.Runtime.CompilerServices;
+
+[assembly:AssemblyVersion("@ASM_VERSION@")]
+[assembly:AssemblyTitle("Mono.Zeroconf")]
+[assembly:AssemblyDescription("Cross Platform Zeroconf for .NET")]
+[assembly:AssemblyCopyright("Copyright (C) 2006-2007 Novell, Inc.")]
+[assembly:AssemblyCompany("Novell, Inc")]
+
