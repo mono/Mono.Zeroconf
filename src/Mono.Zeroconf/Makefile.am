@@ -2,7 +2,7 @@ ASSEMBLY_NAME = Mono.Zeroconf
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 
 assemblydir = $(libdir)/mono-zeroconf
-assembly_SCRIPTS = $(ASSEMBLY) $(ASSEMBLY).config
+assembly_SCRIPTS = $(ASSEMBLY) $(ASSEMBLY).mdb
 
 MONO_ZEROCONF_SRC = \
 	Mono.Zeroconf/IRegisterService.cs \
@@ -11,40 +11,32 @@ MONO_ZEROCONF_SRC = \
 	Mono.Zeroconf/IService.cs \
 	Mono.Zeroconf/ITxtRecord.cs \
 	Mono.Zeroconf/RegisterService.cs \
+	Mono.Zeroconf/ServiceBrowseEventArgs.cs \
+	Mono.Zeroconf/ServiceBrowseEventHandler.cs \
 	Mono.Zeroconf/ServiceBrowser.cs \
+	Mono.Zeroconf/ServiceResolvedEventArgs.cs \
+	Mono.Zeroconf/ServiceResolvedEventHandler.cs \
 	Mono.Zeroconf/TxtRecord.cs \
-	Mono.Zeroconf/TxtRecordItem.cs \
-	Mono.Zeroconf/ZeroconfProvider.cs
+	Mono.Zeroconf/TxtRecordItem.cs
 
-MONO_ZEROCONF_BONJOUR_SRC = \
-	Mono.Zeroconf.Bonjour/BrowseService.cs \
-	Mono.Zeroconf.Bonjour/Native.cs \
-	Mono.Zeroconf.Bonjour/RegisterService.cs \
-	Mono.Zeroconf.Bonjour/ServiceBrowser.cs \
-	Mono.Zeroconf.Bonjour/ServiceClass.cs \
-	Mono.Zeroconf.Bonjour/Service.cs \
-	Mono.Zeroconf.Bonjour/ServiceError.cs \
-	Mono.Zeroconf.Bonjour/ServiceErrorException.cs \
-	Mono.Zeroconf.Bonjour/ServiceFlags.cs \
-	Mono.Zeroconf.Bonjour/ServiceRef.cs \
-	Mono.Zeroconf.Bonjour/ServiceType.cs \
-	Mono.Zeroconf.Bonjour/TxtRecord.cs \
-	Mono.Zeroconf.Bonjour/TxtRecordEnumerator.cs \
-	Mono.Zeroconf.Bonjour/ZeroconfProvider.cs
+MONO_ZEROCONF_PROVIDERS_SRC = \
+	Mono.Zeroconf.Providers/IZeroconfProvider.cs \
+	Mono.Zeroconf.Providers/ZeroconfProviderAttribute.cs \
+	Mono.Zeroconf.Providers/ProviderFactory.cs
 
 SOURCES_PRE = \
 	$(MONO_ZEROCONF_SRC) \
-	$(MONO_ZEROCONF_BONJOUR_SRC)
+	$(MONO_ZEROCONF_PROVIDERS_SRC)
 
 SOURCES = $(foreach source,$(SOURCES_PRE),$(srcdir)/$(source))
 
 all: $(ASSEMBLY)
 
 $(ASSEMBLY): $(SOURCES)
-	$(MCS) -target:library -out:$@ $(SOURCES)
+	$(MCS) -debug -target:library -out:$@ $(SOURCES)
 
-EXTRA_DIST = $(SOURCES) $(ASSEMBLY).config
-CLEANFILES = $(ASSEMBLY)
-MAINTAINERCLEANFILES = \
-	Makefile.in
+EXTRA_DIST = $(SOURCES)
+CLEANFILES = *.dll *.mdb
+DISTCLEANFILES = *.pidb
+MAINTAINERCLEANFILES = Makefile.in
 

@@ -41,7 +41,8 @@ Makefile
 src/Makefile
 src/mono-zeroconf.pc
 src/Mono.Zeroconf/Makefile
-src/Mono.Zeroconf.Avahi/Makefile
+src/Mono.Zeroconf.Providers.Bonjour/Makefile
+src/Mono.Zeroconf.Providers.Avahi/Makefile
 src/MZClient/Makefile
 src/MZClient/mzclient
 docs/Makefile
