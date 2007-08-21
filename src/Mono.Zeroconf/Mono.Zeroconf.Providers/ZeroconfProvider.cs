@@ -1,10 +1,10 @@
 //
-// ZeroconfProvider.cs
+// ProviderFactory.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -31,36 +31,14 @@ using System.IO;
 using System.Reflection;
 using System.Collections;
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Providers
 {
-    public interface IZeroconfProvider
-    {
-        void Initialize();
-        Type ServiceBrowser { get; }
-        Type RegisterService { get; }
-        Type TxtRecord { get; }
-    }
-
-    public class ZeroconfProviderAttribute : Attribute
-    {
-        private Type provider;
-        
-        public ZeroconfProviderAttribute(Type provider)
-        {
-            this.provider = provider;
-        }
-        
-        public Type Provider {
-            get { return provider; }
-        }
-    }
-
-    public static class ZeroconfProvider
+    internal static class ProviderFactory
     {
         private static IZeroconfProvider [] providers;
         private static IZeroconfProvider selected_provider;
     
-        public static IZeroconfProvider DefaultProvider {
+        private static IZeroconfProvider DefaultProvider {
             get {
                 if(providers == null) {
                     GetProviders();
@@ -75,7 +53,7 @@ namespace Mono.Zeroconf
             set { selected_provider = value; }
         }
     
-        public static IZeroconfProvider [] GetProviders()
+        private static IZeroconfProvider [] GetProviders()
         {
             if(providers != null) {
                 return providers;
@@ -102,15 +80,19 @@ namespace Mono.Zeroconf
                         Assembly provider_asm = Assembly.LoadFile(file);
                         foreach(Attribute attr in provider_asm.GetCustomAttributes(false)) {
                             if(attr is ZeroconfProviderAttribute) {
-                                Type type = (attr as ZeroconfProviderAttribute).Provider;
-                                providers_list.Add(Activator.CreateInstance(type));
+                                Type type = (attr as ZeroconfProviderAttribute).ProviderType;
+                                IZeroconfProvider provider = (IZeroconfProvider)Activator.CreateInstance(type);
+                                try {
+                                    provider.Initialize();
+                                    providers_list.Add(provider);
+                               	} catch {
+                                }
                             }
                         }
                     }
                 }
             }
             
-            providers_list.Add(new Mono.Zeroconf.Bonjour.ZeroconfProvider());
             providers = providers_list.ToArray(typeof(IZeroconfProvider)) as IZeroconfProvider [];
             
             return providers;

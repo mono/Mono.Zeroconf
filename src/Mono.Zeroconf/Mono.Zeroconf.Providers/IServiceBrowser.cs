@@ -4,7 +4,7 @@
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -30,22 +30,6 @@ using System;
 
 namespace Mono.Zeroconf
 {
-    public class ServiceBrowseEventArgs
-    {
-        private IResolvableService service;
-        
-        public ServiceBrowseEventArgs(IResolvableService service)
-        {
-            this.service = service;
-        }
-        
-        public IResolvableService Service {
-            get { return service; }
-        }
-    }
-
-    public delegate void ServiceBrowseEventHandler(object o, ServiceBrowseEventArgs args);
-
     public interface IServiceBrowser : IDisposable
     {
         event ServiceBrowseEventHandler ServiceAdded;
