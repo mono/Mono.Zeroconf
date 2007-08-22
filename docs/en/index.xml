@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="Mono.Zeroconf" Version="0.8.1.30538">
+    <Assembly Name="Mono.Zeroconf" Version="0.8.1.20450">
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
@@ -25,22 +25,22 @@
   <Types>
     <Namespace Name="Mono.Zeroconf">
       <Type Name="IRegisterService" />
-      <Type Name="IService" />
       <Type Name="IResolvableService" />
+      <Type Name="IService" />
       <Type Name="IServiceBrowser" />
       <Type Name="ITxtRecord" />
       <Type Name="RegisterService" />
       <Type Name="ServiceBrowseEventArgs" />
+      <Type Name="ServiceBrowseEventHandler" />
       <Type Name="ServiceBrowser" />
       <Type Name="ServiceResolvedEventArgs" />
+      <Type Name="ServiceResolvedEventHandler" />
       <Type Name="TxtRecord" />
       <Type Name="TxtRecordItem" />
-      <Type Name="ServiceBrowseEventHandler" />
-      <Type Name="ServiceResolvedEventHandler" />
     </Namespace>
     <Namespace Name="Mono.Zeroconf.Providers">
-      <Type Name="ZeroconfProviderAttribute" />
       <Type Name="IZeroconfProvider" />
+      <Type Name="ZeroconfProviderAttribute" />
     </Namespace>
   </Types>
   <Title>Mono.Zeroconf</Title>

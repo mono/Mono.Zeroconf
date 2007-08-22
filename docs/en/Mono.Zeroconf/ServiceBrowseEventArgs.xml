@@ -1,8 +1,8 @@
 <Type Name="ServiceBrowseEventArgs" FullName="Mono.Zeroconf.ServiceBrowseEventArgs">
-  <TypeSignature Language="C#" Value="public class ServiceBrowseEventArgs : System.EventArgs" />
+  <TypeSignature Language="C#" Value="public class ServiceBrowseEventArgs : EventArgs" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.8.1.30538</AssemblyVersion>
+    <AssemblyVersion>0.8.1.20450</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.EventArgs</BaseTypeName>

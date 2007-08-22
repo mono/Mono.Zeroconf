@@ -1,8 +1,8 @@
 <Type Name="ITxtRecord" FullName="Mono.Zeroconf.ITxtRecord">
-  <TypeSignature Language="C#" Value="public interface ITxtRecord : System.Collections.IEnumerable, System.IDisposable" />
+  <TypeSignature Language="C#" Value="public interface ITxtRecord : IDisposable, System.Collections.IEnumerable" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.8.1.30538</AssemblyVersion>
+    <AssemblyVersion>0.8.1.20450</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces>
     <Interface>

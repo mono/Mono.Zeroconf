@@ -25,7 +25,7 @@ AC_ARG_ENABLE(avahi, AC_HELP_STRING([--disable-avahi],
 	[Do not build with Avahi support]), , enable_avahi=yes)
 
 if test "x$enable_avahi" = "xyes"; then
-	PKG_CHECK_MODULES(AVAHI, avahi-sharp >= 0.6)
+	PKG_CHECK_MODULES(AVAHI, ndesk-dbus-1.0 >= 0.5.0)
 	AC_SUBST(AVAHI_LIBS)
 	AM_CONDITIONAL(BUILD_AVAHI, true)
 else
@@ -54,5 +54,7 @@ echo "
 
     Avahi Support:           ${enable_avahi}
     Developer Documentation: ${enable_docs}
+
+	${localstatedir}
 "
 
