@@ -1,16 +1,21 @@
-Mono.Zeroconf is a cross platform Zero Configuration Networking library 
-for .NET. It provides a unified API for performing the most common zeroconf 
-operations while supporting multiple underlying zeroconf subsystems like 
-Bonjour/mDNSResponder and Avahi.
+Mono.Zeroconf is a cross platform Zero Configuration Networking library for
+Mono and .NET. It provides a unified API for performing the most common 
+zeroconf operations on a variety of platforms and subsystems: all the 
+operating systems supported by Mono and both the Avahi and 
+Bonjour/mDNSResponder transports.
 
-By default, Mono.Zeroconf includes support for both mDNSResponder and Avahi,
-though it is possible to write new providers for Mono.Zeroconf, which are
-just plugins to the Mono.Zeroconf system.
+By using Mono.ZeroConf developers can use a single API that will work 
+regardless of the underlying implementation that a particular operating 
+system uses.
 
-More information about Mono.Zeroconf can be found on its project 
-page on the Mono Wiki:
+Developers can publish services that will be exposed to other computers on 
+the network and also query the local machines on the network for services 
+that could have been exposed.
 
-   http://mono-project.com/Mono.Zeroconf
+More information about Mono.Zeroconf can be found on its project page 
+on the Mono Wiki:
+
+   http://mono-project.com/Mono_Zeroconf
 
 General information about Zero Configuration Networking: 
 
