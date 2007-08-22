@@ -82,11 +82,11 @@ namespace Mono.Zeroconf.Providers
                             if(attr is ZeroconfProviderAttribute) {
                                 Type type = (attr as ZeroconfProviderAttribute).ProviderType;
                                 IZeroconfProvider provider = (IZeroconfProvider)Activator.CreateInstance(type);
-                               // try {
+                                try {
                                     provider.Initialize();
                                     providers_list.Add(provider);
-                               //	} catch {
-                               // }
+                               	} catch {
+                                }
                             }
                         }
                     }
