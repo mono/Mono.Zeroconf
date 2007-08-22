@@ -55,6 +55,5 @@ echo "
     Avahi Support:           ${enable_avahi}
     Developer Documentation: ${enable_docs}
 
-	${localstatedir}
 "
 
