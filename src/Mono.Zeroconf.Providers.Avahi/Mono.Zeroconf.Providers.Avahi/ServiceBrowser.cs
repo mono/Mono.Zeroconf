@@ -78,7 +78,10 @@ namespace Mono.Zeroconf.Providers.Avahi
         
         private void OnServiceRemoved(object o, AV.ServiceInfoArgs args)
         {
-            
+            ServiceBrowseEventHandler handler = ServiceRemoved;
+            if(handler != null) {
+                handler(this, new ServiceBrowseEventArgs(new ResolvableService(client, args.Service)));
+            }
         }
     }
 }

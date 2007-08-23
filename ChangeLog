@@ -1,5 +1,10 @@
 2007-08-23  Aaron Bockover  <abockover@novell.com>
 
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ServiceBrowser.cs:
+	Added service removed support
+
+2007-08-23  Aaron Bockover  <abockover@novell.com>
+
 	* configure.ac: Allow mDNSResponder to be disabled; link against 
 	avahi-sharp again since the DBus effort is on pause for now
 
