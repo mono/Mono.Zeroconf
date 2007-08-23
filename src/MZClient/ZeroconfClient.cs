@@ -172,11 +172,13 @@ public class MZClient
             service.TxtRecord = record;
         }
         
-        service.Register();
-        Console.WriteLine("*** Registered name = '{0}', type = '{1}', domain = '{2}'", 
+        Console.WriteLine("*** Registering name = '{0}', type = '{1}', domain = '{2}'", 
             service.Name,
             service.RegType,
             service.ReplyDomain);
+            
+        service.Response += OnRegisterServiceResponse;
+        service.Register();
     }
     
     private static void OnServiceAdded(object o, ServiceBrowseEventArgs args)
@@ -220,6 +222,22 @@ public class MZClient
             Console.WriteLine("]");
         } else {
             Console.WriteLine("");
+        }
+    }
+    
+    private static void OnRegisterServiceResponse(object o, RegisterServiceEventArgs args)
+    {
+        switch(args.ServiceError) {
+            case ServiceErrorCode.AlreadyRegistered:
+                Console.WriteLine("*** Name Collision! '{0}' is already registered", 
+                    args.Service.Name);
+                break;
+            case ServiceErrorCode.None:
+                Console.WriteLine("*** Registered name = '{0}'", args.Service.Name);
+                break;
+            case ServiceErrorCode.Unknown:
+                Console.WriteLine("*** Error registering name = '{0}'", args.Service.Name);
+                break;
         }
     }
 }

@@ -1,10 +1,10 @@
 //
-// IRegisterService.cs
+// RegisterServiceEventArgs.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -30,16 +30,36 @@ using System;
 
 namespace Mono.Zeroconf
 {
-    public interface IRegisterService : IService, IDisposable
+    public class RegisterServiceEventArgs : EventArgs
     {
-        event RegisterServiceEventHandler Response;
+        private IRegisterService service;
+        private bool is_registered;
+        private ServiceErrorCode error;
         
-        void Register();
+        public RegisterServiceEventArgs()
+        {
+        }
         
-        new string Name { get; set; }
-        new string RegType { get; set; }
-        new string ReplyDomain { get; set; }
+        public RegisterServiceEventArgs(IRegisterService service, bool isRegistered, ServiceErrorCode error)
+        {
+            this.service = service;
+            this.is_registered = isRegistered;
+            this.error = error;
+        }
         
-        short Port { get; set; }
+        public IRegisterService Service {
+            get { return service; }
+            set { service = value; }
+        }
+        
+        public bool IsRegistered {
+            get { return is_registered; }
+            set { is_registered = value; }
+        }
+        
+        public ServiceErrorCode ServiceError {
+            get { return error; }
+            set { error = value; }
+        }
     }
 }

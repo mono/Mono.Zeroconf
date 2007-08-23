@@ -1,10 +1,10 @@
 //
-// IRegisterService.cs
+// ServiceErrorCode.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -26,20 +26,33 @@
 // WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-using System;
-
 namespace Mono.Zeroconf
 {
-    public interface IRegisterService : IService, IDisposable
-    {
-        event RegisterServiceEventHandler Response;
-        
-        void Register();
-        
-        new string Name { get; set; }
-        new string RegType { get; set; }
-        new string ReplyDomain { get; set; }
-        
-        short Port { get; set; }
+    // These are just copied from Bonjour
+    
+    public enum ServiceErrorCode {
+        None                = 0,
+        Unknown             = -65537,       /* 0xFFFE FFFF */
+        NoSuchName          = -65538,
+        NoMemory            = -65539,
+        BadParam            = -65540,
+        BadReference        = -65541,
+        BadState            = -65542,
+        BadFlags            = -65543,
+        Unsupported         = -65544,
+        NotInitialized      = -65545,
+        AlreadyRegistered   = -65547,
+        NameConflict        = -65548,
+        Invalid             = -65549,
+        Firewall            = -65550,
+        Incompatible        = -65551,        /* client library incompatible with daemon */
+        BadInterfaceIndex   = -65552,
+        Refused             = -65553,
+        NoSuchRecord        = -65554,
+        NoAuth              = -65555,
+        NoSuchKey           = -65556,
+        NATTraversal        = -65557,
+        DoubleNAT           = -65558,
+        BadTime             = -65559
     }
 }

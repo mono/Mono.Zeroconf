@@ -44,11 +44,11 @@ namespace Mono.Zeroconf.Providers.Avahi
         }
         
         public Type RegisterService { 
-            get { return typeof(Mono.Zeroconf.Providers.Avahi.TxtRecord); }
+            get { return typeof(Mono.Zeroconf.Providers.Avahi.RegisterService); }
         }
         
         public Type TxtRecord {
-            get { return null; }
+            get { return typeof(Mono.Zeroconf.Providers.Avahi.TxtRecord); }
         }
     }
 }

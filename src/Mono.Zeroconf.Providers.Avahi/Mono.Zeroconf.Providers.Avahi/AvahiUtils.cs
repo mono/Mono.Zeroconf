@@ -1,10 +1,10 @@
 //
-// IRegisterService.cs
+// AvahiUtils.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -27,19 +27,19 @@
 //
 
 using System;
+using AV=Avahi;
 
-namespace Mono.Zeroconf
+namespace Mono.Zeroconf.Providers.Avahi
 {
-    public interface IRegisterService : IService, IDisposable
+    internal static class AvahiUtils
     {
-        event RegisterServiceEventHandler Response;
-        
-        void Register();
-        
-        new string Name { get; set; }
-        new string RegType { get; set; }
-        new string ReplyDomain { get; set; }
-        
-        short Port { get; set; }
+        public static ServiceErrorCode ErrorCodeToServiceError(AV.ErrorCode error)
+        {
+            switch(error) {
+                case AV.ErrorCode.Ok: return ServiceErrorCode.None;
+                case AV.ErrorCode.Collision: return ServiceErrorCode.AlreadyRegistered;
+                default: return ServiceErrorCode.Unknown;
+            }
+        }
     }
 }

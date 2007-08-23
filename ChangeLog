@@ -1,5 +1,33 @@
 2007-08-23  Aaron Bockover  <abockover@novell.com>
 
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ZeroconfProvider.cs:
+	Provide the register service and TXT record class
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/RegisterService.cs:
+	Implemented a register service for Avahi
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/AvahiUtils.cs:
+	Some small utility functions
+
+	* src/MZClient/ZeroconfClient.cs: Support the response event 
+	on RegisterService
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/RegisterService.cs:
+	Updated to reflect IRegisterService API changes
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/RegisterService.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/IRegisterService.cs: Added a Response
+	event
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/RegisterServiceEventArgs.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/RegisterServiceEventHandler.cs:
+	Moved from Bonjour and generalized
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/ServiceErrorCode.cs: Generalized error
+	codes that providers are expected to use
+
+2007-08-23  Aaron Bockover  <abockover@novell.com>
+
 	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ServiceBrowser.cs:
 	Added service removed support
 

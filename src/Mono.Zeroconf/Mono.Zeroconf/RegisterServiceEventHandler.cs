@@ -1,10 +1,10 @@
 //
-// IRegisterService.cs
+// RegisterServiceEventHandler.cs
 //
 // Authors:
 //	Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -30,16 +30,5 @@ using System;
 
 namespace Mono.Zeroconf
 {
-    public interface IRegisterService : IService, IDisposable
-    {
-        event RegisterServiceEventHandler Response;
-        
-        void Register();
-        
-        new string Name { get; set; }
-        new string RegType { get; set; }
-        new string ReplyDomain { get; set; }
-        
-        short Port { get; set; }
-    }
+    public delegate void RegisterServiceEventHandler(object o, RegisterServiceEventArgs args);
 }

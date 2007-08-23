@@ -24,6 +24,9 @@
     <File name="./Mono.Zeroconf.Providers/IZeroconfProvider.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf.Providers/ZeroconfProviderAttribute.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf.Providers/ProviderFactory.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Mono.Zeroconf/RegisterServiceEventHandler.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Mono.Zeroconf/RegisterServiceEventArgs.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Mono.Zeroconf/ServiceErrorCode.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

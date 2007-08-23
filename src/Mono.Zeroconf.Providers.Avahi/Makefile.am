@@ -2,6 +2,8 @@ ASSEMBLY_NAME = Mono.Zeroconf.Providers.Avahi
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 
 MONO_ZEROCONF_PROVIDERS_AVAHI_SRC = \
+	AvahiUtils.cs \
+	RegisterService.cs \
 	ResolvableService.cs \
 	ServiceBrowser.cs \
 	Service.cs \

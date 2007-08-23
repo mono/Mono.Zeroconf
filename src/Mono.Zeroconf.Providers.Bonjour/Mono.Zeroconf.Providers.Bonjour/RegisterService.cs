@@ -32,16 +32,6 @@ using System.Runtime.InteropServices;
 
 namespace Mono.Zeroconf.Providers.Bonjour
 {
-    public delegate void RegisterServiceEventHandler(object o, RegisterServiceEventArgs args);
-
-    public class RegisterServiceEventArgs : EventArgs
-    {
-        public RegisterService Service;
-        public bool IsRegistered;
-        public bool NameConflict;
-        public ServiceError Error;
-    }
-
     public sealed class RegisterService : Service, IRegisterService, IDisposable
     {
         private Thread thread;
@@ -134,17 +124,14 @@ namespace Mono.Zeroconf.Providers.Bonjour
             
             args.Service = this;
             args.IsRegistered = false;
-            args.NameConflict = false;
-            args.Error = errorCode;
+            args.ServiceError = (ServiceErrorCode)errorCode;
             
             if(errorCode == ServiceError.NoError) {
                 Name = name;
                 RegType = regtype;
                 ReplyDomain = domain;
                 args.IsRegistered = true;
-            } else if(errorCode == ServiceError.NameConflict) {
-                args.NameConflict = true;
-            } 
+            }
             
             RegisterServiceEventHandler handler = Response;
             if(handler != null) {

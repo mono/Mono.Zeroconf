@@ -11,11 +11,14 @@ MONO_ZEROCONF_SRC = \
 	Mono.Zeroconf/IService.cs \
 	Mono.Zeroconf/ITxtRecord.cs \
 	Mono.Zeroconf/RegisterService.cs \
+	Mono.Zeroconf/RegisterServiceEventArgs.cs \
+	Mono.Zeroconf/RegisterServiceEventHandler.cs \
 	Mono.Zeroconf/ServiceBrowseEventArgs.cs \
 	Mono.Zeroconf/ServiceBrowseEventHandler.cs \
 	Mono.Zeroconf/ServiceBrowser.cs \
 	Mono.Zeroconf/ServiceResolvedEventArgs.cs \
 	Mono.Zeroconf/ServiceResolvedEventHandler.cs \
+	Mono.Zeroconf/ServiceErrorCode.cs \
 	Mono.Zeroconf/TxtRecord.cs \
 	Mono.Zeroconf/TxtRecordItem.cs
 

@@ -46,6 +46,16 @@ namespace Mono.Zeroconf
             register_service.Register();
         }
         
+        public void Dispose()
+        {
+            register_service.Dispose();
+        }
+        
+        public event RegisterServiceEventHandler Response {
+            add { register_service.Response += value; }
+            remove { register_service.Response -= value; }
+        }
+        
         public string Name {
             get { return register_service.Name; }
             set { register_service.Name = value; }
