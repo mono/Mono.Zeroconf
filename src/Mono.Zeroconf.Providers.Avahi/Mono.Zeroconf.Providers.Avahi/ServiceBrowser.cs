@@ -27,16 +27,18 @@
 //
 
 using System;
+using AV=Avahi;
 using Mono.Zeroconf;
 
 namespace Mono.Zeroconf.Providers.Avahi
 {
     public class ServiceBrowser : IServiceBrowser
     {
+        private AV.Client client;
+        private AV.ServiceBrowser browser;
+    
         public event ServiceBrowseEventHandler ServiceAdded;
         public event ServiceBrowseEventHandler ServiceRemoved;
-    
-    	private IAvahiServiceBrowser service_browser;
     
         public ServiceBrowser()
         {
@@ -44,37 +46,39 @@ namespace Mono.Zeroconf.Providers.Avahi
         
         public void Dispose()
         {
-        	if(service_browser != null) {
-        		service_browser.ItemNew -= OnItemNew;
-        		service_browser.ItemRemove -= OnItemRemove;
-        		service_browser.Free();
-        	}
+            if(client != null) {
+                client.Dispose();
+                client = null;
+            }
+            
+            if(browser != null) {
+                browser.Dispose();
+                browser = null;
+            }
         }
     
         public void Browse(string regtype, string domain)
         {
             Dispose();
             
-            DBusManager.BusLock();
+            client = new AV.Client();
             
-            service_browser = DBusManager.GetObject<IAvahiServiceBrowser>(
-            	DBusManager.Server.ServiceBrowserNew(-1, -1, regtype, domain, 0));
-            service_browser.ItemNew += OnItemNew;
-            service_browser.ItemRemove += OnItemRemove;
-            
-            DBusManager.BusUnlock();
+            browser = new AV.ServiceBrowser(client, regtype, domain);
+            browser.ServiceAdded += OnServiceAdded;
+            browser.ServiceRemoved += OnServiceRemoved;
         }
         
-        private void OnItemNew(int @interface, int protocol, string name, 
-        	string type, string domain, uint flags)
+        private void OnServiceAdded(object o, AV.ServiceInfoArgs args)
         {
-        	Console.WriteLine("NEW ITEM: {0}", name);
+            ServiceBrowseEventHandler handler = ServiceAdded;
+            if(handler != null) {
+                handler(this, new ServiceBrowseEventArgs(new ResolvableService(client, args.Service)));
+            }
         }
         
-        private void OnItemRemove(int @interface, int protocol, string name, 
-        	string type, string domain, uint flags)
+        private void OnServiceRemoved(object o, AV.ServiceInfoArgs args)
         {
-        	Console.WriteLine("ITEM REMOVED: {0}", name);
+            
         }
     }
 }

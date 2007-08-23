@@ -37,7 +37,6 @@ namespace Mono.Zeroconf.Providers.Avahi
     {
         public void Initialize()
         {
-            DBusManager.Initialize();
         }
         
         public Type ServiceBrowser { 
@@ -45,7 +44,7 @@ namespace Mono.Zeroconf.Providers.Avahi
         }
         
         public Type RegisterService { 
-            get { return null; }
+            get { return typeof(Mono.Zeroconf.Providers.Avahi.TxtRecord); }
         }
         
         public Type TxtRecord {
