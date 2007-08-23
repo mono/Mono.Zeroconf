@@ -1,5 +1,10 @@
 2007-08-23  Aaron Bockover  <abockover@novell.com>
 
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/RegisterService.cs:
+	Export the TXT record
+
+2007-08-23  Aaron Bockover  <abockover@novell.com>
+
 	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ZeroconfProvider.cs:
 	Provide the register service and TXT record class
 

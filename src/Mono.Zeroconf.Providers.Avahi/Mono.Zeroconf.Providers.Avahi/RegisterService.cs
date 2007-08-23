@@ -61,7 +61,18 @@ namespace Mono.Zeroconf.Providers.Avahi
                 }
                 
                 try {
-                    entry_group.AddService(name, regtype, reply_domain, (ushort)port, null);
+                    string [] rendered_txt_record = null;
+                    
+                    if(txt_record != null && txt_record.Count > 0) {
+                        rendered_txt_record = new string[txt_record.Count];
+                        for(int i = 0; i < txt_record.Count; i++) {
+                            TxtRecordItem item = txt_record.GetItemAt(i);
+                            rendered_txt_record[i] = String.Format("{0}={1}", 
+                                item.Key, item.ValueString);
+                        }
+                    }
+                    
+                    entry_group.AddService(name, regtype, reply_domain, (ushort)port, rendered_txt_record);
                     entry_group.Commit();
                 } catch(AV.ClientException e) {
                     if(e.ErrorCode == AV.ErrorCode.Collision && OnResponse(e.ErrorCode)) {
