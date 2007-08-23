@@ -1,3 +1,17 @@
+2007-08-23  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Allow mDNSResponder to be disabled; link against 
+	avahi-sharp again since the DBus effort is on pause for now
+
+	* src/Mono.Zeroconf.Providers.Avahi/*: Restored the avahi-sharp version
+	of the Avahi provider
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/*: Added code for the Avahi DBus
+	provider, but this does not build. It's just a safe keeping for the 
+	future when we may actually be able to implement the Avahi DBus provider;
+	there are some things that may need addressing in NDesk DBus and/or
+	Avahi proper
+
 2007-08-21  Aaron Bockover  <abockover@novell.com>
 
 	* Mono.Zeroconf: Tons of reorg, cleanup, etc. Mono.Zeroconf will soon

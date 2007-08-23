@@ -23,6 +23,8 @@ SOURCES = \
 	$(top_srcdir)/src/AssemblyInfo.cs \
 	$(foreach source,$(SOURCES_PRE),$(srcdir)/$(source))
 
+if BUILD_MDNSRESPONDER
+
 assemblydir = $(libdir)/mono-zeroconf
 assembly_SCRIPTS = $(ASSEMBLY) $(ASSEMBLY).mdb $(ASSEMBLY).config
 
@@ -30,6 +32,8 @@ all: $(ASSEMBLY)
 
 $(ASSEMBLY): $(top_builddir)/src/Mono.Zeroconf/Mono.Zeroconf.dll $(SOURCES)
 	$(MCS) -debug -target:library -out:$@ -r:$< $(AVAHI_LIBS) $(SOURCES)
+
+endif
 
 EXTRA_DIST = $(SOURCES) $(ASSEMBLY).config
 CLEANFILES = *.dll *.mdb

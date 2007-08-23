@@ -8,19 +8,16 @@
     </Configuration>
   </Configurations>
   <Contents>
-    <File name="./Mono.Zeroconf.Providers.Avahi/ResolvableService.cs" subtype="Code" buildaction="Nothing" />
-    <File name="./Mono.Zeroconf.Providers.Avahi/Service.cs" subtype="Code" buildaction="Nothing" />
+    <File name="./Mono.Zeroconf.Providers.Avahi/ResolvableService.cs" subtype="Code" buildaction="Compile" />
+    <File name="./Mono.Zeroconf.Providers.Avahi/Service.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf.Providers.Avahi/ServiceBrowser.cs" subtype="Code" buildaction="Compile" />
-    <File name="./Mono.Zeroconf.Providers.Avahi/TxtRecord.cs" subtype="Code" buildaction="Nothing" />
+    <File name="./Mono.Zeroconf.Providers.Avahi/TxtRecord.cs" subtype="Code" buildaction="Compile" />
     <File name="./Mono.Zeroconf.Providers.Avahi/ZeroconfProvider.cs" subtype="Code" buildaction="Compile" />
-    <File name="./Mono.Zeroconf.Providers.Avahi/DBusManager.cs" subtype="Code" buildaction="Compile" />
-    <File name="./Mono.Zeroconf.Providers.Avahi/IAvahiServer.cs" subtype="Code" buildaction="Compile" />
-    <File name="./Mono.Zeroconf.Providers.Avahi/IAvahiServiceBrowser.cs" subtype="Code" buildaction="Compile" />
   </Contents>
   <References>
     <ProjectReference type="Project" localcopy="True" refto="Mono.Zeroconf" />
     <ProjectReference type="Gac" localcopy="True" refto="System, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <ProjectReference type="Gac" localcopy="True" refto="System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-    <ProjectReference type="Gac" localcopy="True" refto="NDesk.DBus, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f6716e4f9b2ed099" />
+    <ProjectReference type="Gac" localcopy="True" refto="avahi-sharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=4d116c78973743f5" />
   </References>
 </Project>

@@ -25,13 +25,17 @@ AC_ARG_ENABLE(avahi, AC_HELP_STRING([--disable-avahi],
 	[Do not build with Avahi support]), , enable_avahi=yes)
 
 if test "x$enable_avahi" = "xyes"; then
-	PKG_CHECK_MODULES(AVAHI, ndesk-dbus-1.0 >= 0.5.0)
+	PKG_CHECK_MODULES(AVAHI, avahi-sharp >= 0.6.0)
 	AC_SUBST(AVAHI_LIBS)
 	AM_CONDITIONAL(BUILD_AVAHI, true)
 else
 	AC_MSG_NOTICE([not building Avahi support])
 	AM_CONDITIONAL(BUILD_AVAHI, false)
 fi
+
+AC_ARG_ENABLE(mdnsresponder, AC_HELP_STRING([--disable-mdnsresponder],
+	[Do not build with mDNSResponder support]), , enable_mdnsresponder=yes)
+AM_CONDITIONAL(BUILD_MDNSRESPONDER, test "x$enable_mdnsresponder" = "xyes")
 
 SHAMROCK_EXPAND_LIBDIR
 
@@ -53,7 +57,8 @@ echo "
     C# Compiler:             ${MCS}
 
     Avahi Support:           ${enable_avahi}
-    Developer Documentation: ${enable_docs}
+    mDNSResponder Support:   ${enable_mdnsresponder}
 
+    Developer Documentation: ${enable_docs}
 "
 

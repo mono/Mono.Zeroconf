@@ -2,17 +2,11 @@ ASSEMBLY_NAME = Mono.Zeroconf.Providers.Avahi
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 
 MONO_ZEROCONF_PROVIDERS_AVAHI_SRC = \
-	IAvahiServiceBrowser.cs \
-	DBusManager.cs \
-	IAvahiServer.cs \
-	ZeroconfProvider.cs \
-	ServiceBrowser.cs
-
-#Mono.Zeroconf.Providers.Avahi/ResolvableService.cs \
-#Mono.Zeroconf.Providers.Avahi/ServiceBrowser.cs \
-#Mono.Zeroconf.Providers.Avahi/Service.cs \
-#Mono.Zeroconf.Providers.Avahi/TxtRecord.cs \
-#Mono.Zeroconf.Providers.Avahi/ZeroconfProvider.cs
+	ResolvableService.cs \
+	ServiceBrowser.cs \
+	Service.cs \
+	TxtRecord.cs \
+	ZeroconfProvider.cs
 
 SOURCES_PRE = \
 	$(foreach source,$(MONO_ZEROCONF_PROVIDERS_AVAHI_SRC),Mono.Zeroconf.Providers.Avahi/$(source))
