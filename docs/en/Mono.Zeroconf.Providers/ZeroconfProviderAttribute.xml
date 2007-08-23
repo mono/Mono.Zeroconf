@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public class ZeroconfProviderAttribute : Attribute" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.8.1.20450</AssemblyVersion>
+    <AssemblyVersion>0.8.0.28892</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Attribute</BaseTypeName>

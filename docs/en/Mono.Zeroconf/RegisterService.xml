@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public class RegisterService : Mono.Zeroconf.IRegisterService" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.8.1.20450</AssemblyVersion>
+    <AssemblyVersion>0.8.0.28892</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -28,7 +28,7 @@
       <MemberType>Constructor</MemberType>
       <Parameters />
       <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="Name">
+    </Member><Member MemberName="Dispose"><MemberSignature Language="C#" Value="public void Dispose ();" /><MemberType>Method</MemberType><ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue><Parameters /><Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs></Member><Member MemberName="Name">
       <MemberSignature Language="C#" Value="public string Name { set; get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
@@ -54,7 +54,7 @@
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="TxtRecord">
+    </Member><Member MemberName="Response"><MemberSignature Language="C#" Value="public event Mono.Zeroconf.RegisterServiceEventHandler Response;" /><MemberType>Event</MemberType><ReturnValue><ReturnType>Mono.Zeroconf.RegisterServiceEventHandler</ReturnType></ReturnValue><Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs></Member><Member MemberName="TxtRecord">
       <MemberSignature Language="C#" Value="public Mono.Zeroconf.ITxtRecord TxtRecord { set; get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>Mono.Zeroconf.ITxtRecord</ReturnType></ReturnValue>

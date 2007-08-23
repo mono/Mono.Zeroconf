@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public interface IService" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.8.1.20450</AssemblyVersion>
+    <AssemblyVersion>0.8.0.28892</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces />
   <Docs>

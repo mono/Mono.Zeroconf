@@ -1,12 +1,15 @@
 <Type Name="IRegisterService" FullName="Mono.Zeroconf.IRegisterService">
-  <TypeSignature Language="C#" Value="public interface IRegisterService : Mono.Zeroconf.IService" />
+  <TypeSignature Language="C#" Value="public interface IRegisterService : IDisposable, Mono.Zeroconf.IService" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.8.1.20450</AssemblyVersion>
+    <AssemblyVersion>0.8.0.28892</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces>
     <Interface>
       <InterfaceName>Mono.Zeroconf.IService</InterfaceName>
+    </Interface>
+    <Interface>
+      <InterfaceName>System.IDisposable</InterfaceName>
     </Interface>
   </Interfaces>
   <Docs>
@@ -18,7 +21,8 @@
     
     
     
-    <Member MemberName="Name">
+    
+  <Member MemberName="Name">
       <MemberSignature Language="C#" Value="public string Name { set; get; };" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
@@ -44,6 +48,5 @@
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    </Member>
-  </Members>
+    </Member><Member MemberName="Response"><MemberSignature Language="C#" Value="public event Mono.Zeroconf.RegisterServiceEventHandler Response;" /><MemberType>Event</MemberType><ReturnValue><ReturnType>Mono.Zeroconf.RegisterServiceEventHandler</ReturnType></ReturnValue><Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs></Member></Members>
 </Type>

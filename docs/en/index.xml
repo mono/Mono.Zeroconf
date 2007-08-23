@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="Mono.Zeroconf" Version="0.8.1.20450">
+    <Assembly Name="Mono.Zeroconf" Version="0.8.0.28892">
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
@@ -30,9 +30,12 @@
       <Type Name="IServiceBrowser" />
       <Type Name="ITxtRecord" />
       <Type Name="RegisterService" />
+      <Type Name="RegisterServiceEventArgs" />
+      <Type Name="RegisterServiceEventHandler" />
       <Type Name="ServiceBrowseEventArgs" />
       <Type Name="ServiceBrowseEventHandler" />
       <Type Name="ServiceBrowser" />
+      <Type Name="ServiceErrorCode" />
       <Type Name="ServiceResolvedEventArgs" />
       <Type Name="ServiceResolvedEventHandler" />
       <Type Name="TxtRecord" />

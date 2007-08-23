@@ -1,5 +1,5 @@
-<Type Name="ServiceResolvedEventHandler" FullName="Mono.Zeroconf.ServiceResolvedEventHandler">
-  <TypeSignature Language="C#" Value="public delegate void ServiceResolvedEventHandler(object o, ServiceResolvedEventArgs args);" />
+<Type Name="RegisterServiceEventHandler" FullName="Mono.Zeroconf.RegisterServiceEventHandler">
+  <TypeSignature Language="C#" Value="public delegate void RegisterServiceEventHandler(object o, RegisterServiceEventArgs args);" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
     <AssemblyVersion>0.8.0.28892</AssemblyVersion>
@@ -9,7 +9,7 @@
   </Base>
   <Parameters>
     <Parameter Name="o" Type="System.Object" />
-    <Parameter Name="args" Type="Mono.Zeroconf.ServiceResolvedEventArgs" />
+    <Parameter Name="args" Type="Mono.Zeroconf.RegisterServiceEventArgs" />
   </Parameters>
   <ReturnValue>
     <ReturnType>System.Void</ReturnType>
