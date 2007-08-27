@@ -39,7 +39,7 @@ public class MZClient
 
     public static int Main(string [] args)
     {
-        string type = "_afpovertcp._tcp";
+        string type = "_workstation._tcp";
         bool show_help = false;
         ArrayList services = new ArrayList();
         
@@ -72,7 +72,7 @@ public class MZClient
             Console.WriteLine("Usage: {0} [-t type] [--resolve] [--publish \"description\"]", app_name);
             Console.WriteLine("    -h|--help     shows this help");
             Console.WriteLine("    -t|--type     uses 'type' as the service type");
-            Console.WriteLine("                  (default is '_afpovertcp._tcp')");
+            Console.WriteLine("                  (default is '_workstation._tcp')");
             Console.WriteLine("    -r|--resolve  resolve found services to hosts");
             Console.WriteLine("    -p|--publish  publish a service of 'description'");
             Console.WriteLine("");

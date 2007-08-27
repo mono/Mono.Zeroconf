@@ -1,3 +1,7 @@
+2007-08-27  Aaron Bockover  <abockover@novell.com>
+
+	* src/MZClient/ZeroconfClient.cs: Make the default browse type _workstation
+
 2007-08-23  Aaron Bockover  <abockover@novell.com>
 
 	* configure.ac: Make the version alpha1 for a test release
