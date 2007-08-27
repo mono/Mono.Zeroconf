@@ -1,4 +1,4 @@
-AC_INIT([Mono.Zeroconf], [0.7.0])
+AC_INIT([Mono.Zeroconf], [0.7.1])
 AC_CANONICAL_SYSTEM
 AC_PREREQ(2.13)
 AM_INIT_AUTOMAKE([1.9 dist-bzip2 tar-ustar])
@@ -7,8 +7,7 @@ AM_MAINTAINER_MODE
 DISTCHECK_CONFIGURE_FLAGS="--disable-docs"
 AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)
 
-#ASM_VERSION="$VERSION.*"
-ASM_VERSION="0.8.0.*"
+ASM_VERSION="1.0.0.0"
 AC_SUBST(ASM_VERSION)
 
 AC_PROG_INSTALL
@@ -21,6 +20,11 @@ SHAMROCK_CHECK_MONO_2_0_GAC_ASSEMBLIES([
 	System
 	System.Web
 ])
+
+AC_PATH_PROG(GACUTIL, gacutil, no)
+if test "x$GACUTIL" = "xno"; then
+	AC_MSG_ERROR([You need to install gacutil])
+fi
 
 AC_ARG_ENABLE(avahi, AC_HELP_STRING([--disable-avahi],
 	[Do not build with Avahi support]), , enable_avahi=yes)

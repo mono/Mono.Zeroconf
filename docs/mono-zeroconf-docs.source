@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
 <monodoc>
-	<source provider="ecma" basefile="mono-zeroconf-docs" path="classlib-mono-zeroconf" />
+	<source provider="ecma" basefile="mono-zeroconf-docs" path="various" title="Mono.Zeroconf" />
 </monodoc>
 

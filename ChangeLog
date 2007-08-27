@@ -1,5 +1,22 @@
 2007-08-27  Aaron Bockover  <abockover@novell.com>
 
+	* configure.ac: Check for gacutil
+
+	* src/mono-zeroconf.pc.in: Updated to reflect GAC path
+
+	* src/mono-zeroconf.snk: Added strong name key file
+
+	* src/Makefile.am: Keyfile
+
+	* src/Mono.Zeroconf/Mono.Zeroconf.Providers/ProviderFactory.cs: Support
+	loading plugins from the libdir location based on the GAC assembly path
+
+	* src/Mono.Zeroconf/Makefile.am: Install into the GAC
+
+	* docs/Makefile.am: Fixed up to not need MonodocNodeConfig 
+
+2007-08-27  Aaron Bockover  <abockover@novell.com>
+
 	* src/MZClient/ZeroconfClient.cs: Make the default browse type _workstation
 
 2007-08-23  Aaron Bockover  <abockover@novell.com>

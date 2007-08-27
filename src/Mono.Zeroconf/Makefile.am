@@ -1,8 +1,8 @@
 ASSEMBLY_NAME = Mono.Zeroconf
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 
-assemblydir = $(libdir)/mono-zeroconf
-assembly_SCRIPTS = $(ASSEMBLY) $(ASSEMBLY).mdb
+assemblydir = $(libdir)/mono/mono-zeroconf
+assembly_SCRIPTS = $(ASSEMBLY).mdb
 
 MONO_ZEROCONF_SRC = \
 	Mono.Zeroconf/IRegisterService.cs \
@@ -38,7 +38,15 @@ SOURCES = \
 all: $(ASSEMBLY)
 
 $(ASSEMBLY): $(SOURCES)
-	$(MCS) -debug -target:library -out:$@ $(SOURCES)
+	$(MCS) -debug -keyfile:$(top_srcdir)/src/mono-zeroconf.snk -target:library -out:$@ $(SOURCES)
+
+GACUTIL_ARGS = -package $(PACKAGE) -root $(DESTDIR)$(libdir) -gacdir $(libdir)
+
+install-data-hook:
+	$(GACUTIL) -i $(ASSEMBLY) $(GACUTIL_ARGS)
+
+uninstall-hook:
+	$(GACUTIL) -u $(ASSEMBLY_NAME) $(GACUTIL_ARGS)
 
 EXTRA_DIST = $(SOURCES)
 CLEANFILES = *.dll *.mdb

@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public delegate void ServiceBrowseEventHandler(object o, ServiceBrowseEventArgs args);" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.8.0.28892</AssemblyVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Delegate</BaseTypeName>

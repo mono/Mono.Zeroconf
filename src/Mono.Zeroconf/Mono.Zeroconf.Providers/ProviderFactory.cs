@@ -2,7 +2,7 @@
 // ProviderFactory.cs
 //
 // Authors:
-//	Aaron Bockover  <abockover@novell.com>
+//    Aaron Bockover  <abockover@novell.com>
 //
 // Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
 //
@@ -29,7 +29,7 @@
 using System;
 using System.IO;
 using System.Reflection;
-using System.Collections;
+using System.Collections.Generic;
 
 namespace Mono.Zeroconf.Providers
 {
@@ -59,19 +59,31 @@ namespace Mono.Zeroconf.Providers
                 return providers;
             }
         
-            ArrayList providers_list = new ArrayList();
-            ArrayList directories = new ArrayList();
+            List<IZeroconfProvider> providers_list = new List<IZeroconfProvider>();
+            List<string> directories = new List<string>();
+            Assembly asm = Assembly.GetExecutingAssembly();
             
-            string this_asm_path = Assembly.GetExecutingAssembly().Location;
+            string this_asm_path = asm.Location;
             directories.Add(Path.GetDirectoryName(this_asm_path));
             
             string env_path = Environment.GetEnvironmentVariable("MONO_ZEROCONF_PROVIDERS");
-            if(env_path != null && env_path != String.Empty) {
+            if(!String.IsNullOrEmpty(env_path)) {
                 foreach(string path in env_path.Split(':')) {
                     if(Directory.Exists(path)) {
                         directories.Add(path);
                     }
                 }
+            }
+            
+            if(Assembly.GetExecutingAssembly().GlobalAssemblyCache) {
+                string [] path_parts = directories[0].Split(Path.DirectorySeparatorChar);
+                string new_path = Path.DirectorySeparatorChar.ToString();
+                
+                for(int i = 0; i < path_parts.Length - 4; i++) {
+                    new_path = Path.Combine(new_path, path_parts[i]);
+                }
+                
+                directories.Add(Path.Combine(new_path, "mono-zeroconf"));
             }
             
             foreach(string directory in directories) {
@@ -85,7 +97,7 @@ namespace Mono.Zeroconf.Providers
                                 try {
                                     provider.Initialize();
                                     providers_list.Add(provider);
-                               	} catch {
+                                   } catch {
                                 }
                             }
                         }
@@ -93,7 +105,7 @@ namespace Mono.Zeroconf.Providers
                 }
             }
             
-            providers = providers_list.ToArray(typeof(IZeroconfProvider)) as IZeroconfProvider [];
+            providers = providers_list.ToArray();
             
             return providers;
         }

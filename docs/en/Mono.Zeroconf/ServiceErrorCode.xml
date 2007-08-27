@@ -2,7 +2,7 @@
   <TypeSignature Language="C#" Value="public enum ServiceErrorCode" />
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
-    <AssemblyVersion>0.8.0.28892</AssemblyVersion>
+    <AssemblyVersion>1.0.0.0</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Enum</BaseTypeName>
@@ -12,235 +12,143 @@
     <remarks>To be added.</remarks>
   </Docs>
   <Members>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     <Member MemberName="AlreadyRegistered">
       <MemberSignature Language="C#" Value="AlreadyRegistered" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="BadFlags">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="BadFlags">
       <MemberSignature Language="C#" Value="BadFlags" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="BadInterfaceIndex">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="BadInterfaceIndex">
       <MemberSignature Language="C#" Value="BadInterfaceIndex" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="BadParam">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="BadParam">
       <MemberSignature Language="C#" Value="BadParam" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="BadReference">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="BadReference">
       <MemberSignature Language="C#" Value="BadReference" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="BadState">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="BadState">
       <MemberSignature Language="C#" Value="BadState" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="BadTime">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="BadTime">
       <MemberSignature Language="C#" Value="BadTime" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="DoubleNAT">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="DoubleNAT">
       <MemberSignature Language="C#" Value="DoubleNAT" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="Firewall">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="Firewall">
       <MemberSignature Language="C#" Value="Firewall" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="Incompatible">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="Incompatible">
       <MemberSignature Language="C#" Value="Incompatible" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="Invalid">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="Invalid">
       <MemberSignature Language="C#" Value="Invalid" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="NameConflict">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="NameConflict">
       <MemberSignature Language="C#" Value="NameConflict" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="NATTraversal">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="NATTraversal">
       <MemberSignature Language="C#" Value="NATTraversal" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="NoAuth">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="NoAuth">
       <MemberSignature Language="C#" Value="NoAuth" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="NoMemory">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="NoMemory">
       <MemberSignature Language="C#" Value="NoMemory" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="None">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="None">
       <MemberSignature Language="C#" Value="None" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="NoSuchKey">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="NoSuchKey">
       <MemberSignature Language="C#" Value="NoSuchKey" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="NoSuchName">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="NoSuchName">
       <MemberSignature Language="C#" Value="NoSuchName" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="NoSuchRecord">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="NoSuchRecord">
       <MemberSignature Language="C#" Value="NoSuchRecord" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="NotInitialized">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="NotInitialized">
       <MemberSignature Language="C#" Value="NotInitialized" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="Refused">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="Refused">
       <MemberSignature Language="C#" Value="Refused" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="Unknown">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="Unknown">
       <MemberSignature Language="C#" Value="Unknown" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
-    </Member>
-    <Member MemberName="Unsupported">
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
+    </Member><Member MemberName="Unsupported">
       <MemberSignature Language="C#" Value="Unsupported" />
       <MemberType>Field</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-      </Docs>
+      <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary></Docs>
     </Member>
   </Members>
 </Type>

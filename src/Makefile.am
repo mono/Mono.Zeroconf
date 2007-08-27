@@ -7,8 +7,14 @@ SUBDIRS = \
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = mono-zeroconf.pc
 
+uninstall-hook:
+	if test $$(find $(pkglibdir) | wc -l) -eq 1; then \
+		rmdir $(pkglibdir); \
+	fi
+
 EXTRA_DIST = \
-	mono-zeroconf.pc.in
+	mono-zeroconf.pc.in \
+	mono-zeroconf.snk
 
 DISTCLEANFILES = \
 	mono-zeroconf.pc
