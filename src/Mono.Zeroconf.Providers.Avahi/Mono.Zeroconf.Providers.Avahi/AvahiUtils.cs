@@ -2,7 +2,7 @@
 // AvahiUtils.cs
 //
 // Authors:
-//	Aaron Bockover  <abockover@novell.com>
+//    Aaron Bockover  <abockover@novell.com>
 //
 // Copyright (C) 2007 Novell, Inc (http://www.novell.com)
 //

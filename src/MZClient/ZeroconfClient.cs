@@ -2,7 +2,7 @@
 // ZeroconfClient.cs
 //
 // Authors:
-//	Aaron Bockover  <abockover@novell.com>
+//    Aaron Bockover  <abockover@novell.com>
 //
 // Copyright (C) 2006 Novell, Inc (http://www.novell.com)
 //
@@ -94,7 +94,7 @@ public class MZClient
             Console.WriteLine("Hit ^C when you're bored waiting for responses.");
             Console.WriteLine();
             
-			// Listen for events of some service type
+            // Listen for events of some service type
             ServiceBrowser browser = new ServiceBrowser();
             browser.ServiceAdded += OnServiceAdded;
             browser.ServiceRemoved += OnServiceRemoved;
