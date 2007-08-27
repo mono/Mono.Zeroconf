@@ -1,5 +1,14 @@
 2007-08-27  Aaron Bockover  <abockover@novell.com>
 
+	0.7.1 Released
+
+	* src/Mono.Zeroconf.Providers.Avahi/Makefile.am:
+	* src/MZClient/Makefile.am: Install mdb files
+
+	* src/Mono.Zeroconf/Makefile.am: Removed old install stuff
+
+2007-08-27  Aaron Bockover  <abockover@novell.com>
+
 	* configure.ac: Check for gacutil
 
 	* src/mono-zeroconf.pc.in: Updated to reflect GAC path

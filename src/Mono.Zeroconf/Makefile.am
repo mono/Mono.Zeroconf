@@ -1,9 +1,6 @@
 ASSEMBLY_NAME = Mono.Zeroconf
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 
-assemblydir = $(libdir)/mono/mono-zeroconf
-assembly_SCRIPTS = $(ASSEMBLY).mdb
-
 MONO_ZEROCONF_SRC = \
 	Mono.Zeroconf/IRegisterService.cs \
 	Mono.Zeroconf/IResolvableService.cs \

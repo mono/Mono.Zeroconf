@@ -20,7 +20,7 @@ SOURCES = \
 if BUILD_AVAHI
 
 assemblydir = $(libdir)/mono-zeroconf
-assembly_SCRIPTS = $(ASSEMBLY)
+assembly_SCRIPTS = $(ASSEMBLY) $(ASSEMBLY).mdb
 
 all: $(ASSEMBLY)
 
