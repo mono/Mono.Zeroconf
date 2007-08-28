@@ -228,7 +228,7 @@ public class MZClient
     private static void OnRegisterServiceResponse(object o, RegisterServiceEventArgs args)
     {
         switch(args.ServiceError) {
-            case ServiceErrorCode.AlreadyRegistered:
+            case ServiceErrorCode.NameConflict:
                 Console.WriteLine("*** Name Collision! '{0}' is already registered", 
                     args.Service.Name);
                 break;

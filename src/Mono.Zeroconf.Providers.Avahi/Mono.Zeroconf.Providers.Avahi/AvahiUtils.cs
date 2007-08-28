@@ -37,7 +37,7 @@ namespace Mono.Zeroconf.Providers.Avahi
         {
             switch(error) {
                 case AV.ErrorCode.Ok: return ServiceErrorCode.None;
-                case AV.ErrorCode.Collision: return ServiceErrorCode.AlreadyRegistered;
+                case AV.ErrorCode.Collision: return ServiceErrorCode.NameConflict;
                 default: return ServiceErrorCode.Unknown;
             }
         }

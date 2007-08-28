@@ -1,3 +1,10 @@
+2007-08-28  Aaron Bockover  <abockover@novell.com>
+
+	* src/MZClient/ZeroconfClient.cs:
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/AvahiUtils.cs:
+	Use NameConflict, not AlreadyRegistered if there is a name conflict 
+	error when registering a service
+
 2007-08-27  Aaron Bockover  <abockover@novell.com>
 
 	0.7.1 Released
