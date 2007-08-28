@@ -97,12 +97,16 @@ namespace Mono.Zeroconf.Providers
                                 try {
                                     provider.Initialize();
                                     providers_list.Add(provider);
-                                   } catch {
+                                } catch {
                                 }
                             }
                         }
                     }
                 }
+            }
+            
+            if(providers_list.Count == 0) {
+                throw new Exception("No Zeroconf providers could be found or initialized. Necessary daemon may not be running.");
             }
             
             providers = providers_list.ToArray();

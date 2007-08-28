@@ -29,6 +29,8 @@
 using System;
 using System.Collections;
 
+using AV=Avahi;
+
 [assembly:Mono.Zeroconf.Providers.ZeroconfProvider(typeof(Mono.Zeroconf.Providers.Avahi.ZeroconfProvider))]
 
 namespace Mono.Zeroconf.Providers.Avahi
@@ -37,6 +39,8 @@ namespace Mono.Zeroconf.Providers.Avahi
     {
         public void Initialize()
         {
+            AV.Client client = new AV.Client();
+            client.Dispose();
         }
         
         public Type ServiceBrowser { 

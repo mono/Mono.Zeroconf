@@ -1,5 +1,17 @@
 2007-08-28  Aaron Bockover  <abockover@novell.com>
 
+	0.7.2 Released
+
+	* configure.ac: Bump to 0.7.2
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ZeroconfProvider.cs:
+	Try to connect to the daemon to see if provider will be available
+
+	* src/Mono.Zeroconf/Mono.Zeroconf.Providers/ProviderFactory.cs: Throw
+	a meaningful exception if no providers are available
+
+2007-08-28  Aaron Bockover  <abockover@novell.com>
+
 	* docs/*: Updated docs
 
 2007-08-28  Aaron Bockover  <abockover@novell.com>
