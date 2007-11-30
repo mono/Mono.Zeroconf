@@ -1,5 +1,10 @@
 2007-11-30  Aaron Bockover  <abockover@novell.com>
 
+	* src/Mono.Zeroconf/Mono.Zeroconf.Providers/ProviderFactory.cs: Check for 
+	the root path element in the path split since Windows is stupid
+
+2007-11-30  Aaron Bockover  <abockover@novell.com>
+
 	* configure.ac: Check the host for OS X/Darwin and set mdns_target_library
 	to libc, since that's where their mDNSResponder APIs are; set it to
 	libnss_mdns-0.2.so for everything else (Linux, since the mapping name

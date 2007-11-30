@@ -78,7 +78,11 @@ namespace Mono.Zeroconf.Providers
             if(Assembly.GetExecutingAssembly().GlobalAssemblyCache) {
                 string [] path_parts = directories[0].Split(Path.DirectorySeparatorChar);
                 string new_path = Path.DirectorySeparatorChar.ToString();
-                
+                string root = Path.GetPathRoot (this_asm_path);
+                if (root.StartsWith (path_parts[0])) {
+                    path_parts[0] = root;
+                }
+
                 for(int i = 0; i < path_parts.Length - 4; i++) {
                     new_path = Path.Combine(new_path, path_parts[i]);
                 }
