@@ -1,3 +1,13 @@
+2007-11-30  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Check the host for OS X/Darwin and set mdns_target_library
+	to libc, since that's where their mDNSResponder APIs are; set it to
+	libnss_mdns-0.2.so for everything else (Linux, since the mapping name
+	is valid for Windows, the .config file doesn't need shipping)
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.dll.config.in:
+	Moved to .in since we need to generate it for Linux/Darwin
+
 2007-08-28  Aaron Bockover  <abockover@novell.com>
 
 	0.7.2 Released

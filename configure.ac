@@ -1,4 +1,4 @@
-AC_INIT([Mono.Zeroconf], [0.7.2])
+AC_INIT([Mono.Zeroconf], [0.7.3])
 AC_CANONICAL_SYSTEM
 AC_PREREQ(2.13)
 AM_INIT_AUTOMAKE([1.9 dist-bzip2 tar-ustar])
@@ -42,6 +42,17 @@ AC_ARG_ENABLE(mdnsresponder, AC_HELP_STRING([--disable-mdnsresponder],
 	[Do not build with mDNSResponder support]), , enable_mdnsresponder=yes)
 AM_CONDITIONAL(BUILD_MDNSRESPONDER, test "x$enable_mdnsresponder" = "xyes")
 
+case ${host} in
+	*-*-darwin*)
+		mdns_target_library="libc"
+		;;
+	*)
+		mdns_target_library="libnss_mdns-0.2.so"
+		;;
+esac
+
+AC_SUBST(mdns_target_library)
+
 SHAMROCK_EXPAND_LIBDIR
 
 AC_OUTPUT([
@@ -51,6 +62,7 @@ src/mono-zeroconf.pc
 src/AssemblyInfo.cs
 src/Mono.Zeroconf/Makefile
 src/Mono.Zeroconf.Providers.Bonjour/Makefile
+src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.dll.config
 src/Mono.Zeroconf.Providers.Avahi/Makefile
 src/MZClient/Makefile
 src/MZClient/mzclient
@@ -60,10 +72,16 @@ docs/Makefile
 echo "
     Installation Prefix:     ${prefix}
     C# Compiler:             ${MCS}
+    Host Platform:           ${host}
 
     Avahi Support:           ${enable_avahi}
-    mDNSResponder Support:   ${enable_mdnsresponder}
+    mDNSResponder Support:   ${enable_mdnsresponder}"
 
+if test "x${enable_mdnsresponder}" = "xyes"; then
+	echo "      Target Library:        ${mdns_target_library}"
+fi
+
+echo "
     Developer Documentation: ${enable_docs}
 "
 

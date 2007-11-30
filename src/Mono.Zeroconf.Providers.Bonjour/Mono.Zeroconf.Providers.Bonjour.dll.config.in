@@ -1,0 +1,4 @@
+<configuration>
+  <dllmap dll="dnssd.dll" target="@mdns_target_library@" />	
+</configuration>
+
