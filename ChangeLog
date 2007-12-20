@@ -1,3 +1,9 @@
+2007-12-19  Aaron Bockover  <abockover@novell.com>
+
+	0.7.3 Released
+
+	* NEWS: Updated
+
 2007-11-30  Aaron Bockover  <abockover@novell.com>
 
 	* src/Mono.Zeroconf/Mono.Zeroconf.Providers/ProviderFactory.cs: Check for 
