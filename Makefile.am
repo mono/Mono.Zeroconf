@@ -16,6 +16,7 @@ release:
 	cp ChangeLog $(PACKAGE)-$(VERSION).changes && \
 	sha1sum $(PACKAGE)-$(VERSION).* > $(PACKAGE)-$(VERSION).sha1sum && \
 	touch LATEST-IS-$(VERSION) && \
+	ssh abock.org rm /home/aaron/web/abock.org/project-data/mono-zeroconf/LATEST-IS* && \
 	scp $(PACKAGE)-$(VERSION).* LATEST* README abock.org:/home/aaron/web/abock.org/project-data/mono-zeroconf/ && rm LATEST* $(PACKAGE)-$(VERSION).* && \
 	echo "Sleeping 10 seconds, about to tag release (as user $$MONO_USER)..."; \
 	sleep 10; \
