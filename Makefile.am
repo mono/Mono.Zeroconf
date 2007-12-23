@@ -11,13 +11,26 @@ MAINTAINERCLEANFILES = \
 	install-sh \
 	missing
 
+
+PKV=$(PACKAGE)-$(VERSION)
+
+dist-windows: all
+	@rm -rf $(PKV) && \
+	mkdir -p $(PKV)/bin && \
+	cp src/MZClient/MZClient.exe src/Mono.Zeroconf/Mono.Zeroconf.dll src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.dll $(PKV)/bin && \
+	cp AUTHORS NEWS README $(PKV) && \
+	cp COPYING $(PKV)/LICENSE && \
+	zip -r9 $(PKV).zip $(PKV) && \
+	rm -rf $(PKV)
+
 release:
 	@test -z $$MONO_USER && { echo "Please set MONO_USER for the commit"; exit 1; }; \
-	cp ChangeLog $(PACKAGE)-$(VERSION).changes && \
-	sha1sum $(PACKAGE)-$(VERSION).* > $(PACKAGE)-$(VERSION).sha1sum && \
+	test -e $(PKV).tar.bz2 -a -e $(PKV).tar.gz -a -e $(PKV).zip || { echo "You must run distcheck and dist-windows before release"; exit 1; }; \
+	cp ChangeLog $(PKV).changes && \
+	sha1sum $(PKV).* > $(PKV).sha1sum && \
 	touch LATEST-IS-$(VERSION) && \
-	ssh abock.org rm /home/aaron/web/abock.org/project-data/mono-zeroconf/LATEST-IS* && \
-	scp $(PACKAGE)-$(VERSION).* LATEST* README abock.org:/home/aaron/web/abock.org/project-data/mono-zeroconf/ && rm LATEST* $(PACKAGE)-$(VERSION).* && \
+	ssh banshee-project.org rm /home/banshee/public_html/files/mono-zeroconf/LATEST-IS* && \
+	scp $(PKV).* LATEST* README banshee@banshee-project.org:/home/banshee/public_html/files/mono-zeroconf/ && rm LATEST* $(PKV).* && \
 	echo "Sleeping 10 seconds, about to tag release (as user $$MONO_USER)..."; \
 	sleep 10; \
 	echo "Starting svn tag..."; \

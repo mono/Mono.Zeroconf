@@ -1,3 +1,10 @@
+2007-12-23  Aaron Bockover  <abockover@novell.com>
+
+	* Makefile.am: Added a dist-windows target to generate a zip file
+	containing just the binaries
+
+	* README: Fixed URL
+
 2007-12-19  Aaron Bockover  <abockover@novell.com>
 
 	0.7.3 Released
