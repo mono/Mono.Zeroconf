@@ -29,8 +29,8 @@ release:
 	cp ChangeLog $(PKV).changes && \
 	sha1sum $(PKV).* > $(PKV).sha1sum && \
 	touch LATEST-IS-$(VERSION) && \
-	ssh banshee-project.org rm /home/banshee/public_html/files/mono-zeroconf/LATEST-IS* && \
-	scp $(PKV).* LATEST* README banshee@banshee-project.org:/home/banshee/public_html/files/mono-zeroconf/ && rm LATEST* $(PKV).* && \
+	ssh banshee@banshee-project.org rm /home/banshee/public_html/files/mono-zeroconf/LATEST-IS*; \
+	scp $(PKV).* LATEST* README banshee@banshee-project.org:public_html/files/mono-zeroconf/ && rm LATEST* $(PKV).* && \
 	echo "Sleeping 10 seconds, about to tag release (as user $$MONO_USER)..."; \
 	sleep 10; \
 	echo "Starting svn tag..."; \
