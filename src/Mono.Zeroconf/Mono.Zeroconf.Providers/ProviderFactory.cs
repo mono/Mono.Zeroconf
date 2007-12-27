@@ -63,9 +63,6 @@ namespace Mono.Zeroconf.Providers
             List<string> directories = new List<string>();
             Assembly asm = Assembly.GetExecutingAssembly();
             
-            string this_asm_path = asm.Location;
-            directories.Add(Path.GetDirectoryName(this_asm_path));
-            
             string env_path = Environment.GetEnvironmentVariable("MONO_ZEROCONF_PROVIDERS");
             if(!String.IsNullOrEmpty(env_path)) {
                 foreach(string path in env_path.Split(':')) {
@@ -74,6 +71,9 @@ namespace Mono.Zeroconf.Providers
                     }
                 }
             }
+            
+            string this_asm_path = asm.Location;
+            directories.Add(Path.GetDirectoryName(this_asm_path));
             
             if(Assembly.GetExecutingAssembly().GlobalAssemblyCache) {
                 string [] path_parts = directories[0].Split(Path.DirectorySeparatorChar);
@@ -91,7 +91,7 @@ namespace Mono.Zeroconf.Providers
             }
             
             foreach(string directory in directories) {
-                foreach(string file in Directory.GetFiles(directory, "*.dll")) {
+                foreach(string file in Directory.GetFiles(directory, "Mono.Zeroconf.Providers.*.dll")) {
                     if(Path.GetFileName(file) != Path.GetFileName(this_asm_path)) {
                         Assembly provider_asm = Assembly.LoadFile(file);
                         foreach(Attribute attr in provider_asm.GetCustomAttributes(false)) {

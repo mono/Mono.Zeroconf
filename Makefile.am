@@ -11,6 +11,10 @@ MAINTAINERCLEANFILES = \
 	install-sh \
 	missing
 
+collect:
+	rm -rf bin; \
+	mkdir bin; \
+	find src \( -iname *.exe -o -iname *.dll \) -exec cp {} bin \;
 
 PKV=$(PACKAGE)-$(VERSION)
 

@@ -1,3 +1,10 @@
+2007-12-27  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf/Mono.Zeroconf.Providers/ProviderFactory.cs: Move the
+	executing assembly directory scan to after the scan for 
+	MONO_ZEROCONF_PROVIDERS; set the file scan mask to 
+	Mono.Zeroconf.Providers.*.dll instead of *.dll
+
 2007-12-23  Aaron Bockover  <abockover@novell.com>
 
 	* Makefile.am: Added a dist-windows target to generate a zip file
