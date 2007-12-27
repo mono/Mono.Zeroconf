@@ -32,6 +32,9 @@ update-svn:
 
 endif
 
+merge:
+	monodoc --merge-changes $$HOME/.config/monodoc/changeset.xml .
+
 EXTRA_DIST = \
 	$(srcdir)/en/*/*.xml \
 	$(srcdir)/en/*.xml \

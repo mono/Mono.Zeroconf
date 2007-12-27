@@ -17,7 +17,7 @@
 using System;
 using Mono.Zeroconf.Providers;
 
-[assembly:ZeroconfProvider(typeof(MyZeroconfProvider))]
+[assembly:ZeroconfProvider (typeof (MyZeroconfProvider))]
 
 ...
         </code>
@@ -25,17 +25,29 @@ using Mono.Zeroconf.Providers;
     </remarks>
   </Docs>
   <Members>
-    
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ZeroconfProviderAttribute (Type providerType);" />
       <MemberType>Constructor</MemberType>
-      <Parameters><Parameter Name="providerType" Type="System.Type" /></Parameters>
-      <Docs><param name="providerType">Type of the provider bound to the assembly</param><summary>This type must implement <see cref="T:Mono.Zeroconf.Proviers.IZeroconfService" />.</summary><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="ProviderType">
+      <Parameters>
+        <Parameter Name="providerType" Type="System.Type" />
+      </Parameters>
+      <Docs>
+        <param name="providerType">Type of the provider bound to the assembly</param>
+        <summary>This type must implement <see cref="T:Mono.Zeroconf.Proviers.IZeroconfService" />.</summary>
+        <remarks>To be added.</remarks>
+      </Docs>
+    </Member>
+    <Member MemberName="ProviderType">
       <MemberSignature Language="C#" Value="public Type ProviderType { get; };" />
       <MemberType>Property</MemberType>
-      <ReturnValue><ReturnType>System.Type</ReturnType></ReturnValue>
-      <Docs><summary>Type of the provider bound to the assembly</summary><value>Value passed to the constructor.</value><remarks>This property is only used by the internal Mono.Zeroconf factory that loads Zeroconf providers.</remarks></Docs>
+      <ReturnValue>
+        <ReturnType>System.Type</ReturnType>
+      </ReturnValue>
+      <Docs>
+        <summary>Type of the provider bound to the assembly</summary>
+        <value>Value passed to the constructor.</value>
+        <remarks>This property is only used by the internal Mono.Zeroconf factory that loads Zeroconf providers.</remarks>
+      </Docs>
     </Member>
   </Members>
   <Attributes>
