@@ -4,7 +4,7 @@
 // Authors:
 //    Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2006-2008 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -112,7 +112,7 @@ public class MZClient
         if(match.Groups.Count < 4) {
             throw new ApplicationException("Invalid service description syntax");
         }
-        Console.WriteLine(serviceDescription);
+
         string type = match.Groups[1].Value.Trim();
         short port = Convert.ToInt16(match.Groups[2].Value);
         string name = match.Groups[3].Value.Trim();
@@ -139,7 +139,7 @@ public class MZClient
         
         if(txt_data != null) {
             Match tmatch = Regex.Match(txt_data, @"TXT\s*\[(.*)\]");
-            Console.WriteLine(tmatch.Groups.Count);
+
             if(tmatch.Groups.Count != 2) {
                 throw new ApplicationException("Invalid TXT record definition syntax");
             }
@@ -209,8 +209,8 @@ public class MZClient
             service.FullName, service.HostEntry.AddressList[0], service.Port);
         
         ITxtRecord record = service.TxtRecord;
-        int record_count = record.Count;
-        if(record != null && record_count > 0) {
+        int record_count = record != null ? record.Count : 0;
+        if(record_count > 0) {
             Console.Write(", TXT Record = [");
             for(int i = 0, n = record.Count; i < n; i++) {
                 TxtRecordItem item = record.GetItemAt(i);
