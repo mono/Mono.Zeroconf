@@ -211,7 +211,7 @@ mv $RPM_BUILD_ROOT/usr/lib/pkgconfig/* $RPM_BUILD_ROOT/usr/share/pkgconfig
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Wed Jan 23 19 2008 - abockover@suse.de
+* Wed Jan 23 2008 - abockover@suse.de
 - Updated to version 0.7.4 
 - Fixes IP address resolution bug in Bonjour provider that
   only manifested under .NET on Windows XP SP2
