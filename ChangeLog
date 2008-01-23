@@ -1,3 +1,17 @@
+2008-01-22  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Bump to 0.7.4
+
+	* Makefile.am
+	* README.Windows: Added information about Bonjour for Windows
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	Fix a bad bug where we were reading the raw IP address binary blob as a
+	signed integer. IP addresses are unsigned. This manifested in bad ways
+	on at least Windows XP SP2, but was covered up in Mono due to the 
+	casting that went on underneath the hood (Int32->Int64); thanks to 
+	Chris Williams for uncovering the problem
+
 2008-01-08  Aaron Bockover  <abockover@novell.com>
 
 	* src/MZClient/ZeroconfClient.cs: Fix a minor bug found by

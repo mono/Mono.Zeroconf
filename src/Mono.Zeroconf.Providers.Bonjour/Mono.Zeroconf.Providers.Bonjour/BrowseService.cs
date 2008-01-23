@@ -129,8 +129,10 @@ namespace Mono.Zeroconf.Providers.Bonjour
                         break;
                     }
                     
-                    IPAddress address = new IPAddress(Marshal.ReadInt32(rdata));
-                    
+                    byte [] address_raw = new byte[4];
+                    Marshal.Copy(rdata, address_raw, 0, 4);
+                    IPAddress address = new IPAddress(address_raw);
+
                     if(hostentry == null) {
                         hostentry = new IPHostEntry();
                         hostentry.HostName = hosttarget;
@@ -169,3 +171,4 @@ namespace Mono.Zeroconf.Providers.Bonjour
         }
     }
 }
+

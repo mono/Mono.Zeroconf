@@ -1,4 +1,4 @@
-AC_INIT([Mono.Zeroconf], [0.7.3])
+AC_INIT([Mono.Zeroconf], [0.7.4])
 AC_CANONICAL_SYSTEM
 AC_PREREQ(2.13)
 AM_INIT_AUTOMAKE([1.9 dist-bzip2 tar-ustar])

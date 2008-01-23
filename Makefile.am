@@ -22,7 +22,7 @@ dist-windows: all
 	@rm -rf $(PKV) && \
 	mkdir -p $(PKV)/bin && \
 	cp src/MZClient/MZClient.exe src/Mono.Zeroconf/Mono.Zeroconf.dll src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.dll $(PKV)/bin && \
-	cp AUTHORS NEWS README $(PKV) && \
+	cp AUTHORS NEWS README README.Windows $(PKV) && \
 	cp COPYING $(PKV)/LICENSE && \
 	zip -r9 $(PKV).zip $(PKV) && \
 	rm -rf $(PKV)

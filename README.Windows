@@ -1,0 +1,13 @@
+To run Mono.Zeroconf properly on Windows, Apple's Bonjour must be installed
+first. For licensing reasons, we cannot bundle Bonjour with Mono.Zeroconf.
+
+Bonjour for Windows can be downloaded here:
+
+    http://www.apple.com/support/downloads/bonjourforwindows.html
+
+After installing Bonjour, applications using Mono.Zeroconf should work 
+properly on Windows. 
+
+The MZClient.exe program can be used to test Mono.Zeroconf and Bonjour 
+in general.
+
