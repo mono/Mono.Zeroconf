@@ -12,6 +12,7 @@ MAINTAINERCLEANFILES = \
 	missing
 
 EXTRA_DIST = \
+	mono-zeroconf.spec \
 	Mono.Zeroconf.sln \
 	README.Windows
 
@@ -38,7 +39,7 @@ release:
 	sha1sum $(PKV).* $(PKB).* > $(PKV).sha1sum && \
 	touch LATEST-IS-$(VERSION) && \
 	ssh banshee@banshee-project.org rm /home/banshee/public_html/files/mono-zeroconf/LATEST-IS*; \
-	scp $(PKV).* $(PKB).* LATEST* README README.Windows banshee@banshee-project.org:public_html/files/mono-zeroconf/ && rm LATEST* $(PKV).* $(PKB).* && \
+	scp $(PKV).* $(PKB).* mono-zeroconf.spec LATEST* README README.Windows banshee@banshee-project.org:public_html/files/mono-zeroconf/ && rm LATEST* $(PKV).* $(PKB).* && \
 	test -z $$MONO_USER && { echo "Please set MONO_USER for the commit"; exit 1; }; \
 	echo "Sleeping 10 seconds, about to tag release (as user $$MONO_USER)..."; \
 	sleep 10; \
