@@ -12,7 +12,8 @@ MAINTAINERCLEANFILES = \
 	missing
 
 EXTRA_DIST = \
-	Mono.Zeroconf.sln
+	Mono.Zeroconf.sln \
+	README.Windows
 
 collect:
 	rm -rf bin; \
@@ -20,15 +21,16 @@ collect:
 	find src \( -iname *.exe -o -iname *.dll \) -exec cp {} bin \;
 
 PKV=$(PACKAGE)-$(VERSION)
+PKB=$(PKV)-binary
 
 dist-windows: all
-	@rm -rf $(PKV) && \
-	mkdir -p $(PKV)/bin && \
-	cp src/MZClient/MZClient.exe src/Mono.Zeroconf/Mono.Zeroconf.dll src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.dll $(PKV)/bin && \
-	cp AUTHORS NEWS README README.Windows $(PKV) && \
-	cp COPYING $(PKV)/LICENSE && \
-	zip -r9 $(PKV).zip $(PKV) && \
-	rm -rf $(PKV)
+	@rm -rf $(PKB) && \
+	mkdir -p $(PKB)/bin && \
+	cp src/MZClient/MZClient.exe src/Mono.Zeroconf/Mono.Zeroconf.dll src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.dll $(PKB)/bin && \
+	cp AUTHORS NEWS README README.Windows $(PKB) && \
+	cp COPYING $(PKB)/LICENSE && \
+	zip -r9 $(PKB).zip $(PKB) && \
+	rm -rf $(PKB)
 
 release:
 	@test -z $$MONO_USER && { echo "Please set MONO_USER for the commit"; exit 1; }; \

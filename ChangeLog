@@ -1,5 +1,18 @@
 2008-01-23  Aaron Bockover  <abockover@novell.com>
 
+	0.7.4 Released
+
+	* NEWS: Updated with 0.7.4 release notes
+
+	* configure.ac: Output a zip file during dist for our Windows friends
+
+	* Makefile.am: Rename the zip file containing the binaries for Windows
+	so it doesn't conflict with the source zip file
+
+	* COPYING: Updated copyright
+
+2008-01-23  Aaron Bockover  <abockover@novell.com>
+
 	* Mono.Zeroconf.sln:
 	* src/Mono.Zeroconf/Mono.Zeroconf.csproj:
 	* src/MZClient/MZClient.csproj:

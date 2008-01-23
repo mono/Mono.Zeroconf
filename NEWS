@@ -1,1 +1,16 @@
-2007-12-19: Released 0.7.3, works on Linux, Mac, and Windows
+2008-01-23: 0.7.4 Release
+
+    * Fixed a big IP address resolution bug in the Bonjour provider 
+      that manifested only under .NET on Windows XP SP2
+
+    * Minor bug fix in MZClient
+
+    * Make it easy to build and use on Windows
+      - Added Visual Studio 2008 solution
+      - Publish the source code as a Zip archive (along with tar gz and bzip2)
+      - Publish a -binary.zip file for Windows containing pre-built assemblies
+
+2007-12-19: 0.7.3 Release
+
+    * First release that works on Linux, Mac, and Windows
+
