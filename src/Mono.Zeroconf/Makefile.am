@@ -45,7 +45,7 @@ install-data-hook:
 uninstall-hook:
 	$(GACUTIL) -u $(ASSEMBLY_NAME) $(GACUTIL_ARGS)
 
-EXTRA_DIST = $(SOURCES)
+EXTRA_DIST = $(SOURCES) Mono.Zeroconf.csproj
 CLEANFILES = *.dll *.mdb
 DISTCLEANFILES = *.pidb
 MAINTAINERCLEANFILES = Makefile.in

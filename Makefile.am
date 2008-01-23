@@ -11,6 +11,9 @@ MAINTAINERCLEANFILES = \
 	install-sh \
 	missing
 
+EXTRA_DIST = \
+	Mono.Zeroconf.sln
+
 collect:
 	rm -rf bin; \
 	mkdir bin; \

@@ -7,9 +7,6 @@ AM_MAINTAINER_MODE
 DISTCHECK_CONFIGURE_FLAGS="--disable-docs"
 AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)
 
-ASM_VERSION="1.0.0.0"
-AC_SUBST(ASM_VERSION)
-
 AC_PROG_INSTALL
 
 SHAMROCK_CHECK_MONO_MODULE(1.1.10)
@@ -59,7 +56,6 @@ AC_OUTPUT([
 Makefile
 src/Makefile
 src/mono-zeroconf.pc
-src/AssemblyInfo.cs
 src/Mono.Zeroconf/Makefile
 src/Mono.Zeroconf.Providers.Bonjour/Makefile
 src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.dll.config

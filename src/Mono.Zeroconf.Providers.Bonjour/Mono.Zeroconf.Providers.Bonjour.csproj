@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{623325E2-5821-4701-A40C-3759097008DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Mono.Zeroconf.Providers.Bonjour</RootNamespace>
+    <AssemblyName>Mono.Zeroconf.Providers.Bonjour</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\bin</OutputPath>
+    <DefineConstants></DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\AssemblyInfo.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\BrowseService.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Native.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\RegisterService.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\Service.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\ServiceBrowser.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\ServiceClass.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\ServiceError.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\ServiceErrorException.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\ServiceFlags.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\ServiceRef.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\ServiceType.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\TxtRecord.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\TxtRecordEnumerator.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.Bonjour\ZeroconfProvider.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mono.Zeroconf\Mono.Zeroconf.csproj">
+      <Project>{5CF88E3A-13DD-4114-BAD9-DA826946516F}</Project>
+      <Name>Mono.Zeroconf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

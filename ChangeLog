@@ -1,3 +1,23 @@
+2008-01-23  Aaron Bockover  <abockover@novell.com>
+
+	* Mono.Zeroconf.sln:
+	* src/Mono.Zeroconf/Mono.Zeroconf.csproj:
+	* src/MZClient/MZClient.csproj:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.csproj:
+	Added Visual Studio 2008 solution/projects; MonoDevelop can use these
+	just fine, so there's no need for MD specific projects
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi.mdp:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.mdp:
+	* src/MZClient/MZClient.mdp:
+	* src/Mono.Zeroconf/Mono.Zeroconf.mdp:
+	* Mono.Zeroconf.mds: Removed MonoDevelop solution/projects
+
+	* configure.ac:
+	* src/AssemblyInfo.cs:
+	* src/AssemblyInfo.cs.in: Get rid of the .in, and just manually update
+	the assembly version so no pre-build stuff is needed in Visual Studio
+
 2008-01-22  Aaron Bockover  <abockover@novell.com>
 
 	* configure.ac: Bump to 0.7.4

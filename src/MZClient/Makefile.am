@@ -16,7 +16,7 @@ all: $(ASSEMBLY)
 $(ASSEMBLY): $(top_builddir)/src/Mono.Zeroconf/Mono.Zeroconf.dll $(SOURCES)
 	$(MCS) -debug -out:$@ -r:$< $(SOURCES)
 
-EXTRA_DIST = $(SOURCES)
+EXTRA_DIST = $(SOURCES) MZClient.csproj
 CLEANFILES = $(ASSEMBLY){,.mdb}
 MAINTAINERCLEANFILES = \
 	Makefile.in

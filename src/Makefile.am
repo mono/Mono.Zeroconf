@@ -13,6 +13,7 @@ uninstall-hook:
 	fi
 
 EXTRA_DIST = \
+	AssemblyInfo.cs \
 	mono-zeroconf.pc.in \
 	mono-zeroconf.snk
 

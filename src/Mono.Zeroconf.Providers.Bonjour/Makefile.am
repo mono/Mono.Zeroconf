@@ -35,7 +35,8 @@ $(ASSEMBLY): $(top_builddir)/src/Mono.Zeroconf/Mono.Zeroconf.dll $(SOURCES)
 
 endif
 
-EXTRA_DIST = $(SOURCES) $(ASSEMBLY).config
+EXTRA_DIST = $(SOURCES) $(ASSEMBLY).config \
+	Mono.Zeroconf.Providers.Bonjour.csproj
 CLEANFILES = *.dll *.mdb
 DISTCLEANFILES = *.pidb
 MAINTAINERCLEANFILES = \
