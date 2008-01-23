@@ -1,3 +1,18 @@
+Downloading
+-----------
+
+Mono.Zeroconf is available as zip file containing pre-compiled assemblies 
+useful to Windows developers, which also includes the command line tool, 
+MZClient. Additionally, the source code containing a Visual Studio solution
+is available in a separate zip file.
+
+  a) mono-zeroconf-<version>-binary.zip:  pre-compiled assemblies
+  b) mono-zeroconf-<version>.zip:         full source code
+
+
+Running
+-------
+
 To run Mono.Zeroconf properly on Windows, Apple's Bonjour must be installed
 first. For licensing reasons, we cannot bundle Bonjour with Mono.Zeroconf.
 
