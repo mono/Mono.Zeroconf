@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual C# Express 2008
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C# Express 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MZClient", "src\MZClient\MZClient.csproj", "{839D9048-31CF-4010-B427-6A8362556485}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Zeroconf", "src\Mono.Zeroconf\Mono.Zeroconf.csproj", "{5CF88E3A-13DD-4114-BAD9-DA826946516F}"
