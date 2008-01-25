@@ -1,7 +1,7 @@
 #
-# spec file for package mono-zeroconf (Version 0.7.4)
+# spec file for package mono-zeroconf (Version 0.7.5)
 #
-# Copyright (c) 2007 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2008 SUSE LINUX Products GmbH, Nuernberg, Germany.
 # This file and all modifications and additions to the pristine
 # package are under the same license as the package itself.
 #
@@ -16,14 +16,14 @@ License:        X11/MIT
 Group:          Development/Languages/Mono
 Summary:        A cross platform Zero Configuration Networking library for Mono
 Url:            http://mono-project.com/Mono.Zeroconf
-Version:        0.7.4
-Release:        4
+Version:        0.7.5
+Release:        1
 Source0:        %{name}-%{version}.tar.bz2
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  mono-devel
 Requires:       mono-zeroconf-provider
-%define assembly_version 1.0.0.74
+%define assembly_version 1.0.0.75
 ## --- Build Configuration --- ##
 %define build_avahi 1
 %define build_mdnsr 1
@@ -88,9 +88,12 @@ Authors:
 %dir %_prefix/lib/mono/mono-zeroconf
 %dir %_prefix/lib/mono/gac/Mono.Zeroconf
 %dir %_prefix/lib/mono/gac/Mono.Zeroconf/%{assembly_version}__e60c4f4a95e1099e
+%dir %_prefix/lib/mono/gac/policy.1.0.Mono.Zeroconf
+%dir %_prefix/lib/mono/gac/policy.1.0.Mono.Zeroconf/0.0.0.0__e60c4f4a95e1099e
 %_bindir/mzclient
 %_prefix/share/pkgconfig/mono-zeroconf.pc
 %_prefix/lib/mono/gac/Mono.Zeroconf/*/*.dll*
+%_prefix/lib/mono/gac/policy.1.0.Mono.Zeroconf/*/*
 %_prefix/lib/mono/mono-zeroconf/Mono.Zeroconf.dll*
 %_prefix/lib/mono-zeroconf/MZClient.exe*
 ## --- mDNSResponder Provider --- ##
@@ -203,7 +206,7 @@ make
 
 %install
 %{?env_options}
-make install DESTDIR=$RPM_BUILD_ROOT GACUTIL_FLAGS="/package Mono.Zeroconf /root ${RPM_BUILD_ROOT}/usr/%_lib"
+make install DESTDIR=$RPM_BUILD_ROOT
 mkdir -p $RPM_BUILD_ROOT/usr/share/pkgconfig
 mv $RPM_BUILD_ROOT/usr/lib/pkgconfig/* $RPM_BUILD_ROOT/usr/share/pkgconfig
 
@@ -211,15 +214,18 @@ mv $RPM_BUILD_ROOT/usr/lib/pkgconfig/* $RPM_BUILD_ROOT/usr/share/pkgconfig
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Wed Jan 23 2008 - abockover@suse.de
-- Updated to version 0.7.4 
+* Fri Jan 25 2008 abockover@suse.de
+- Updated to version 0.7.5
+- Adds GAC version policy assemblies so package upgrades don't break apps
+* Wed Jan 23 2008 abockover@suse.de
+- Updated to version 0.7.4
 - Fixes IP address resolution bug in Bonjour provider that
   only manifested under .NET on Windows XP SP2
 - Minor bug fix in MZClient
 - libdir patch removed from package; fixed in upstream release
-* Thu Dec 27 2007 - abockover@suse.de
+* Thu Dec 27 2007 abockover@suse.de
 - Patch to fix libdir issue in mono-zeroconf.pc on x86_64
-* Sun Dec 23 2007 - abockover@suse.de
+* Sun Dec 23 2007 abockover@suse.de
 - Initial import of Mono.Zeroconf for STABLE from the build serivce
 - Version 0.7.3 release
 - Provides a cross platform (Linux, Mac, Windows) Mono/.NET API

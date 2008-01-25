@@ -1,3 +1,11 @@
+2008-01-24  Aaron Bockover  <abockover@novell.com>
+
+	0.7.5 Released
+
+	* NEWS: Updated with 0.7.5 release notes
+
+	* mono-zeroconf.spec: Updated spec file
+
 2008-01-25  Aaron Bockover  <abockover@novell.com>
 
 	* configure.ac: Check for al2, not al
