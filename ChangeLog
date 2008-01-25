@@ -1,3 +1,7 @@
+2008-01-25  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Check for al2, not al
+
 2008-01-24  Aaron Bockover  <abockover@novell.com>
 
 	* configure.ac: Check for al, set policy/api version variables

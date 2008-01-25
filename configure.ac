@@ -28,7 +28,7 @@ if test "x$GACUTIL" = "xno"; then
 	AC_MSG_ERROR([You need to install gacutil])
 fi
 
-AC_PATH_PROG(AL, al, no)
+AC_PATH_PROG(AL, al2, no)
 if test "x$AL" = "xno" ; then
 	AC_MSG_ERROR([You need to install al])
 fi
