@@ -1,3 +1,15 @@
+2008-01-24  Aaron Bockover  <abockover@novell.com>
+
+	* configure.ac: Check for al, set policy/api version variables
+
+	* src/Makefile.include: Rules for building the policy assembly and 
+	installing/uninstalling from the GAC; stolen from Mono.Addins
+
+	* src/policy.config.in: Policy definition file
+
+	* src/Mono.Zeroconf/Makefile.am: Build and install the assembly 
+	versioning policy
+
 2008-01-23  Aaron Bockover  <abockover@novell.com>
 
 	0.7.4 Released

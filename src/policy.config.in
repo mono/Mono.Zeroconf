@@ -2,8 +2,8 @@
   <runtime>
     <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
       <dependentAssembly>
-        <assemblyIdentity name="Mono.Zeroconf" publicKeyToken="e60c4f4a95e1099e" />
-        <bindingRedirect oldVersion="1.0.0.0-1.0.0.74" newVersion="1.0.0.74" />
+        <assemblyIdentity name="@ASSEMBLY_NAME@" publicKeyToken="e60c4f4a95e1099e" />
+        <bindingRedirect oldVersion="1.0.0.0-@API_VERSION@" newVersion="@API_VERSION@"/>
       </dependentAssembly>
     </assemblyBinding>
   </runtime>

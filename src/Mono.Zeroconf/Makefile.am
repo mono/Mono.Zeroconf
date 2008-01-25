@@ -34,19 +34,17 @@ SOURCES = \
 
 all: $(ASSEMBLY)
 
-$(ASSEMBLY): $(SOURCES)
+$(ASSEMBLY): $(SOURCES) $(POLICY_ASSEMBLIES)
 	$(MCS) -debug -keyfile:$(top_srcdir)/src/mono-zeroconf.snk -target:library -out:$@ $(SOURCES)
 
-GACUTIL_ARGS = -package $(PACKAGE) -root $(DESTDIR)$(libdir) -gacdir $(libdir)
+install-data-local: gac-install
 
-install-data-hook:
-	$(GACUTIL) -i $(ASSEMBLY) $(GACUTIL_ARGS)
+uninstall-local: gac-uninstall
 
-uninstall-hook:
-	$(GACUTIL) -u $(ASSEMBLY_NAME) $(GACUTIL_ARGS)
+include $(top_srcdir)/src/Makefile.include
 
 EXTRA_DIST = $(SOURCES) Mono.Zeroconf.csproj
-CLEANFILES = *.dll *.mdb
+CLEANFILES = *.dll *.mdb $(POLICY_ASSEMBLIES) $(POLICY_CONFIGS)
 DISTCLEANFILES = *.pidb
 MAINTAINERCLEANFILES = Makefile.in
 

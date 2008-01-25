@@ -1,8 +1,13 @@
-AC_INIT([Mono.Zeroconf], [0.7.4])
+AC_INIT([Mono.Zeroconf], [0.7.5])
 AC_CANONICAL_SYSTEM
 AC_PREREQ(2.13)
 AM_INIT_AUTOMAKE([1.9 dist-bzip2 tar-ustar dist-zip])
 AM_MAINTAINER_MODE
+
+API_VERSION="1.0.0.75"
+POLICY_VERSION="1.0"
+AC_SUBST(API_VERSION)
+AC_SUBST(POLICY_VERSION)
 
 DISTCHECK_CONFIGURE_FLAGS="--disable-docs"
 AC_SUBST(DISTCHECK_CONFIGURE_FLAGS)
@@ -22,6 +27,17 @@ AC_PATH_PROG(GACUTIL, gacutil, no)
 if test "x$GACUTIL" = "xno"; then
 	AC_MSG_ERROR([You need to install gacutil])
 fi
+
+AC_PATH_PROG(AL, al, no)
+if test "x$AL" = "xno" ; then
+	AC_MSG_ERROR([You need to install al])
+fi
+
+GACUTIL_FLAGS='-package $(PACKAGE) -root $(DESTDIR)$(prefix)/lib'
+GACUTIL_POLICY_FLAGS='-root $(DESTDIR)$(prefix)/lib'
+AC_SUBST(GACUTIL_FLAGS)
+AC_SUBST(GACUTIL_POLICY_FLAGS)
+
 
 AC_ARG_ENABLE(avahi, AC_HELP_STRING([--disable-avahi],
 	[Do not build with Avahi support]), , enable_avahi=yes)
@@ -55,6 +71,7 @@ SHAMROCK_EXPAND_LIBDIR
 AC_OUTPUT([
 Makefile
 src/Makefile
+src/policy.config
 src/mono-zeroconf.pc
 src/Mono.Zeroconf/Makefile
 src/Mono.Zeroconf.Providers.Bonjour/Makefile
