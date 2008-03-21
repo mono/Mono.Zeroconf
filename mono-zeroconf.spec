@@ -1,5 +1,5 @@
 #
-# spec file for package mono-zeroconf (Version 0.7.5)
+# spec file for package mono-zeroconf (Version 0.7.6)
 #
 # Copyright (c) 2008 SUSE LINUX Products GmbH, Nuernberg, Germany.
 # This file and all modifications and additions to the pristine
@@ -16,14 +16,14 @@ License:        X11/MIT
 Group:          Development/Languages/Mono
 Summary:        A cross platform Zero Configuration Networking library for Mono
 Url:            http://mono-project.com/Mono.Zeroconf
-Version:        0.7.5
+Version:        0.7.6
 Release:        1
 Source0:        %{name}-%{version}.tar.bz2
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  mono-devel
 Requires:       mono-zeroconf-provider
-%define assembly_version 1.0.0.75
+%define assembly_version 2.0.0.76
 ## --- Build Configuration --- ##
 %define build_avahi 1
 %define build_mdnsr 1
@@ -90,10 +90,13 @@ Authors:
 %dir %_prefix/lib/mono/gac/Mono.Zeroconf/%{assembly_version}__e60c4f4a95e1099e
 %dir %_prefix/lib/mono/gac/policy.1.0.Mono.Zeroconf
 %dir %_prefix/lib/mono/gac/policy.1.0.Mono.Zeroconf/0.0.0.0__e60c4f4a95e1099e
+%dir %_prefix/lib/mono/gac/policy.2.0.Mono.Zeroconf
+%dir %_prefix/lib/mono/gac/policy.2.0.Mono.Zeroconf/0.0.0.0__e60c4f4a95e1099e
 %_bindir/mzclient
 %_prefix/share/pkgconfig/mono-zeroconf.pc
 %_prefix/lib/mono/gac/Mono.Zeroconf/*/*.dll*
 %_prefix/lib/mono/gac/policy.1.0.Mono.Zeroconf/*/*
+%_prefix/lib/mono/gac/policy.2.0.Mono.Zeroconf/*/*
 %_prefix/lib/mono/mono-zeroconf/Mono.Zeroconf.dll*
 %_prefix/lib/mono-zeroconf/MZClient.exe*
 ## --- mDNSResponder Provider --- ##
@@ -214,6 +217,10 @@ mv $RPM_BUILD_ROOT/usr/lib/pkgconfig/* $RPM_BUILD_ROOT/usr/share/pkgconfig
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Thu Mar 21 2008 abockover@suse.de
+- Updated to version 0.7.6
+- Adds NetworkInterface API to IService objects
+- Supports IPv6 host address resolutions
 * Fri Jan 25 2008 abockover@suse.de
 - Updated to version 0.7.5
 - Adds GAC version policy assemblies so package upgrades don't break apps

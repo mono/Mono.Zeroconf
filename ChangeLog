@@ -1,5 +1,13 @@
 2008-03-20  Aaron Bockover  <abockover@novell.com>
 
+	0.7.6 Released
+
+	* NEWS: Updated with 0.7.6 release notes
+
+	* mono-zeroconf.spec: Updated
+
+2008-03-20  Aaron Bockover  <abockover@novell.com>
+
 	This commit adds a new service property, NetworkInterface, and host
 	resolutions now support IPv6 - thanks to Sebastian Dröge
 
