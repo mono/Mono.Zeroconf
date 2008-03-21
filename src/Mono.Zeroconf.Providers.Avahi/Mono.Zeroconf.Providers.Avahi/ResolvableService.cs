@@ -53,7 +53,7 @@ namespace Mono.Zeroconf.Providers.Avahi
         private void OnServiceResolved(object o, AV.ServiceInfoArgs args)
         {
             service = args.Service;
-            (o as AV.ServiceResolver).Dispose();
+            ((AV.ServiceResolver)o).Dispose();
         
             ServiceResolvedEventHandler handler = Resolved;
             if(handler != null) {
@@ -73,6 +73,9 @@ namespace Mono.Zeroconf.Providers.Avahi
                 IPHostEntry host_entry = new IPHostEntry();
                 host_entry.AddressList = new IPAddress[1];
                 host_entry.AddressList[0] = service.Address;
+                if(service.Protocol == AV.Protocol.IPv6) {
+                    host_entry.AddressList[0].ScopeId = service.NetworkInterface;
+                }
                 host_entry.HostName = service.HostName;
                 return host_entry;
             }
@@ -80,6 +83,10 @@ namespace Mono.Zeroconf.Providers.Avahi
         
         public string HostTarget { 
             get { return service.HostName; }
+        }
+
+        public int NetworkInterface {
+            get { return service.NetworkInterface; }
         }
         
         public short Port { 

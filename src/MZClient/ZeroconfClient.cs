@@ -205,8 +205,8 @@ public class MZClient
     private static void OnServiceResolved(object o, ServiceResolvedEventArgs args)
     {
         IResolvableService service = o as IResolvableService;
-        Console.Write("*** Resolved name = '{0}', host = '{1}', port = '{2}'", 
-            service.FullName, service.HostEntry.AddressList[0], service.Port);
+        Console.Write("*** Resolved name = '{0}', host = '{1}', port = '{2}', interface = '{3}'", 
+            service.FullName, service.HostEntry.AddressList[0], service.Port, service.NetworkInterface);
         
         ITxtRecord record = service.TxtRecord;
         int record_count = record != null ? record.Count : 0;

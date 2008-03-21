@@ -1,10 +1,10 @@
-POLICY_ASSEMBLIES = $(addsuffix .$(ASSEMBLY_NAME).dll, $(addprefix policy., $(POLICY_VERSION)))
-POLICY_CONFIGS = $(addsuffix .config, $(addprefix policy., $(POLICY_VERSION)))
+POLICY_ASSEMBLIES = $(addsuffix .$(ASSEMBLY_NAME).dll, $(addprefix policy., $(POLICY_VERSIONS)))
+POLICY_CONFIGS = $(addsuffix .config, $(addprefix policy., $(POLICY_VERSIONS)))
 
 $(POLICY_ASSEMBLIES): $(top_builddir)/src/policy.config $(top_srcdir)/src/mono-zeroconf.snk
-	for i in $(POLICY_VERSION); do	\
+	for i in $(POLICY_VERSIONS); do	\
 	  echo "Creating policy.$$i.$(ASSEMBLY_NAME)";	\
-	  sed -e "s/@ASSEMBLY_NAME@/$(ASSEMBLY_NAME)/" -e "s/@POLICY@/$$i/" $(top_builddir)/src/policy.config > policy.$$i.config;	\
+	  sed -e "s/@ASSEMBLY_NAME@/$(ASSEMBLY_NAME)/g" -e "s/@POLICY@/$$i/g" $(top_builddir)/src/policy.config > policy.$$i.config;	\
 	  $(AL) -link:policy.$$i.config -out:policy.$$i.$(ASSEMBLY_NAME).dll -keyfile:$(top_srcdir)/src/mono-zeroconf.snk; \
 	done
 

@@ -125,17 +125,23 @@ namespace Mono.Zeroconf.Providers.Bonjour
         {
             switch(rrtype) {
                 case ServiceType.A:
-                    if(rdlen != 4) {
+                    IPAddress address;
+
+                    if(rdlen == 4) {   
+                        // ~4.5 times faster than Marshal.Copy into byte[4]
+                        uint address_raw = (uint)(Marshal.ReadByte (rdata, 3) << 24);
+                        address_raw |= (uint)(Marshal.ReadByte (rdata, 2) << 16);
+                        address_raw |= (uint)(Marshal.ReadByte (rdata, 1) << 8);
+                        address_raw |= (uint)Marshal.ReadByte (rdata, 0);
+
+                        address = new IPAddress(address_raw);
+                    } else if(rdlen == 16) {
+                        byte [] address_raw = new byte[rdlen];
+                        Marshal.Copy(rdata, address_raw, 0, rdlen);
+                        address = new IPAddress(address_raw, interfaceIndex);
+                    } else {
                         break;
                     }
-                    
-                    // ~4.5 times faster than Marshal.Copy into byte[4]
-                    uint address_raw = (uint)(Marshal.ReadByte (rdata, 3) << 24);
-                    address_raw |= (uint)(Marshal.ReadByte (rdata, 2) << 16);
-                    address_raw |= (uint)(Marshal.ReadByte (rdata, 1) << 8);
-                    address_raw |= (uint)Marshal.ReadByte (rdata, 0);
-
-                    IPAddress address = new IPAddress(address_raw);
 
                     if(hostentry == null) {
                         hostentry = new IPHostEntry();

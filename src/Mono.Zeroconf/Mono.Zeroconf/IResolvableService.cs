@@ -40,6 +40,7 @@ namespace Mono.Zeroconf
         string FullName { get; }
         IPHostEntry HostEntry { get; }
         string HostTarget { get; }
+        int NetworkInterface { get; }
         short Port { get; }
     }
 }

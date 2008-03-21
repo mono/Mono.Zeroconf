@@ -1,3 +1,29 @@
+2008-03-20  Aaron Bockover  <abockover@novell.com>
+
+	This commit adds a new service property, NetworkInterface, and host
+	resolutions now support IPv6 - thanks to Sebastian Dröge
+
+	* src/MZClient/ZeroconfClient.cs: Print the network interface when a
+	service is resolved
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/IResolvableService.cs: Added a 
+	NetworkInterface property
+
+	* src/Mono.Zeroconf.Providers.Avahi/Mono.Zeroconf.Providers.Avahi/ResolvableService.cs:
+	Provide the new NetworkInterface property and support setting the interface
+	as an IPv6 zone on the resolved host address
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	Set the interface as an IPv6 zone on the resolved host address
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/Service.cs:
+	Provide the new NetworkInterface property
+
+	* configure.ac:
+	* src/AssemblyInfo.cs:
+	* src/policy.config.in:
+	* src/Makefile.include: Fix up more assembly policy stuff - so annoying
+
 2008-01-25  Aaron Bockover  <abockover@novell.com>
 
 	0.7.5 Released

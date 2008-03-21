@@ -116,6 +116,10 @@ namespace Mono.Zeroconf.Providers.Bonjour
         public IPHostEntry HostEntry {
             get { return hostentry; }
         }
+
+        public int NetworkInterface {
+            get { return (int) interface_index; }
+        }
         
         public short Port {
             get { return IPAddress.NetworkToHostOrder(port); }
