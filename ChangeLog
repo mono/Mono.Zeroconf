@@ -1,3 +1,12 @@
+2008-04-02  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/RegisterService.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/ServiceBrowser.cs:
+	Fixed a big bug reported by Josh Cooley wherein delegates passed to 
+	native code could be GCed at the wrong time, apparently particularly 
+	noticeable on MS.NET
+
 2008-03-20  Aaron Bockover  <abockover@novell.com>
 
 	0.7.6 Released

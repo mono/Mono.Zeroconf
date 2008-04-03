@@ -55,6 +55,8 @@ namespace Mono.Zeroconf.Providers.Bonjour
         private ServiceRef sd_ref = ServiceRef.Zero;
         private Hashtable service_table = new Hashtable();
         
+        private Native.DNSServiceBrowseReply browse_reply_handler;
+        
         private Thread thread;
         
         public event ServiceBrowseEventHandler ServiceAdded;
@@ -62,14 +64,15 @@ namespace Mono.Zeroconf.Providers.Bonjour
         
         public ServiceBrowser()
         {
+            browse_reply_handler = new Native.DNSServiceBrowseReply(OnBrowseReply);
         }
         
-        public ServiceBrowser(string regtype)
+        public ServiceBrowser(string regtype) : this()
         {
             Configure(regtype);
         }
         
-        public ServiceBrowser(uint interfaceIndex, string regtype, string domain)
+        public ServiceBrowser(uint interfaceIndex, string regtype, string domain) : this()
         {
             Configure(interfaceIndex, regtype, domain);
         }
@@ -135,7 +138,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         private void ProcessStart()
         {
             ServiceError error = Native.DNSServiceBrowse(out sd_ref, ServiceFlags.Default,
-                interface_index, regtype,  domain, OnBrowseReply, IntPtr.Zero);
+                interface_index, regtype,  domain, browse_reply_handler, IntPtr.Zero);
 
             if(error != ServiceError.NoError) {
                 throw new ServiceErrorException(error);

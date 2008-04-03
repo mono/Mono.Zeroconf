@@ -38,14 +38,23 @@ namespace Mono.Zeroconf.Providers.Bonjour
         private ServiceRef sd_ref;
         private bool auto_rename = true;
     
+        private Native.DNSServiceRegisterReply register_reply_handler;
+    
         public event RegisterServiceEventHandler Response;
     
         public RegisterService()
         {
+            SetupCallback();
         }
         
         public RegisterService(string name, string replyDomain, string regtype) : base(name, replyDomain, regtype)
         {
+            SetupCallback();
+        }
+        
+        private void SetupCallback()
+        {
+            register_reply_handler = new Native.DNSServiceRegisterReply(OnRegisterReply);
         }
         
         public void Register()
@@ -98,7 +107,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
             ServiceError error = Native.DNSServiceRegister(out sd_ref, 
                 auto_rename ? ServiceFlags.None : ServiceFlags.NoAutoRename, InterfaceIndex,
                 Name, RegType, ReplyDomain, HostTarget, (ushort)port, txt_rec_length, txt_rec,
-                OnRegisterReply, IntPtr.Zero);
+                register_reply_handler, IntPtr.Zero);
 
             if(error != ServiceError.NoError) {
                 throw new ServiceErrorException(error);

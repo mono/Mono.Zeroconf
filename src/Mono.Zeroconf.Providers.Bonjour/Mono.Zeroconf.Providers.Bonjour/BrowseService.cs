@@ -39,14 +39,25 @@ namespace Mono.Zeroconf.Providers.Bonjour
         private bool is_resolved = false;
         private bool resolve_pending = false;
         
+        private Native.DNSServiceResolveReply resolve_reply_handler;
+        private Native.DNSServiceQueryRecordReply query_record_reply_handler;
+        
         public event ServiceResolvedEventHandler Resolved;
 
         public BrowseService()
         {
+            SetupCallbacks();
         }
         
         public BrowseService(string name, string replyDomain, string regtype) : base(name, replyDomain, regtype)
         {
+            SetupCallbacks();
+        }
+        
+        private void SetupCallbacks()
+        {
+            resolve_reply_handler = new Native.DNSServiceResolveReply(OnResolveReply);
+            query_record_reply_handler = new Native.DNSServiceQueryRecordReply(OnQueryRecordReply);
         }
 
         public void Resolve()
@@ -69,7 +80,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         
             ServiceRef sd_ref;
             ServiceError error = Native.DNSServiceResolve(out sd_ref, ServiceFlags.None, 
-                InterfaceIndex, Name, RegType, ReplyDomain, OnResolveReply, IntPtr.Zero);
+                InterfaceIndex, Name, RegType, ReplyDomain, resolve_reply_handler, IntPtr.Zero);
                 
             if(error != ServiceError.NoError) {
                 throw new ServiceErrorException(error);
@@ -84,7 +95,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         
             ServiceRef sd_ref;
             ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, 0,
-                fullname, ServiceType.TXT, ServiceClass.IN, OnQueryRecordReply, IntPtr.Zero);
+                fullname, ServiceType.TXT, ServiceClass.IN, query_record_reply_handler, IntPtr.Zero);
                 
             if(error != ServiceError.NoError) {
                 throw new ServiceErrorException(error);
@@ -110,7 +121,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
             // Run an A query to resolve the IP address
             ServiceRef sd_ref;
             ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, interfaceIndex,
-                hosttarget, ServiceType.A, ServiceClass.IN, OnQueryRecordReply, IntPtr.Zero);
+                hosttarget, ServiceType.A, ServiceClass.IN, query_record_reply_handler, IntPtr.Zero);
                 
             if(error != ServiceError.NoError) {
                 throw new ServiceErrorException(error);
