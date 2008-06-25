@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -33,7 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mono.Zeroconf\Mono.Zeroconf.csproj">
-      <Project>{5CF88E3A-13DD-4114-BAD9-DA826946516F}</Project>
+      <Project>{839D9048-31CF-4010-B427-6A8362556485}</Project>
       <Name>Mono.Zeroconf</Name>
     </ProjectReference>
   </ItemGroup>

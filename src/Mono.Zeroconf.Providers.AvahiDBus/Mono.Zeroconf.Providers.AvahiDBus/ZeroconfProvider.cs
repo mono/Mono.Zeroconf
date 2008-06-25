@@ -1,10 +1,10 @@
 //
-// IServer.cs
+// ZeroconfProvider.cs
 //
 // Authors:
-//	Aaron Bockover  <abockover@novell.com>
+//    Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2007 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -27,16 +27,29 @@
 //
 
 using System;
-using NDesk.DBus;
+using System.Collections;
+
+[assembly:Mono.Zeroconf.Providers.ZeroconfProvider(typeof(Mono.Zeroconf.Providers.Avahi.ZeroconfProvider))]
 
 namespace Mono.Zeroconf.Providers.Avahi
-{ 
-    [Interface("org.freedesktop.Avahi.Server")]
-    public interface IAvahiServer
+{
+    public class ZeroconfProvider : IZeroconfProvider
     {
-        uint GetAPIVersion();
+        public void Initialize()
+        {
+            DBusManager.Initialize();
+        }
         
-        ObjectPath ServiceBrowserNew(int @interface, int protocol, 
-            string type, string domain, uint flags);
-    }   
+        public Type ServiceBrowser { 
+            get { return typeof(Mono.Zeroconf.Providers.Avahi.ServiceBrowser); }
+        }
+        
+        public Type RegisterService { 
+            get { return null; }
+        }
+        
+        public Type TxtRecord {
+            get { return null; }
+        }
+    }
 }

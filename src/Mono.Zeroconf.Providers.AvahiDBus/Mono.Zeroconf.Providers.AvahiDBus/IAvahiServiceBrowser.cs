@@ -2,7 +2,7 @@
 // IServiceBrowser.cs
 //
 // Authors:
-//	Aaron Bockover  <abockover@novell.com>
+//    Aaron Bockover  <abockover@novell.com>
 //
 // Copyright (C) 2007 Novell, Inc (http://www.novell.com)
 //
@@ -31,8 +31,8 @@ using NDesk.DBus;
 
 namespace Mono.Zeroconf.Providers.Avahi
 {
-    public delegate void ServiceBrowserItemHandler(int @interface, int protocol, string name, 
-        string type, string domain, uint flags);
+    public delegate void ServiceBrowserItemHandler(int @interface, Protocol protocol, string name, 
+        string type, string domain, LookupResultFlags flags);
 
     public delegate void ServiceBrowserHandler();
 
@@ -47,4 +47,17 @@ namespace Mono.Zeroconf.Providers.Avahi
         
         void Free();
     }   
+    
+    [Interface ("org.freedesktop.Avahi.ServiceResolver")]
+    public interface IAvahiServiceResolver
+    {
+        event ServiceResolverFoundHandler Found;
+        event ServiceResolverErrorHandler Failure;
+    }
+    
+    public delegate void ServiceResolverErrorHandler (string error);
+    
+    public delegate void ServiceResolverFoundHandler (int @interface, Protocol protocol, string name, 
+                string type, string domain, string host, Protocol aprotocol, string address, 
+                ushort port, byte [][] txt, LookupResultFlags flags);
 }

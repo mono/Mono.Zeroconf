@@ -1,3 +1,10 @@
+2008-06-25  Aaron Bockover  <abock@gnome.org>
+
+	This commit integrates AvahiDBus provider into the build, cleans up the
+	DBus iteration and starts to implement the DBus stuff; not working, and 
+	the avahi-sharp provider is disabled in the build for now. Do not use
+	this revision.
+
 2008-04-02  Aaron Bockover  <abockover@novell.com>
 
 	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:

@@ -77,6 +77,7 @@ src/Mono.Zeroconf/Makefile
 src/Mono.Zeroconf.Providers.Bonjour/Makefile
 src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour.dll.config
 src/Mono.Zeroconf.Providers.Avahi/Makefile
+src/Mono.Zeroconf.Providers.AvahiDBus/Makefile
 src/MZClient/Makefile
 src/MZClient/mzclient
 docs/Makefile

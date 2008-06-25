@@ -101,7 +101,8 @@ namespace Mono.Zeroconf.Providers
                                 try {
                                     provider.Initialize();
                                     providers_list.Add(provider);
-                                } catch {
+                                } catch (Exception e) {
+                                    Console.WriteLine (e);
                                 }
                             }
                         }

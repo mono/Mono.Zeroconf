@@ -1,10 +1,10 @@
 //
-// ZeroconfProvider.cs
+// IServer.cs
 //
 // Authors:
-//	Aaron Bockover  <abockover@novell.com>
+//    Aaron Bockover  <abockover@novell.com>
 //
-// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2007 Novell, Inc (http://www.novell.com)
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -27,29 +27,45 @@
 //
 
 using System;
-using System.Collections;
-
-[assembly:Mono.Zeroconf.Providers.ZeroconfProvider(typeof(Mono.Zeroconf.Providers.Avahi.ZeroconfProvider))]
+using NDesk.DBus;
 
 namespace Mono.Zeroconf.Providers.Avahi
-{
-    public class ZeroconfProvider : IZeroconfProvider
-    {
-        public void Initialize()
-        {
-            DBusManager.Initialize();
-        }
-        
-        public Type ServiceBrowser { 
-            get { return typeof(Mono.Zeroconf.Providers.Avahi.ServiceBrowser); }
-        }
-        
-        public Type RegisterService { 
-            get { return null; }
-        }
-        
-        public Type TxtRecord {
-            get { return null; }
-        }
+{ 
+
+    public enum Protocol : int {
+        Unspecified = -1,
+        IPv4 = 0,
+        IPv6 = 1
     }
+    
+    [Flags]
+    public enum LookupFlags : uint {
+        None = 0,
+        UseWideArea = 1,
+        UseMulticast = 2,
+        NoTxt = 4,
+        NoAddress = 8
+    }
+    
+    [Flags]
+    public enum LookupResultFlags : uint {
+        None = 0,
+        Cached = 1,
+        WideArea = 2,
+        Multicast = 4,
+        Local = 8,
+        OurOwn = 16,
+    }
+    
+    [Interface("org.freedesktop.Avahi.Server")]
+    public interface IAvahiServer
+    {
+        uint GetAPIVersion ();
+        
+        ObjectPath ServiceBrowserNew (int @interface, Protocol protocol, 
+            string type, string domain, LookupFlags flags);
+            
+        ObjectPath ServiceResolverNew (int @interface, Protocol protocol, string name, 
+            string type, string dmain, Protocol aprotocol, LookupFlags flags);
+    }   
 }
