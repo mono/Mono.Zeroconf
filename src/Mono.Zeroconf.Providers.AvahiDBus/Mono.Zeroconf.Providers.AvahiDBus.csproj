@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EF6ED6D1-D201-42ED-B680-5A77641BEB77}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>Mono.Zeroconf.Providers.AvahiDBus</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Mono.Zeroconf\Mono.Zeroconf.csproj">
+      <Project>{EF6ED6D1-D201-42ED-B680-5A77641BEB77}</Project>
+      <Name>Mono.Zeroconf</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\DBusManager.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\IAvahiServer.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\IAvahiServiceBrowser.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\ServiceBrowser.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\ZeroconfProvider.cs" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <MonoDevelop>
+      <Properties>
+        <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="true" RelativeMakefileName="Makefile.am" IsAutotoolsProject="true" RelativeConfigureInPath="../..">
+          <BuildFilesVar Sync="true" Name="MONO_ZEROCONF_PROVIDERS_AVAHI_SRC" />
+          <DeployFilesVar />
+          <ResourcesVar />
+          <OthersVar />
+          <GacRefVar />
+          <AsmRefVar />
+          <ProjectRefVar />
+        </MonoDevelop.Autotools.MakefileInfo>
+      </Properties>
+    </MonoDevelop>
+  </ProjectExtensions>
+</Project>
