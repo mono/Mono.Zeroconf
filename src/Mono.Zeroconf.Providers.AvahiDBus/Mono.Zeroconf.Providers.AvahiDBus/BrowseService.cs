@@ -83,8 +83,9 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
                     throw new InvalidOperationException ("The service is already running a resolve operation");
                 }
                 
-                ObjectPath path = DBusManager.Server.ServiceResolverNew (AvahiInterface, AvahiProtocol, Name, 
-                    RegType, ReplyDomain, AvahiProtocol, LookupFlags.None);
+                ObjectPath path = DBusManager.Server.ServiceResolverNew (AvahiInterface, AvahiProtocol, 
+                    Name ?? String.Empty, RegType ?? String.Empty, ReplyDomain ?? String.Empty, 
+                    AvahiProtocol, LookupFlags.None);
                     
                 resolver = DBusManager.GetObject<IAvahiServiceResolver> (path);
             }

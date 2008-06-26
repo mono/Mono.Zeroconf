@@ -1,5 +1,14 @@
 2008-06-26  Aaron Bockover  <abock@gnome.org>
 
+	* src/Mono.Zeroconf/Mono.Zeroconf/ServiceBrowser.cs: Set the domain to 
+	local if null is passed
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ServiceBrowser.cs:
+	Ensure null is never passed over DBus
+
+2008-06-26  Aaron Bockover  <abock@gnome.org>
+
 	* configure.ac: Fix AVAHI_LIBS to be relevant for the dbus provider
 
 	* src/Mono.Zeroconf.Providers.AvahiDBus/NDesk.DBus: Imported and fixed

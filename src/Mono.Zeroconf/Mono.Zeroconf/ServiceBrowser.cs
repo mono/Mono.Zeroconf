@@ -48,12 +48,12 @@ namespace Mono.Zeroconf
         
         public void Browse (uint interfaceIndex, AddressProtocol addressProtocol, string regtype, string domain)
         {
-            browser.Browse (interfaceIndex, addressProtocol, regtype, domain);
+            browser.Browse (interfaceIndex, addressProtocol, regtype, domain ?? "local");
         }
         
         public void Browse (uint interfaceIndex, string regtype, string domain)
         {
-            browser.Browse (interfaceIndex, AddressProtocol.Any, regtype, domain);
+            Browse (interfaceIndex, AddressProtocol.Any, regtype, domain);
         }
         
         public void Browse (AddressProtocol addressProtocol, string regtype, string domain)

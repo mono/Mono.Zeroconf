@@ -70,7 +70,8 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
                 ObjectPath object_path = DBusManager.Server.ServiceBrowserNew (
                     AvahiUtils.FromMzcInterface (interfaceIndex), 
                     AvahiUtils.FromMzcProtocol (addressProtocol), 
-                    regtype, domain, LookupFlags.None);
+                    regtype ?? String.Empty, domain ?? String.Empty, 
+                    LookupFlags.None);
                     
                 service_browser = DBusManager.GetObject<IAvahiServiceBrowser> (object_path);
             }
