@@ -62,6 +62,8 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
     
         public void Browse (uint interfaceIndex, AddressProtocol addressProtocol, string regtype, string domain)
         {
+            DBusManager.Bus.TrapSignals ();
+            
             lock (this) {
                 Dispose ();
                 
@@ -75,6 +77,8 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
             
             service_browser.ItemNew += OnItemNew;
             service_browser.ItemRemove += OnItemRemove;
+            
+            DBusManager.Bus.UntrapSignals ();
         }
         
         protected virtual void OnServiceAdded (BrowseService service)

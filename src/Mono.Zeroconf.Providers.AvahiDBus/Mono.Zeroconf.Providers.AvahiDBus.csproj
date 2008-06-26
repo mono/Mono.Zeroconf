@@ -42,6 +42,34 @@
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\Service.cs" />
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\BrowseService.cs" />
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\TxtRecord.cs" />
+    <Compile Include="NDesk.DBus\Address.cs" />
+    <Compile Include="NDesk.DBus\Authentication.cs" />
+    <Compile Include="NDesk.DBus\Bus.cs" />
+    <Compile Include="NDesk.DBus\BusObject.cs" />
+    <Compile Include="NDesk.DBus\Connection.cs" />
+    <Compile Include="NDesk.DBus\DBus.cs" />
+    <Compile Include="NDesk.DBus\DProxy.cs" />
+    <Compile Include="NDesk.DBus\ExportObject.cs" />
+    <Compile Include="NDesk.DBus\Introspection.cs" />
+    <Compile Include="NDesk.DBus\IntrospectionSchema.cs" />
+    <Compile Include="NDesk.DBus\Mapper.cs" />
+    <Compile Include="NDesk.DBus\MatchRule.cs" />
+    <Compile Include="NDesk.DBus\Message.cs" />
+    <Compile Include="NDesk.DBus\MessageFilter.cs" />
+    <Compile Include="NDesk.DBus\MessageReader.cs" />
+    <Compile Include="NDesk.DBus\MessageWriter.cs" />
+    <Compile Include="NDesk.DBus\PendingCall.cs" />
+    <Compile Include="NDesk.DBus\Protocol.cs" />
+    <Compile Include="NDesk.DBus\Server.cs" />
+    <Compile Include="NDesk.DBus\Signature.cs" />
+    <Compile Include="NDesk.DBus\SocketTransport.cs" />
+    <Compile Include="NDesk.DBus\Transport.cs" />
+    <Compile Include="NDesk.DBus\TypeDefiner.cs" />
+    <Compile Include="NDesk.DBus\TypeImplementer.cs" />
+    <Compile Include="NDesk.DBus\UnixMonoTransport.cs" />
+    <Compile Include="NDesk.DBus\UnixNativeTransport.cs" />
+    <Compile Include="NDesk.DBus\UnixTransport.cs" />
+    <Compile Include="NDesk.DBus\Wrapper.cs" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

@@ -1,3 +1,22 @@
+2008-06-26  Aaron Bockover  <abock@gnome.org>
+
+	* configure.ac: Fix AVAHI_LIBS to be relevant for the dbus provider
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/NDesk.DBus: Imported and fixed
+	managed DBus so it actually works with the horrible design of Avahi's
+	DBus API; this bundle is absolutely necessary as it contains a workaround
+	in Connection.cs to defer signal messages until they are manually asked
+	to be released; this allows managed signal handlers to be connected after
+	the message on the wire has come through and sent out at later time; a
+	system version of managed DBus /will not work at all/
+	
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ServiceBrowser.cs:
+	Call TrapSignals and UntrapSignals on the Bus
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/DBusManager.cs:
+	Expose the Bus
+
 2008-06-25  Aaron Bockover  <abock@gnome.org>
 
 	* configure.ac:

@@ -43,7 +43,7 @@ AC_ARG_ENABLE(avahi, AC_HELP_STRING([--disable-avahi],
 	[Do not build with Avahi support]), , enable_avahi=yes)
 
 if test "x$enable_avahi" = "xyes"; then
-	PKG_CHECK_MODULES(AVAHI, avahi-sharp >= 0.6.0)
+	AVAHI_LIBS="-r:Mono.Posix"
 	AC_SUBST(AVAHI_LIBS)
 	AM_CONDITIONAL(BUILD_AVAHI, true)
 else

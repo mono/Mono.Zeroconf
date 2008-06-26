@@ -42,6 +42,9 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         private static object thread_wait = new object ();
         private static bool initialized;
         private static Bus bus;
+        public static Bus Bus {
+            get { return bus; }
+        }
 
         private static IAvahiServer server;
         public static IAvahiServer Server {

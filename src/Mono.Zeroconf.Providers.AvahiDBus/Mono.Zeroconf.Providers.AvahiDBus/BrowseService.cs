@@ -76,6 +76,8 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
                     " Perhaps this service was removed?");
             }
             
+            DBusManager.Bus.TrapSignals ();
+            
             lock (this) {
                 if (resolver != null) {
                     throw new InvalidOperationException ("The service is already running a resolve operation");
@@ -89,6 +91,8 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
             
             resolver.Failure += OnResolveFailure;
             resolver.Found += OnResolveFound;
+            
+            DBusManager.Bus.UntrapSignals ();
         }
         
         protected virtual void OnResolved ()
