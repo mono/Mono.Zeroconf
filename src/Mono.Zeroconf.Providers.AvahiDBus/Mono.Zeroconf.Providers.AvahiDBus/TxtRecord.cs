@@ -100,12 +100,12 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
             return records[index] as TxtRecordItem;
         }
 
-        internal byte [][] Render ()
+        internal static byte [][] Render (ITxtRecord record)
         {
-            byte [][] items = new byte[records.Count][];
+            byte [][] items = new byte[record.Count][];
             int index = 0;
             
-            foreach (TxtRecordItem item in records) {
+            foreach (TxtRecordItem item in record) {
                 string txt = String.Format ("{0}={1}", item.Key, item.ValueString);
                 items[index++] = encoding.GetBytes (txt);
             }

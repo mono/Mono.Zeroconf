@@ -40,6 +40,10 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         private Protocol aprotocol;
         private ITxtRecord txt_record;
         
+        public Service ()
+        {
+        }
+        
         public Service (string name, string regtype, string replyDomain, int @interface, Protocol aprotocol)
         {
             this.name = name;

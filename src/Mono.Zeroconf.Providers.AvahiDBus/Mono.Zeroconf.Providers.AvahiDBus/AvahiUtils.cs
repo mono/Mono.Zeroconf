@@ -77,5 +77,14 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
                 default: return (uint)@interface + 1;
             }
         }
+        
+        public static ServiceErrorCode ErrorCodeToServiceError (ErrorCode error)
+        {
+            switch (error) {
+                case ErrorCode.Ok: return ServiceErrorCode.None;
+                case ErrorCode.Collision: return ServiceErrorCode.NameConflict;
+                default: return ServiceErrorCode.Unknown;
+            }
+        }
     }
 }

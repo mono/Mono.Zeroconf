@@ -1,10 +1,10 @@
 //
-// IAvahiServer.cs
+// IAvahiEntryGroup.cs
 //
 // Author:
 //   Aaron Bockover <abockover@novell.com>
 //
-// Copyright (C) 2007-2008 Novell, Inc.
+// Copyright (C) 2008 Novell, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -13,10 +13,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -31,17 +31,31 @@ using NDesk.DBus;
 
 namespace Mono.Zeroconf.Providers.AvahiDBus
 {
-    [Interface ("org.freedesktop.Avahi.Server")]
-    public interface IAvahiServer
+    public delegate void EntryGroupStateChangedHandler (EntryGroupState state, string error);
+
+    [Interface ("org.freedesktop.Avahi.EntryGroup")]
+    public interface IAvahiEntryGroup
     {
-        uint GetAPIVersion ();
+        event EntryGroupStateChangedHandler StateChanged;
         
-        ObjectPath ServiceBrowserNew (int @interface, Protocol protocol, 
-            string type, string domain, LookupFlags flags);
+        void Free ();
+        void Commit ();
+        void Reset ();
+        EntryGroupState GetState ();
+        bool IsEmpty ();
+        
+        void AddService (int @interface, Protocol protocol, PublishFlags flags, string name, 
+            string type, string domain, string host, ushort port, byte [][] txt);
+        
+        void AddServiceSubtype (int @interface, Protocol protocol, PublishFlags flags, 
+            string name, string type, string domain, string subtype);
+        
+        void UpdateServiceTxt (int @interface, Protocol protocol, PublishFlags flags, 
+            string name, string type, string domain, byte [][] txt);
             
-        ObjectPath ServiceResolverNew (int @interface, Protocol protocol, string name, 
-            string type, string dmain, Protocol aprotocol, LookupFlags flags);
-            
-        ObjectPath EntryGroupNew ();
-    }   
+        void AddAddress (int @interface, Protocol protocol, PublishFlags flags, string name, string address);
+        
+        void AddRecord (int @interface, Protocol protocol, PublishFlags flags, string name, 
+            ushort clazz, ushort type, uint ttl, byte [] rdata);
+    }
 }

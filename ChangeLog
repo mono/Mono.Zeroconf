@@ -1,5 +1,34 @@
 2008-06-26  Aaron Bockover  <abock@gnome.org>
 
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/TxtRecord.cs:
+	Make the Render method static since we'll never get real reference handle
+	to the inner record object
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/EntryGroupState.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/PublishFlags.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ErrorCode.cs:
+	Some new enums
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServer.cs:
+	Add the EntryGroup factory method
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiEntryGroup.cs:
+	Define the EntryGroup interface
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/Service.cs:
+	Provide a default constructor
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ZeroconfProvider.cs:
+	Implement the RegisterService and TxtRecord types
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/RegisterService.cs:
+	Implement RegisterService, but it doesn't seem to work yet
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/AvahiUtils.cs:
+	Some more utilities, yay
+
+2008-06-26  Aaron Bockover  <abock@gnome.org>
+
 	* src/Mono.Zeroconf/Mono.Zeroconf/ServiceBrowser.cs: Set the domain to 
 	local if null is passed
 

@@ -5,12 +5,17 @@ MONO_ZEROCONF_PROVIDERS_AVAHI_SRC =  \
 	Mono.Zeroconf.Providers.AvahiDBus/AvahiUtils.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/BrowseService.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/DBusManager.cs \
+	Mono.Zeroconf.Providers.AvahiDBus/EntryGroupState.cs \
+	Mono.Zeroconf.Providers.AvahiDBus/ErrorCode.cs \
+	Mono.Zeroconf.Providers.AvahiDBus/IAvahiEntryGroup.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/IAvahiServer.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/IAvahiServiceBrowser.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/IAvahiServiceResolver.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/LookupFlags.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/LookupResultFlags.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/Protocol.cs \
+	Mono.Zeroconf.Providers.AvahiDBus/PublishFlags.cs \
+	Mono.Zeroconf.Providers.AvahiDBus/RegisterService.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/Service.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/ServiceBrowser.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/TxtRecord.cs \

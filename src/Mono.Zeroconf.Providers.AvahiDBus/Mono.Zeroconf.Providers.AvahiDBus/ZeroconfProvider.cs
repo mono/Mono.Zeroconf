@@ -45,11 +45,11 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         }
         
         public Type RegisterService { 
-            get { return null; }
+            get { return typeof (Mono.Zeroconf.Providers.AvahiDBus.RegisterService); }
         }
         
         public Type TxtRecord {
-            get { return null; }
+            get { return typeof (Mono.Zeroconf.Providers.AvahiDBus.TxtRecord); }
         }
     }
 }

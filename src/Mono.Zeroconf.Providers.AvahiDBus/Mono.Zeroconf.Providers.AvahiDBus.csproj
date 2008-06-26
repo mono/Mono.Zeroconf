@@ -70,6 +70,11 @@
     <Compile Include="NDesk.DBus\UnixNativeTransport.cs" />
     <Compile Include="NDesk.DBus\UnixTransport.cs" />
     <Compile Include="NDesk.DBus\Wrapper.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\RegisterService.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\IAvahiEntryGroup.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\PublishFlags.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\EntryGroupState.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\ErrorCode.cs" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
