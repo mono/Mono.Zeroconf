@@ -28,6 +28,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Mono.Zeroconf.Providers.Bonjour
@@ -46,14 +47,15 @@ namespace Mono.Zeroconf.Providers.Bonjour
         }
     }
     
-    public class ServiceBrowser : IServiceBrowser, IEnumerable, IDisposable
+    public class ServiceBrowser : IServiceBrowser, IDisposable
     {
         private uint interface_index;
+        private AddressProtocol address_protocol;
         private string regtype;
         private string domain;
         
         private ServiceRef sd_ref = ServiceRef.Zero;
-        private Hashtable service_table = new Hashtable();
+        private Dictionary<string, IResolvableService> service_table = new Dictionary<string, IResolvableService> ();
         
         private Native.DNSServiceBrowseReply browse_reply_handler;
         
@@ -67,30 +69,16 @@ namespace Mono.Zeroconf.Providers.Bonjour
             browse_reply_handler = new Native.DNSServiceBrowseReply(OnBrowseReply);
         }
         
-        public ServiceBrowser(string regtype) : this()
+        public void Browse (uint interfaceIndex, AddressProtocol addressProtocol, string regtype, string domain)
         {
-            Configure(regtype);
-        }
-        
-        public ServiceBrowser(uint interfaceIndex, string regtype, string domain) : this()
-        {
-            Configure(interfaceIndex, regtype, domain);
-        }
-        
-        public void Browse(string regtype, string domain)
-        {
-            Configure(0, regtype, domain);
+            Configure(interfaceIndex, addressProtocol, regtype, domain);
             StartAsync();
         }
-        
-        public void Configure(string regtype)
-        {
-            Configure(0, regtype, null);
-        }
-        
-        public void Configure(uint interfaceIndex, string regtype, string domain)
+
+        public void Configure(uint interfaceIndex, AddressProtocol addressProtocol, string regtype, string domain)
         {
             this.interface_index = interfaceIndex;
+            this.address_protocol = addressProtocol;
             this.regtype = regtype;
             this.domain = domain;
             
@@ -165,9 +153,18 @@ namespace Mono.Zeroconf.Providers.Bonjour
             Stop();
         }
         
-        public IEnumerator GetEnumerator()
+        public IEnumerator<IResolvableService> GetEnumerator ()
         {
-            return service_table.Values.GetEnumerator();
+            lock (this) {
+                foreach (IResolvableService service in service_table.Values) {
+                    yield return service;
+                }
+            }
+        }
+        
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator ()
+        {
+            return GetEnumerator ();
         }
         
         private void OnBrowseReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex, ServiceError errorCode, 
@@ -179,22 +176,31 @@ namespace Mono.Zeroconf.Providers.Bonjour
             service.RegType = regtype;
             service.ReplyDomain = replyDomain;
             service.InterfaceIndex = interfaceIndex;
+            service.AddressProtocol = address_protocol;
             
             ServiceBrowseEventArgs args = new ServiceBrowseEventArgs(
                 service, (flags & ServiceFlags.MoreComing) != 0);
             
             if((flags & ServiceFlags.Add) != 0) {
-                lock(service_table.SyncRoot) {
-                    service_table[serviceName] = service;
+                lock (service_table) {
+                    if (service_table.ContainsKey (serviceName)) {
+                        service_table[serviceName] = service;
+                    } else {
+                        service_table.Add (serviceName, service);
+                    }
                 }
+                
                 ServiceBrowseEventHandler handler = ServiceAdded;
                 if(handler != null) {
                     handler(this, args);
                 }
             } else {
-                lock(service_table.SyncRoot) {
-                    service_table.Remove(serviceName);
+                lock (service_table) {
+                    if (service_table.ContainsKey (serviceName)) {
+                        service_table.Remove (serviceName);
+                    }
                 }
+                
                 ServiceBrowseEventHandler handler = ServiceRemoved;
                 if(handler != null) {
                     handler(this, args);

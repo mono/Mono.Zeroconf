@@ -27,6 +27,7 @@
 //
 
 using System;
+using System.Collections.Generic;
 using Mono.Zeroconf.Providers;
 
 namespace Mono.Zeroconf
@@ -35,20 +36,44 @@ namespace Mono.Zeroconf
     {
         private IServiceBrowser browser;
         
-        public ServiceBrowser()
+        public ServiceBrowser ()
         {
-            browser = (IServiceBrowser)Activator.CreateInstance(
-                ProviderFactory.SelectedProvider.ServiceBrowser);
+            browser = (IServiceBrowser)Activator.CreateInstance (ProviderFactory.SelectedProvider.ServiceBrowser);
         }
         
-        public void Dispose()
+        public void Dispose ()
         {
-            browser.Dispose();
+            browser.Dispose ();
         }
         
-        public void Browse(string regtype, string domain)
+        public void Browse (uint interfaceIndex, AddressProtocol addressProtocol, string regtype, string domain)
         {
-            browser.Browse(regtype, domain);
+            browser.Browse (interfaceIndex, addressProtocol, regtype, domain);
+        }
+        
+        public void Browse (uint interfaceIndex, string regtype, string domain)
+        {
+            browser.Browse (interfaceIndex, AddressProtocol.Any, regtype, domain);
+        }
+        
+        public void Browse (AddressProtocol addressProtocol, string regtype, string domain)
+        {
+            Browse (0, addressProtocol, regtype, domain);
+        }
+        
+        public void Browse (string regtype, string domain)
+        {
+            Browse (0, AddressProtocol.Any, regtype, domain);
+        }
+        
+        public IEnumerator<IResolvableService> GetEnumerator ()
+        {
+            return browser.GetEnumerator ();
+        }
+        
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator ()
+        {
+            return browser.GetEnumerator ();
         }
         
         public event ServiceBrowseEventHandler ServiceAdded {

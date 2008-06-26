@@ -2,6 +2,7 @@ ASSEMBLY_NAME = Mono.Zeroconf
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 
 MONO_ZEROCONF_SRC = \
+	Mono.Zeroconf/AddressProtocol.cs \
 	Mono.Zeroconf/IRegisterService.cs \
 	Mono.Zeroconf/IResolvableService.cs \
 	Mono.Zeroconf/IServiceBrowser.cs \

@@ -27,14 +27,15 @@
 //
 
 using System;
+using System.Collections.Generic;
 
 namespace Mono.Zeroconf
 {
-    public interface IServiceBrowser : IDisposable
+    public interface IServiceBrowser : IEnumerable<IResolvableService>, IDisposable
     {
         event ServiceBrowseEventHandler ServiceAdded;
         event ServiceBrowseEventHandler ServiceRemoved;
         
-        void Browse(string domain, string type);
+        void Browse (uint interfaceIndex, AddressProtocol addressProtocol, string regtype, string domain);
     }
 }

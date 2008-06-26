@@ -6,8 +6,9 @@
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{EF6ED6D1-D201-42ED-B680-5A77641BEB77}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AssemblyName>Mono.Zeroconf.Providers.AvahiDBus</AssemblyName>
+    <UseParentDirectoryAsNamespace>true</UseParentDirectoryAsNamespace>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,10 +34,19 @@
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\IAvahiServiceBrowser.cs" />
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\ServiceBrowser.cs" />
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\ZeroconfProvider.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\Protocol.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\LookupFlags.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\LookupResultFlags.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\IAvahiServiceResolver.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\AvahiUtils.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\Service.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\BrowseService.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\TxtRecord.cs" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>
       <Properties>
+        <Deployment.LinuxDeployData generateScript="false" />
         <MonoDevelop.Autotools.MakefileInfo IntegrationEnabled="true" RelativeMakefileName="Makefile.am" IsAutotoolsProject="true" RelativeConfigureInPath="../..">
           <BuildFilesVar Sync="true" Name="MONO_ZEROCONF_PROVIDERS_AVAHI_SRC" />
           <DeployFilesVar />

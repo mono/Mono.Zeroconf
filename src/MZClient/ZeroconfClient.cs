@@ -35,7 +35,11 @@ using Mono.Zeroconf;
 public class MZClient 
 {
     private static bool resolve_shares = false; 
+    private static uint @interface = 0;
+    private static AddressProtocol address_protocol = AddressProtocol.Any;
+    private static string domain = "local";
     private static string app_name = "mzclient";
+    private static bool verbose = false;
 
     public static int Main(string [] args)
     {
@@ -61,28 +65,67 @@ public class MZClient
                 case "--publish":
                     services.Add(args[++i]);
                     break;
+                case "-i":
+                case "--interface":
+                    if (!UInt32.TryParse (args[++i], out @interface)) {
+                        Console.Error.WriteLine ("Invalid interface index, '{0}'", args[i]);
+                        show_help = true;
+                    }
+                    break;
+                case "-a":
+                case "--aprotocol":
+                    string proto = args[++i].ToLower ().Trim ();
+                    switch (proto) {
+                        case "ipv4": case "4": address_protocol = AddressProtocol.IPv4; break;
+                        case "ipv6": case "6": address_protocol = AddressProtocol.IPv6; break;
+                        case "any": case "all": address_protocol = AddressProtocol.Any; break;
+                        default:
+                            Console.Error.WriteLine ("Invalid IP Address Protocol, '{0}'", args[i]);
+                            show_help = true;
+                            break;
+                    }
+                    break;
+                case "-d":
+                case "--domain":
+                    domain = args[++i];
+                    break;
                 case "-h":
                 case "--help":
                     show_help = true;
+                    break;
+                case "-v":
+                case "--verbose":
+                    verbose = true;
                     break;
             }
         }
         
         if(show_help) {
             Console.WriteLine("Usage: {0} [-t type] [--resolve] [--publish \"description\"]", app_name);
-            Console.WriteLine("    -h|--help     shows this help");
-            Console.WriteLine("    -t|--type     uses 'type' as the service type");
-            Console.WriteLine("                  (default is '_workstation._tcp')");
-            Console.WriteLine("    -r|--resolve  resolve found services to hosts");
-            Console.WriteLine("    -p|--publish  publish a service of 'description'");
-            Console.WriteLine("");
+            Console.WriteLine();
+            Console.WriteLine("    -h|--help       shows this help");
+            Console.WriteLine("    -v|--verbose    print verbose details of what's happening");
+            Console.WriteLine("    -t|--type       uses 'type' as the service type");
+            Console.WriteLine("                    (default is '_workstation._tcp')");
+            Console.WriteLine("    -r|--resolve    resolve found services to hosts");
+            Console.WriteLine("    -d|--domain     which domain to broadcast/listen on");
+            Console.WriteLine("    -i|--interface  which network interface index to listen");
+            Console.WriteLine("                    on (default is '0', meaning 'all')");
+            Console.WriteLine("    -a|--aprotocol  which address protocol to use (Any, IPv4, IPv6)");
+            Console.WriteLine("    -p|--publish    publish a service of 'description'");
+            Console.WriteLine();
+            Console.WriteLine("The -d, -i and -a options are optional. By default {0} will listen", app_name);
+            Console.WriteLine("on all network interfaces ('0') on the 'local' domain, and will resolve ");
+            Console.WriteLine("all address types, IPv4 and IPv6, as available.");
+            Console.WriteLine();
             Console.WriteLine("The service description for publishing has the following syntax.");
             Console.WriteLine("The TXT record is optional.\n");
             Console.WriteLine("    <type> <port> <name> TXT [ <key>='<value>', ... ]\n");
             Console.WriteLine("For example:\n");
             Console.WriteLine("    -p \"_http._tcp 80 Simple Web Server\"");
-            Console.WriteLine("    -p \"_daap._tcp 3689 Aaron's Music TXT [ Password='false', Machine Name='Aaron's Box', txtvers='1' ]\"");
-            Console.WriteLine("");
+            Console.WriteLine("    -p \"_daap._tcp 3689 Aaron's Music TXT [ Password='false', \\");
+            Console.WriteLine("        Machine Name='Aaron\\'s Box', txtvers='1' ]\"");
+            Console.WriteLine();
             return 1;
         }
         
@@ -91,6 +134,16 @@ public class MZClient
                 RegisterService(service_description);
             }
         } else {
+            if (verbose) {
+                Console.WriteLine ("Creating a ServiceBrowser with the following settings:");
+                Console.WriteLine ("  Interface         = {0}", @interface == 0 ? "0 (All)" : @interface.ToString ());
+                Console.WriteLine ("  Address Protocol  = {0}", address_protocol);
+                Console.WriteLine ("  Domain            = {0}", domain);
+                Console.WriteLine ("  Registration Type = {0}", type);
+                Console.WriteLine ("  Resolve Shares    = {0}", resolve_shares);
+                Console.WriteLine ();
+            }
+        
             Console.WriteLine("Hit ^C when you're bored waiting for responses.");
             Console.WriteLine();
             
@@ -98,7 +151,7 @@ public class MZClient
             ServiceBrowser browser = new ServiceBrowser();
             browser.ServiceAdded += OnServiceAdded;
             browser.ServiceRemoved += OnServiceRemoved;
-            browser.Browse(type, "local");
+            browser.Browse (@interface, address_protocol, type, domain);
         }
        
         while(true) {
@@ -205,8 +258,10 @@ public class MZClient
     private static void OnServiceResolved(object o, ServiceResolvedEventArgs args)
     {
         IResolvableService service = o as IResolvableService;
-        Console.Write("*** Resolved name = '{0}', host = '{1}', port = '{2}', interface = '{3}'", 
-            service.FullName, service.HostEntry.AddressList[0], service.Port, service.NetworkInterface);
+        Console.Write ("*** Resolved name = '{0}', host ip = '{1}', hostname = {2}, port = '{3}', " + 
+            "interface = '{4}', address type = '{5}'", 
+            service.FullName, service.HostEntry.AddressList[0], service.HostEntry.HostName, service.Port, 
+            service.NetworkInterface, service.AddressProtocol);
         
         ITxtRecord record = service.TxtRecord;
         int record_count = record != null ? record.Count : 0;

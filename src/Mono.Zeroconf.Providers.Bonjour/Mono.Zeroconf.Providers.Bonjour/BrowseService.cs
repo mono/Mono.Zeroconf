@@ -120,14 +120,28 @@ namespace Mono.Zeroconf.Providers.Bonjour
             
             // Run an A query to resolve the IP address
             ServiceRef sd_ref;
-            ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, interfaceIndex,
-                hosttarget, ServiceType.A, ServiceClass.IN, query_record_reply_handler, IntPtr.Zero);
+            
+            if (AddressProtocol == AddressProtocol.Any || AddressProtocol == AddressProtocol.IPv4) {
+                ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, interfaceIndex,
+                    hosttarget, ServiceType.A, ServiceClass.IN, query_record_reply_handler, IntPtr.Zero);
                 
-            if(error != ServiceError.NoError) {
-                throw new ServiceErrorException(error);
+                if(error != ServiceError.NoError) {
+                    throw new ServiceErrorException(error);
+                }
+            
+                sd_ref.Process();
             }
             
-            sd_ref.Process();
+            if (AddressProtocol == AddressProtocol.Any || AddressProtocol == AddressProtocol.IPv6) {
+                ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, interfaceIndex,
+                    hosttarget, ServiceType.A6, ServiceClass.IN, query_record_reply_handler, IntPtr.Zero);
+                
+                if(error != ServiceError.NoError) {
+                    throw new ServiceErrorException(error);
+                }
+            
+                sd_ref.Process();
+            }
         }
      
         private void OnQueryRecordReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,

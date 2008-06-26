@@ -1,10 +1,10 @@
 //
 // DBusManager.cs
 //
-// Authors:
-//    Aaron Bockover  <abockover@novell.com>
+// Author:
+//   Aaron Bockover <abockover@novell.com>
 //
-// Copyright (C) 2007-2008 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2007-2008 Novell, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -33,7 +33,7 @@ using System.Threading;
 
 using NDesk.DBus;
 
-namespace Mono.Zeroconf.Providers.Avahi
+namespace Mono.Zeroconf.Providers.AvahiDBus
 {
     internal static class DBusManager
     {

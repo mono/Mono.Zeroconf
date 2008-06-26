@@ -44,6 +44,7 @@
     <Compile Include="Mono.Zeroconf\ServiceResolvedEventHandler.cs" />
     <Compile Include="Mono.Zeroconf\TxtRecord.cs" />
     <Compile Include="Mono.Zeroconf\TxtRecordItem.cs" />
+    <Compile Include="Mono.Zeroconf\AddressProtocol.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

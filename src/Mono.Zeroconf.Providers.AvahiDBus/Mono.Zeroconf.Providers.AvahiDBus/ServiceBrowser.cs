@@ -1,10 +1,10 @@
 //
 // ServiceBrowser.cs
 //
-// Authors:
-//    Aaron Bockover  <abockover@novell.com>
+// Author:
+//   Aaron Bockover <abockover@novell.com>
 //
-// Copyright (C) 2006-2007 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2007-2008 Novell, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -13,10 +13,10 @@
 // distribute, sublicense, and/or sell copies of the Software, and to
 // permit persons to whom the Software is furnished to do so, subject to
 // the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be
 // included in all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
 // EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
 // MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
@@ -27,11 +27,12 @@
 //
 
 using System;
+using System.Collections.Generic;
 using Mono.Zeroconf;
 
 using NDesk.DBus;
 
-namespace Mono.Zeroconf.Providers.Avahi
+namespace Mono.Zeroconf.Providers.AvahiDBus
 {
     public class ServiceBrowser : IServiceBrowser
     {
@@ -39,58 +40,104 @@ namespace Mono.Zeroconf.Providers.Avahi
         public event ServiceBrowseEventHandler ServiceRemoved;
     
         private IAvahiServiceBrowser service_browser;
-    
-        public ServiceBrowser()
-        {
-            DBusManager.Initialize ();
-        }
+        private Dictionary<string, BrowseService> services = new Dictionary<string, BrowseService> ();
         
-        public void Dispose()
+        public void Dispose ()
         {
-            if(service_browser != null) {
-                service_browser.ItemNew -= OnItemNew;
-                service_browser.ItemRemove -= OnItemRemove;
-                service_browser.Free();
+            lock (this) {
+                if (service_browser != null) {
+                    service_browser.ItemNew -= OnItemNew;
+                    service_browser.ItemRemove -= OnItemRemove;
+                    service_browser.Free ();
+                }
+                
+                if (services.Count > 0) {
+                    foreach (BrowseService service in services.Values) {
+                        service.Dispose ();
+                    }
+                    services.Clear ();
+                }
             }
         }
     
-        public void Browse(string regtype, string domain)
+        public void Browse (uint interfaceIndex, AddressProtocol addressProtocol, string regtype, string domain)
         {
-            Dispose();
-            
-            ObjectPath path = DBusManager.Server.ServiceBrowserNew (-1, Protocol.IPv4, regtype, domain, LookupFlags.None);
-            service_browser = DBusManager.GetObject<IAvahiServiceBrowser>(path);
+            lock (this) {
+                Dispose ();
                 
+                ObjectPath object_path = DBusManager.Server.ServiceBrowserNew (
+                    AvahiUtils.FromMzcInterface (interfaceIndex), 
+                    AvahiUtils.FromMzcProtocol (addressProtocol), 
+                    regtype, domain, LookupFlags.None);
+                    
+                service_browser = DBusManager.GetObject<IAvahiServiceBrowser> (object_path);
+            }
+            
             service_browser.ItemNew += OnItemNew;
             service_browser.ItemRemove += OnItemRemove;
         }
         
-        private void OnItemNew(int @interface, Protocol protocol, string name, 
-            string type, string domain, LookupResultFlags flags)
+        protected virtual void OnServiceAdded (BrowseService service)
         {
-            Console.WriteLine("NEW ITEM: {0}, {1}, {2}, {3}", name, domain, type, flags);
-            
-            ObjectPath path = DBusManager.Server.ServiceResolverNew (@interface, protocol, name, 
-                type, domain, protocol, LookupFlags.None);
-                
-            IAvahiServiceResolver resolver = DBusManager.GetObject<IAvahiServiceResolver> (path);
-            
-            System.Threading.Thread.Sleep (10);
-                resolver.Failure += delegate (string error) {
-                    Console.WriteLine (error);
-                };
-                
-                resolver.Found += delegate (int rinterface, Protocol rprotocol, string rname, 
-                    string rtype, string rdomain, string host, Protocol aprotocol, string address, 
-                    ushort port, byte [][] txt, LookupResultFlags rflags) {
-                    Console.WriteLine ("{0}, {1}, {2}", rname, host, address);
-                };
+            ServiceBrowseEventHandler handler = ServiceAdded;
+            if (handler != null) {
+                handler (this, new ServiceBrowseEventArgs (service));
+            }
         }
         
-        private void OnItemRemove(int @interface, Protocol protocol, string name, 
-            string type, string domain, LookupResultFlags flags)
+        protected virtual void OnServiceRemoved (BrowseService service)
         {
-            Console.WriteLine("ITEM REMOVED: {0}", name);
+            ServiceBrowseEventHandler handler = ServiceRemoved;
+            if (handler != null) {
+                handler (this, new ServiceBrowseEventArgs (service));
+            }
+        }
+        
+        public IEnumerator<IResolvableService> GetEnumerator ()
+        {
+            lock (this) {
+                foreach (IResolvableService service in services.Values) {
+                    yield return service;
+                }
+            }
+        }
+        
+        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator ()
+        {
+            return GetEnumerator ();
+        }
+        
+        private void OnItemNew (int @interface, Protocol protocol, string name, string type, 
+            string domain, LookupResultFlags flags)
+        {
+            lock (this) {
+                BrowseService service = new BrowseService (name, type, domain, @interface, protocol);
+                
+                if (services.ContainsKey (name)) {
+                    services[name].Dispose ();
+                    services[name] = service;
+                } else {
+                    services.Add (name, service);
+                }
+                
+                OnServiceAdded (service);
+            }
+        }
+        
+        private void OnItemRemove (int @interface, Protocol protocol, string name, string type, 
+            string domain, LookupResultFlags flags)
+        {
+            lock (this) {
+                BrowseService service = new BrowseService (name, type, domain, @interface, protocol);
+                
+                if (services.ContainsKey (name)) {
+                    services[name].Dispose ();
+                    services.Remove (name);
+                }
+                
+                OnServiceRemoved (service);
+                service.Dispose ();
+            }
         }
     }
 }

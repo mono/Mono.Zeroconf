@@ -40,6 +40,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         protected string reply_domain;
         protected string regtype;
         protected uint interface_index;
+        protected AddressProtocol address_protocol;
         
         protected ITxtRecord txt_record;
         protected string fullname;
@@ -82,6 +83,11 @@ namespace Mono.Zeroconf.Providers.Bonjour
             set { interface_index = value; }
         }
 
+        public AddressProtocol AddressProtocol {
+            get { return address_protocol; }
+            set { address_protocol = value; }
+        }
+        
         public string Name {
             get { return name; }
             set { name = value; }
@@ -117,8 +123,8 @@ namespace Mono.Zeroconf.Providers.Bonjour
             get { return hostentry; }
         }
 
-        public int NetworkInterface {
-            get { return (int) interface_index; }
+        public uint NetworkInterface {
+            get { return interface_index; }
         }
         
         public short Port {

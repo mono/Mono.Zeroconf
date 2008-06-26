@@ -1,10 +1,10 @@
 //
-// IServer.cs
+// IAvahiServer.cs
 //
-// Authors:
-//    Aaron Bockover  <abockover@novell.com>
+// Author:
+//   Aaron Bockover <abockover@novell.com>
 //
-// Copyright (C) 2007 Novell, Inc (http://www.novell.com)
+// Copyright (C) 2007-2008 Novell, Inc.
 //
 // Permission is hereby granted, free of charge, to any person obtaining
 // a copy of this software and associated documentation files (the
@@ -29,35 +29,9 @@
 using System;
 using NDesk.DBus;
 
-namespace Mono.Zeroconf.Providers.Avahi
-{ 
-
-    public enum Protocol : int {
-        Unspecified = -1,
-        IPv4 = 0,
-        IPv6 = 1
-    }
-    
-    [Flags]
-    public enum LookupFlags : uint {
-        None = 0,
-        UseWideArea = 1,
-        UseMulticast = 2,
-        NoTxt = 4,
-        NoAddress = 8
-    }
-    
-    [Flags]
-    public enum LookupResultFlags : uint {
-        None = 0,
-        Cached = 1,
-        WideArea = 2,
-        Multicast = 4,
-        Local = 8,
-        OurOwn = 16,
-    }
-    
-    [Interface("org.freedesktop.Avahi.Server")]
+namespace Mono.Zeroconf.Providers.AvahiDBus
+{
+    [Interface ("org.freedesktop.Avahi.Server")]
     public interface IAvahiServer
     {
         uint GetAPIVersion ();

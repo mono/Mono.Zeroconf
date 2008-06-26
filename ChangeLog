@@ -1,5 +1,46 @@
 2008-06-25  Aaron Bockover  <abock@gnome.org>
 
+	* configure.ac:
+	* src/AssemblyInfo.cs: Bumped version
+
+	* src/MZClient/ZeroconfClient.cs: Added more options including support
+	for setting interface, domain, address type, and some verbose stuffs
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/IResolvableService.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/Service.cs:
+	Added AddressProtocol support
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	Added AddressProtocol support and make A6 queries
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/ServiceBrowser.cs:
+	Use some generics internally and implement the new IEnumerable generic
+	requirement and the new extended Browse method
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/ServiceBrowser.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/IServiceBrowser.cs: Implement 
+	IEnumerable<IResolvableService> and extend the Browse method
+
+	* src/Mono.Zeroconf/Mono.Zeroconf/AddressProtocol.cs: New enum to specify
+	what address types to resolve
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus.csproj:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/TxtRecord.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ZeroconfProvider.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/Service.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/Protocol.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/ServiceBrowser.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServiceResolver.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/LookupResultFlags.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServiceBrowser.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/LookupFlags.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/DBusManager.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServer.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/AvahiUtils.cs:
+	Fully implement browse and resolve through the avahi dbus API
+
+2008-06-25  Aaron Bockover  <abock@gnome.org>
+
 	This commit integrates AvahiDBus provider into the build, cleans up the
 	DBus iteration and starts to implement the DBus stuff; not working, and 
 	the avahi-sharp provider is disabled in the build for now. Do not use
