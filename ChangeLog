@@ -1,3 +1,8 @@
+2008-08-27  Brad Taylor  <brad@getcoded.net>
+	
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/TxtRecord.cs:
+	Fix an exception when a key but no value is present for a TxtRecord.
+
 2008-06-26  Aaron Bockover  <abock@gnome.org>
 
 	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/TxtRecord.cs:

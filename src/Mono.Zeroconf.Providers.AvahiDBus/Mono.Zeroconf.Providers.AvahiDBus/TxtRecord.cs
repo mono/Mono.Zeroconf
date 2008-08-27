@@ -52,7 +52,11 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
                 foreach (Match item_match in item_regex.Matches (encoding.GetString (raw_item))) {
                     string item = item_match.Groups[0].Value;
                     string [] split_item = item.Split (new char [] { '=' }, 2);
-                    Add (split_item[0], split_item[1]);
+
+                    if (split_item.Length == 1)
+                        Add (split_item[0], String.Empty);
+                    else 
+                        Add (split_item[0], split_item[1]);
                 }
             }
         }
