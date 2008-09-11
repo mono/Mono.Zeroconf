@@ -2,6 +2,7 @@ SUBDIRS = \
 	Mono.Zeroconf \
 	Mono.Zeroconf.Providers.Bonjour \
 	Mono.Zeroconf.Providers.AvahiDBus \
+	Mono.Zeroconf.Providers.Avahi \
 	MZClient
 
 pkgconfigdir = $(libdir)/pkgconfig

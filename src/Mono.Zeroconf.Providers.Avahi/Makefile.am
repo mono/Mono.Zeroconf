@@ -17,19 +17,19 @@ SOURCES = \
 	$(top_srcdir)/src/AssemblyInfo.cs \
 	$(foreach source,$(SOURCES_PRE),$(srcdir)/$(source))
 
-if BUILD_AVAHI
+#if BUILD_AVAHI
 
-assemblydir = $(libdir)/mono-zeroconf
-assembly_SCRIPTS = $(ASSEMBLY) $(ASSEMBLY).mdb
+#assemblydir = $(libdir)/mono-zeroconf
+#assembly_SCRIPTS = $(ASSEMBLY) $(ASSEMBLY).mdb
 
-all: $(ASSEMBLY)
+#all: $(ASSEMBLY)
 
-$(ASSEMBLY): $(top_builddir)/src/Mono.Zeroconf/Mono.Zeroconf.dll $(SOURCES)
-	$(MCS) -debug -target:library -out:$@ -r:$< $(AVAHI_LIBS) $(SOURCES)
+#$(ASSEMBLY): $(top_builddir)/src/Mono.Zeroconf/Mono.Zeroconf.dll $(SOURCES)
+#	$(MCS) -debug -target:library -out:$@ -r:$< $(AVAHI_LIBS) $(SOURCES)
 
-endif
+#endif
 
-EXTRA_DIST = $(SOURCES)
+EXTRA_DIST = $(SOURCES) README
 CLEANFILES = *.dll *.exe *.mdb
 DISTCLEANFILES = *.pidb
 MAINTAINERCLEANFILES = \
