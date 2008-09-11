@@ -86,8 +86,6 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         
         private void OnEntryGroupStateChanged (EntryGroupState state, string error)
         {
-            Console.WriteLine ("EGSC: {0}, {1}", state, error);
-            
             switch (state) {
                 case EntryGroupState.Collision:
                     if (!OnResponse (ErrorCode.Collision)) {
