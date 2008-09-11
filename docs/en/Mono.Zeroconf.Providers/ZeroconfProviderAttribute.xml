@@ -3,6 +3,7 @@
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>3.0.0.80</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Attribute</BaseTypeName>
@@ -25,30 +26,18 @@ using Mono.Zeroconf.Providers;
     </remarks>
   </Docs>
   <Members>
+    
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ZeroconfProviderAttribute (Type providerType);" />
       <MemberType>Constructor</MemberType>
-      <Parameters>
-        <Parameter Name="providerType" Type="System.Type" />
-      </Parameters>
-      <Docs>
-        <param name="providerType">Type of the provider bound to the assembly</param>
-        <summary>This type must implement <see cref="T:Mono.Zeroconf.Proviers.IZeroconfService" />.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ProviderType">
-      <MemberSignature Language="C#" Value="public Type ProviderType { get; };" />
+      <Parameters><Parameter Name="providerType" Type="System.Type" /></Parameters>
+      <Docs><param name="providerType">Type of the provider bound to the assembly</param><summary>This type must implement <see cref="T:Mono.Zeroconf.Proviers.IZeroconfService" />.</summary><remarks>To be added.</remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="ProviderType">
+      <MemberSignature Language="C#" Value="public Type ProviderType { get; }" />
       <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Type</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Type of the provider bound to the assembly</summary>
-        <value>Value passed to the constructor.</value>
-        <remarks>This property is only used by the internal Mono.Zeroconf factory that loads Zeroconf providers.</remarks>
-      </Docs>
-    </Member>
+      <ReturnValue><ReturnType>System.Type</ReturnType></ReturnValue>
+      <Docs><summary>Type of the provider bound to the assembly</summary><value>Value passed to the constructor.</value><remarks>This property is only used by the internal Mono.Zeroconf factory that loads Zeroconf providers.</remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member>
   </Members>
   <Attributes>
     <Attribute>

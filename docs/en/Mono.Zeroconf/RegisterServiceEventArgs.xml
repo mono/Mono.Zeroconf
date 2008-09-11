@@ -3,6 +3,7 @@
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>3.0.0.80</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.EventArgs</BaseTypeName>
@@ -22,26 +23,26 @@
       <MemberType>Constructor</MemberType>
       <Parameters />
       <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName=".ctor">
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public RegisterServiceEventArgs (Mono.Zeroconf.IRegisterService service, bool isRegistered, Mono.Zeroconf.ServiceErrorCode error);" />
       <MemberType>Constructor</MemberType>
       <Parameters><Parameter Name="service" Type="Mono.Zeroconf.IRegisterService" /><Parameter Name="isRegistered" Type="System.Boolean" /><Parameter Name="error" Type="Mono.Zeroconf.ServiceErrorCode" /></Parameters>
       <Docs><param name="service">To be added.</param><param name="isRegistered">To be added.</param><param name="error">To be added.</param><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="IsRegistered">
-      <MemberSignature Language="C#" Value="public bool IsRegistered { set; get; };" />
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="IsRegistered">
+      <MemberSignature Language="C#" Value="public bool IsRegistered { set; get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Boolean</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="Service">
-      <MemberSignature Language="C#" Value="public Mono.Zeroconf.IRegisterService Service { set; get; };" />
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Service">
+      <MemberSignature Language="C#" Value="public Mono.Zeroconf.IRegisterService Service { set; get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>Mono.Zeroconf.IRegisterService</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="ServiceError">
-      <MemberSignature Language="C#" Value="public Mono.Zeroconf.ServiceErrorCode ServiceError { set; get; };" />
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="ServiceError">
+      <MemberSignature Language="C#" Value="public Mono.Zeroconf.ServiceErrorCode ServiceError { set; get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>Mono.Zeroconf.ServiceErrorCode</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    </Member>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member>
   </Members>
 </Type>

@@ -3,6 +3,7 @@
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>3.0.0.80</AssemblyVersion>
   </AssemblyInfo>
   <Base>
     <BaseTypeName>System.Object</BaseTypeName>
@@ -37,114 +38,67 @@ service.Register();
     </remarks>
   </Docs>
   <Members>
+    
+    
+    
+    
+    
+    
+    
+    
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public RegisterService ();" />
       <MemberType>Constructor</MemberType>
       <Parameters />
-      <Docs>
-        <summary>Creates a service that may be registered on the local network.</summary>
-        <remarks>No registration happens at the object instantiation phase. The Register method must be called on this object to commit the service to the local network through the provider.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Dispose">
+      <Docs><summary>Creates a service that may be registered on the local network.</summary><remarks>No registration happens at the object instantiation phase. The Register method must be called on this object to commit the service to the local network through the provider.</remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Dispose">
       <MemberSignature Language="C#" Value="public void Dispose ();" />
       <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
+      <ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue>
       <Parameters />
-      <Docs>
-        <summary>Removes the service from the local network, destroys all resources associated with the service.</summary>
-        <remarks>This method will remove the service from the local network and also release any associated managed resources.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Name">
-      <MemberSignature Language="C#" Value="public string Name { set; get; };" />
+      <Docs><summary>Removes the service from the local network, destroys all resources associated with the service.</summary><remarks>This method will remove the service from the local network and also release any associated managed resources.</remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Name">
+      <MemberSignature Language="C#" Value="public string Name { set; get; }" />
       <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Name of the service to expose on the network after registration.</summary>
-        <value>Initial value is null. Set to the name of the service.</value>
-        <remarks>
+      <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
+      <Docs><summary>Name of the service to expose on the network after registration.</summary><value>Initial value is null. Set to the name of the service.</value><remarks>
           <para>Name must be set before the service can be registered. The Name may be any sort of string, and should be user friendly. This name will be exposed in many user interfaces.</para>
           <para>Example: "Aaron's Music Share"</para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Port">
-      <MemberSignature Language="C#" Value="public short Port { set; get; };" />
+        </remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Port">
+      <MemberSignature Language="C#" Value="public short Port { set; get; }" />
       <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Int16</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Port of the service on the network.</summary>
-        <value>Initial value is 0.</value>
-        <remarks>Port must be set before registering the service on the network.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Register">
+      <ReturnValue><ReturnType>System.Int16</ReturnType></ReturnValue>
+      <Docs><summary>Port of the service on the network.</summary><value>Initial value is 0.</value><remarks>Port must be set before registering the service on the network.</remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Register">
       <MemberSignature Language="C#" Value="public void Register ();" />
       <MemberType>Method</MemberType>
-      <ReturnValue>
-        <ReturnType>System.Void</ReturnType>
-      </ReturnValue>
+      <ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue>
       <Parameters />
-      <Docs>
-        <summary>Registers the service on the local network.</summary>
-        <remarks>Until this method is called on the service object, the service will not be available on the local network. After this method is called, any property changes on the object will not be reflected on the published service. Do not make property changes after this method is called. </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="RegType">
-      <MemberSignature Language="C#" Value="public string RegType { set; get; };" />
+      <Docs><summary>Registers the service on the local network.</summary><remarks>Until this method is called on the service object, the service will not be available on the local network. After this method is called, any property changes on the object will not be reflected on the published service. Do not make property changes after this method is called. </remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="RegType">
+      <MemberSignature Language="C#" Value="public string RegType { set; get; }" />
       <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Registration type of the service.</summary>
-        <value>Initial value is null.</value>
-        <remarks>
+      <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
+      <Docs><summary>Registration type of the service.</summary><value>Initial value is null.</value><remarks>
           <para>RegType is a somewhat standard naming for service types on a network. Zeroconf clients will use this value to search for specific services on a network.</para>
           <para>The value of the property typically takes a form matched by the regular expresion, "^_[a-z]+\._(tcp|udp)$", though this is not enforced at the Mono.Zeroconf level (though it may be at the provider level). For example, "_daap._tcp", or "_workstation._tcp". Typically services are "._tcp", but "._udp" is also valid.</para>
-        </remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="ReplyDomain">
-      <MemberSignature Language="C#" Value="public string ReplyDomain { set; get; };" />
+        </remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="ReplyDomain">
+      <MemberSignature Language="C#" Value="public string ReplyDomain { set; get; }" />
       <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>System.String</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Reply domain for the service.</summary>
-        <value>Initial value is null. If not set by the user, ".local" is assumed.</value>
-        <remarks>This value does not need to be set if only the .local network is cared about.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="Response">
+      <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
+      <Docs><summary>Reply domain for the service.</summary><value>Initial value is null. If not set by the user, ".local" is assumed.</value><remarks>This value does not need to be set if only the .local network is cared about.</remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Response">
       <MemberSignature Language="C#" Value="public event Mono.Zeroconf.RegisterServiceEventHandler Response;" />
       <MemberType>Event</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.RegisterServiceEventHandler</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>To be added.</summary>
-        <remarks>To be added.</remarks>
-      </Docs>
-    </Member>
-    <Member MemberName="TxtRecord">
-      <MemberSignature Language="C#" Value="public Mono.Zeroconf.ITxtRecord TxtRecord { set; get; };" />
+      <ReturnValue><ReturnType>Mono.Zeroconf.RegisterServiceEventHandler</ReturnType></ReturnValue>
+      <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="TxtRecord">
+      <MemberSignature Language="C#" Value="public Mono.Zeroconf.ITxtRecord TxtRecord { set; get; }" />
       <MemberType>Property</MemberType>
-      <ReturnValue>
-        <ReturnType>Mono.Zeroconf.ITxtRecord</ReturnType>
-      </ReturnValue>
-      <Docs>
-        <summary>Text record for the service.</summary>
-        <value>Initial value is null. Must be set to a <see cref="T:Mono.Zeroconf.TxtRecord" /> instance if a TxtRecord is desired.</value>
-        <remarks>
+      <ReturnValue><ReturnType>Mono.Zeroconf.ITxtRecord</ReturnType></ReturnValue>
+      <Docs><summary>Text record for the service.</summary><value>Initial value is null. Must be set to a <see cref="T:Mono.Zeroconf.TxtRecord" /> instance if a TxtRecord is desired.</value><remarks>
           <para>
 TxtRecords are a way of associating arbitrary data with a service as a key =&gt; value list. Keys (record names) are always strings. Typically values are strings as well, but can also be arbitrary binary data (byte array).
 </para>
@@ -154,8 +108,7 @@ TxtRecord txt_record = new TxtRecord ();
 txt_record.Add ("Password", "false");
   </code>
           </example>
-        </remarks>
-      </Docs>
-    </Member>
+        </remarks></Docs>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member>
   </Members>
 </Type>

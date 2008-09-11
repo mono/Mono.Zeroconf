@@ -3,6 +3,7 @@
   <AssemblyInfo>
     <AssemblyName>Mono.Zeroconf</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
+    <AssemblyVersion>3.0.0.80</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces>
     <Interface>
@@ -19,37 +20,37 @@
     
     
     
-    <Member MemberName="FullName">
-      <MemberSignature Language="C#" Value="public string FullName { get; };" />
+    <Member MemberName="AddressProtocol"><MemberSignature Language="C#" Value="public Mono.Zeroconf.AddressProtocol AddressProtocol { get; }" /><MemberType>Property</MemberType><AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo><ReturnValue><ReturnType>Mono.Zeroconf.AddressProtocol</ReturnType></ReturnValue><Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs></Member><Member MemberName="FullName">
+      <MemberSignature Language="C#" Value="public string FullName { get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="HostEntry">
-      <MemberSignature Language="C#" Value="public System.Net.IPHostEntry HostEntry { get; };" />
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="HostEntry">
+      <MemberSignature Language="C#" Value="public System.Net.IPHostEntry HostEntry { get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Net.IPHostEntry</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="HostTarget">
-      <MemberSignature Language="C#" Value="public string HostTarget { get; };" />
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="HostTarget">
+      <MemberSignature Language="C#" Value="public string HostTarget { get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="Port">
-      <MemberSignature Language="C#" Value="public short Port { get; };" />
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="NetworkInterface"><MemberSignature Language="C#" Value="public uint NetworkInterface { get; }" /><MemberType>Property</MemberType><AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo><ReturnValue><ReturnType>System.UInt32</ReturnType></ReturnValue><Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs></Member><Member MemberName="Port">
+      <MemberSignature Language="C#" Value="public short Port { get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Int16</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="Resolve">
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Resolve">
       <MemberSignature Language="C#" Value="public void Resolve ();" />
       <MemberType>Method</MemberType>
       <ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue>
       <Parameters />
       <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
-    </Member><Member MemberName="Resolved">
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Resolved">
       <MemberSignature Language="C#" Value="public event Mono.Zeroconf.ServiceResolvedEventHandler Resolved;" />
       <MemberType>Event</MemberType>
       <ReturnValue><ReturnType>Mono.Zeroconf.ServiceResolvedEventHandler</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
-    </Member>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member>
   </Members>
 </Type>
