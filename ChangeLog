@@ -1,3 +1,11 @@
+2008-09-11  Aaron Bockover  <abockover@novell.com>
+
+	0.8.0 Released
+
+	* NEWS: Updated with 0.8.0 release notes
+
+	* mono-zeroconf.spec: Updated
+
 2008-08-27  Brad Taylor  <brad@getcoded.net>
 	
 	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/TxtRecord.cs:

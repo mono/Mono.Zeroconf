@@ -1,3 +1,16 @@
+2008-09-11: 0.8.0 Release
+
+	* New Avahi provider using DBus instead of libavahi
+
+	* Improved IPv6 support (AddressProtocol/A6 query support)
+
+	* Garbage Collection bug fixed in the Bonjour backend, regarding delegates
+	  passed to native code being GCed prematurely; thanks to Josh Coole
+
+	* New MZClient features: support for setting interface, domain, and
+	  address type restrictions on browse/resolve operations; new general
+	  verbosity options
+
 2008-03-20: 0.7.6 Release
 
 	* Added a NetworkInterface property to the IService object
