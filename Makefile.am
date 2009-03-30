@@ -34,12 +34,15 @@ dist-windows: all
 	rm -rf $(PKB)
 
 release:
+	(cd $(top_srcdir)/docs; make update-html) && \
 	@test -e $(PKV).tar.bz2 -a -e $(PKV).tar.gz -a -e $(PKV).zip || { echo "You must run distcheck and dist-windows before release"; exit 1; }; \
 	cp ChangeLog $(PKV).changes && \
 	sha1sum $(PKV).* $(PKB).* > $(PKV).sha1sum && \
 	touch LATEST-IS-$(VERSION) && \
 	ssh bansheeweb@banshee-project.org rm /home/bansheeweb/download.banshee-project.org/mono-zeroconf/LATEST-IS*; \
+	ssh bansheeweb@banshee-project.org rm -rf /home/bansheeweb/download.banshee-project.org/mono-zeroconf/docs; \
 	scp $(PKV).* $(PKB).* mono-zeroconf.spec LATEST* README README.Windows bansheeweb@banshee-project.org:/home/bansheeweb/download.banshee-project.org/mono-zeroconf/ && rm LATEST* $(PKV).* $(PKB).* && \
+	scp -r $(top_builddir)/docs/html bansheeweb@banshee-project.org:/home/bansheeweb/download.banshee-project.org/mono-zeroconf/docs && \
 	test -z $$MONO_USER && { echo "Please set MONO_USER for the commit"; exit 1; }; \
 	echo "Sleeping 10 seconds, about to tag release (as user $$MONO_USER)..."; \
 	sleep 10; \

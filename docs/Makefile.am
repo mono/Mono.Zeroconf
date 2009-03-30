@@ -20,6 +20,10 @@ mono-zeroconf-docs.zip mono-zeroconf-docs.tree: $(srcdir)/en/*/*.xml $(srcdir)/e
 update-docs: $(ASSEMBLIES)
 	$(DOC_UPDATER) $(ASSEMBLIES_BUILD) -path:en/
 
+update-html:
+	rm -rf html
+	monodocs2html -source:$(srcdir)/en -dest:$(srcdir)/html
+
 update-svn:
 	@for remove in $$(find en -iregex .*\.remove$$); do \
 		real_remove=$${remove%.remove}; \
