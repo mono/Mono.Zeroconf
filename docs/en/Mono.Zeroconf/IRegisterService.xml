@@ -4,6 +4,7 @@
     <AssemblyName>Mono.Zeroconf</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.0.0.80</AssemblyVersion>
+    <AssemblyVersion>4.0.0.90</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces>
     <Interface>
@@ -28,26 +29,26 @@
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Port">
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Port">
       <MemberSignature Language="C#" Value="public short Port { set; get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.Int16</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Register">
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Register">
       <MemberSignature Language="C#" Value="public void Register ();" />
       <MemberType>Method</MemberType>
       <ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue>
       <Parameters />
       <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
-    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="RegType">
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo></Member><Member MemberName="RegType">
       <MemberSignature Language="C#" Value="public string RegType { set; get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="ReplyDomain">
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo></Member><Member MemberName="ReplyDomain">
       <MemberSignature Language="C#" Value="public string ReplyDomain { set; get; }" />
       <MemberType>Property</MemberType>
       <ReturnValue><ReturnType>System.String</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs>
-    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Response"><MemberSignature Language="C#" Value="public event Mono.Zeroconf.RegisterServiceEventHandler Response;" /><MemberType>Event</MemberType><ReturnValue><ReturnType>Mono.Zeroconf.RegisterServiceEventHandler</ReturnType></ReturnValue><Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs><AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="UPort"><MemberSignature Language="C#" Value="public ushort UPort { set; get; }" /><MemberType>Property</MemberType><AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo><ReturnValue><ReturnType>System.UInt16</ReturnType></ReturnValue><Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs></Member></Members>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo></Member><Member MemberName="Response"><MemberSignature Language="C#" Value="public event Mono.Zeroconf.RegisterServiceEventHandler Response;" /><MemberType>Event</MemberType><ReturnValue><ReturnType>Mono.Zeroconf.RegisterServiceEventHandler</ReturnType></ReturnValue><Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs><AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo></Member><Member MemberName="UPort"><MemberSignature Language="C#" Value="public ushort UPort { set; get; }" /><MemberType>Property</MemberType><AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo><ReturnValue><ReturnType>System.UInt16</ReturnType></ReturnValue><Docs><summary>To be added.</summary><value>To be added.</value><remarks>To be added.</remarks></Docs></Member></Members>
 </Type>

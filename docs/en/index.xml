@@ -1,6 +1,6 @@
 <Overview>
   <Assemblies>
-    <Assembly Name="Mono.Zeroconf" Version="3.0.0.80">
+    <Assembly Name="Mono.Zeroconf" Version="4.0.0.90">
       <Attributes>
         <Attribute>
           <AttributeName>System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)</AttributeName>
@@ -9,7 +9,7 @@
           <AttributeName>System.Reflection.AssemblyCompany("Novell, Inc.")</AttributeName>
         </Attribute>
         <Attribute>
-          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2006-2008 Novell, Inc.")</AttributeName>
+          <AttributeName>System.Reflection.AssemblyCopyright("Copyright (C) 2006-2009 Novell, Inc.")</AttributeName>
         </Attribute>
         <Attribute>
           <AttributeName>System.Reflection.AssemblyDescription("Cross Platform Zeroconf for .NET")</AttributeName>

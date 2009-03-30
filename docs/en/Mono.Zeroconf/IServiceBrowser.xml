@@ -4,6 +4,7 @@
     <AssemblyName>Mono.Zeroconf</AssemblyName>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <AssemblyVersion>3.0.0.80</AssemblyVersion>
+    <AssemblyVersion>4.0.0.90</AssemblyVersion>
   </AssemblyInfo>
   <Interfaces>
     <Interface>
@@ -20,16 +21,16 @@
   <Members>
     
     
-    <Member MemberName="Browse"><MemberSignature Language="C#" Value="public void Browse (uint interfaceIndex, Mono.Zeroconf.AddressProtocol addressProtocol, string regtype, string domain);" /><MemberType>Method</MemberType><AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo><ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue><Parameters><Parameter Name="interfaceIndex" Type="System.UInt32" /><Parameter Name="addressProtocol" Type="Mono.Zeroconf.AddressProtocol" /><Parameter Name="regtype" Type="System.String" /><Parameter Name="domain" Type="System.String" /></Parameters><Docs><param name="interfaceIndex">To be added.</param><param name="addressProtocol">To be added.</param><param name="regtype">To be added.</param><param name="domain">To be added.</param><summary>To be added.</summary><remarks>To be added.</remarks></Docs></Member><Member MemberName="ServiceAdded">
+    <Member MemberName="Browse"><MemberSignature Language="C#" Value="public void Browse (uint interfaceIndex, Mono.Zeroconf.AddressProtocol addressProtocol, string regtype, string domain);" /><MemberType>Method</MemberType><AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo><ReturnValue><ReturnType>System.Void</ReturnType></ReturnValue><Parameters><Parameter Name="interfaceIndex" Type="System.UInt32" /><Parameter Name="addressProtocol" Type="Mono.Zeroconf.AddressProtocol" /><Parameter Name="regtype" Type="System.String" /><Parameter Name="domain" Type="System.String" /></Parameters><Docs><param name="interfaceIndex">To be added.</param><param name="addressProtocol">To be added.</param><param name="regtype">To be added.</param><param name="domain">To be added.</param><summary>To be added.</summary><remarks>To be added.</remarks></Docs></Member><Member MemberName="ServiceAdded">
       <MemberSignature Language="C#" Value="public event Mono.Zeroconf.ServiceBrowseEventHandler ServiceAdded;" />
       <MemberType>Event</MemberType>
       <ReturnValue><ReturnType>Mono.Zeroconf.ServiceBrowseEventHandler</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
-    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member><Member MemberName="ServiceRemoved">
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo></Member><Member MemberName="ServiceRemoved">
       <MemberSignature Language="C#" Value="public event Mono.Zeroconf.ServiceBrowseEventHandler ServiceRemoved;" />
       <MemberType>Event</MemberType>
       <ReturnValue><ReturnType>Mono.Zeroconf.ServiceBrowseEventHandler</ReturnType></ReturnValue>
       <Docs><summary>To be added.</summary><remarks>To be added.</remarks></Docs>
-    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion></AssemblyInfo></Member>
+    <AssemblyInfo><AssemblyVersion>3.0.0.80</AssemblyVersion><AssemblyVersion>4.0.0.90</AssemblyVersion></AssemblyInfo></Member>
   </Members>
 </Type>
