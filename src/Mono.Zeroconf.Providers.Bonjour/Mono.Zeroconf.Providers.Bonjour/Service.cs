@@ -45,7 +45,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         protected ITxtRecord txt_record;
         protected string fullname;
         protected string hosttarget;
-        protected short port;
+        protected ushort port;
         protected IPHostEntry hostentry;
         
         public Service()
@@ -126,10 +126,15 @@ namespace Mono.Zeroconf.Providers.Bonjour
         public uint NetworkInterface {
             get { return interface_index; }
         }
-        
+                
         public short Port {
-            get { return IPAddress.NetworkToHostOrder(port); }
-            set { port = IPAddress.HostToNetworkOrder(value); }
+            get { return (short)UPort; }
+            set { UPort = (ushort)value; }
+        }
+
+        public ushort UPort {
+            get { return (ushort)IPAddress.NetworkToHostOrder((int)port); }
+            set { port = (ushort)IPAddress.HostToNetworkOrder((int)value); }
         }
     }
 }

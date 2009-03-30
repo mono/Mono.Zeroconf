@@ -41,5 +41,6 @@ namespace Mono.Zeroconf
         new string ReplyDomain { get; set; }
         
         short Port { get; set; }
+        ushort UPort { get; set; }
     }
 }

@@ -1,4 +1,16 @@
-2009-03-30  Aaron Bockover  <abock@novell.com>
+2009-03-30  Aaron Bockover  <abockover@novell.com>
+
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/Service.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
+	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/RegisterService.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/IRegisterService.cs:
+	* src/Mono.Zeroconf/Mono.Zeroconf/RegisterService.cs:
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/RegisterService.cs:
+	Use ushort internally for the port value, add new UPort property on 
+	IRegisterService so an unchecked cast is not necessary for port values that
+	overflow Int16 (http://mono-project.com/Mono.Zeroconf#Known_Workarounds)
+
+2009-03-30  Aaron Bockover  <abockover@novell.com>
 
 	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/Service.cs:
 	Set the interface to unspecified by default, fixing a bug reported on 

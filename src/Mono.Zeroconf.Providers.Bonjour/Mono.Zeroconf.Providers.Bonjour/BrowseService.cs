@@ -113,7 +113,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
             
             InterfaceIndex = interfaceIndex;
             FullName = fullname;
-            this.port = (short)port;
+            this.port = port;
             TxtRecord = new TxtRecord(txtLen, txtRecord);
 
             sdRef.Deallocate();

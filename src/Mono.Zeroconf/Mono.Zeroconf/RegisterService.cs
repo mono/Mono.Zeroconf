@@ -80,5 +80,10 @@ namespace Mono.Zeroconf
             get { return register_service.Port; }
             set { register_service.Port = value; }
         }
+        
+        public ushort UPort {
+            get { return register_service.UPort; }
+            set { register_service.UPort = value; }
+        }
     }
 }

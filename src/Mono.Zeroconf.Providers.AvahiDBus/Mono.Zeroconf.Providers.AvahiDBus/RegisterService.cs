@@ -34,7 +34,7 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
 {
     public class RegisterService : Service, IRegisterService
     {
-        private short port;
+        private ushort port;
         private IAvahiEntryGroup entry_group;
         
         public event RegisterServiceEventHandler Response;
@@ -58,7 +58,7 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
             
             entry_group.AddService (AvahiInterface, AvahiProtocol, PublishFlags.None, 
                 Name ?? String.Empty, RegType ?? String.Empty, ReplyDomain ?? String.Empty, 
-                String.Empty, (ushort)port, txt_record);
+                String.Empty, port, txt_record);
 
             entry_group.Commit ();
         }
@@ -142,6 +142,11 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         }
         
         public short Port {
+            get { return (short)UPort; }
+            set { UPort = (ushort)value; }
+        }
+
+        public ushort UPort {
             get { return port; }
             set { port = value; }
         }
