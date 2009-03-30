@@ -38,6 +38,7 @@
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\LookupFlags.cs" />
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\LookupResultFlags.cs" />
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\IAvahiServiceResolver.cs" />
+    <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\AvahiServerState.cs" />
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\AvahiUtils.cs" />
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\Service.cs" />
     <Compile Include="Mono.Zeroconf.Providers.AvahiDBus\BrowseService.cs" />

@@ -1,3 +1,19 @@
+2009-03-30  Aaron Bockover  <abock@novell.com>
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/Service.cs:
+	Set the interface to unspecified by default, fixing a bug reported on 
+	Stack Overflow (http://stackoverflow.com/questions/599846)
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/RegisterService.cs:
+	Verify that the server is indeed running by calling server.GetState ()
+	before creating a new entry group
+
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/AvahiServerState.cs:
+	Added AvahiServerState enum
+	
+	* src/Mono.Zeroconf.Providers.AvahiDBus/Mono.Zeroconf.Providers.AvahiDBus/IAvahiServer.cs:
+	Add the GetState method
+
 2008-09-11  Aaron Bockover  <abockover@novell.com>
 
 	0.8.0 Released

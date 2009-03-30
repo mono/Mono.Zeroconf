@@ -42,6 +42,7 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         
         public Service ()
         {
+            this.@interface = -1; // Unspecified
         }
         
         public Service (string name, string regtype, string replyDomain, int @interface, Protocol aprotocol)

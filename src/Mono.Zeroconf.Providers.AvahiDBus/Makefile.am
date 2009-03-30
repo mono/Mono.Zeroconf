@@ -2,6 +2,7 @@ ASSEMBLY_NAME = Mono.Zeroconf.Providers.AvahiDBus
 ASSEMBLY = $(ASSEMBLY_NAME).dll
 
 MONO_ZEROCONF_PROVIDERS_AVAHI_SRC =  \
+	Mono.Zeroconf.Providers.AvahiDBus/AvahiServerState.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/AvahiUtils.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/BrowseService.cs \
 	Mono.Zeroconf.Providers.AvahiDBus/DBusManager.cs \

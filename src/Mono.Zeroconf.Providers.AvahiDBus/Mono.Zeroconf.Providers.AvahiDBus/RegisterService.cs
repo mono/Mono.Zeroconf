@@ -55,9 +55,11 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
             byte [][] txt_record = TxtRecord == null 
                 ? new byte[0][] 
                 : Mono.Zeroconf.Providers.AvahiDBus.TxtRecord.Render (TxtRecord);
+            
             entry_group.AddService (AvahiInterface, AvahiProtocol, PublishFlags.None, 
                 Name ?? String.Empty, RegType ?? String.Empty, ReplyDomain ?? String.Empty, 
                 String.Empty, (ushort)port, txt_record);
+
             entry_group.Commit ();
         }
         
@@ -72,6 +74,10 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
                     return;
                 }
                 
+                if (DBusManager.Server.GetState () != AvahiServerState.Running) {
+                    throw new ApplicationException ("Avahi Server is not in the Running state");
+                }
+
                 ObjectPath path = DBusManager.Server.EntryGroupNew ();
                 entry_group = DBusManager.GetObject<IAvahiEntryGroup> (path);
                 
