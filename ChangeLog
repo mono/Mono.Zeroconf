@@ -1,5 +1,13 @@
 2009-03-30  Aaron Bockover  <abockover@novell.com>
 
+	0.9.0 Released
+
+	* NEWS: Updated with 0.9.0 release notes
+
+	* mono-zeroconf.spec: Updated
+
+2009-03-30  Aaron Bockover  <abockover@novell.com>
+
 	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/Service.cs:
 	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/BrowseService.cs:
 	* src/Mono.Zeroconf.Providers.Bonjour/Mono.Zeroconf.Providers.Bonjour/RegisterService.cs:
