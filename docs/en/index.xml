@@ -24,27 +24,27 @@
   <Copyright>Copyright (C) 2006-2007 Novell, Inc.</Copyright>
   <Types>
     <Namespace Name="Mono.Zeroconf">
-      <Type Name="AddressProtocol" />
-      <Type Name="IRegisterService" />
-      <Type Name="IResolvableService" />
-      <Type Name="IService" />
-      <Type Name="IServiceBrowser" />
-      <Type Name="ITxtRecord" />
-      <Type Name="RegisterService" />
-      <Type Name="RegisterServiceEventArgs" />
-      <Type Name="RegisterServiceEventHandler" />
-      <Type Name="ServiceBrowseEventArgs" />
-      <Type Name="ServiceBrowseEventHandler" />
-      <Type Name="ServiceBrowser" />
-      <Type Name="ServiceErrorCode" />
-      <Type Name="ServiceResolvedEventArgs" />
-      <Type Name="ServiceResolvedEventHandler" />
-      <Type Name="TxtRecord" />
-      <Type Name="TxtRecordItem" />
+      <Type Name="AddressProtocol" Kind="Enumeration" />
+      <Type Name="IRegisterService" Kind="Interface" />
+      <Type Name="IResolvableService" Kind="Interface" />
+      <Type Name="IService" Kind="Interface" />
+      <Type Name="IServiceBrowser" Kind="Interface" />
+      <Type Name="ITxtRecord" Kind="Interface" />
+      <Type Name="RegisterService" Kind="Class" />
+      <Type Name="RegisterServiceEventArgs" Kind="Class" />
+      <Type Name="RegisterServiceEventHandler" Kind="Delegate" />
+      <Type Name="ServiceBrowseEventArgs" Kind="Class" />
+      <Type Name="ServiceBrowseEventHandler" Kind="Delegate" />
+      <Type Name="ServiceBrowser" Kind="Class" />
+      <Type Name="ServiceErrorCode" Kind="Enumeration" />
+      <Type Name="ServiceResolvedEventArgs" Kind="Class" />
+      <Type Name="ServiceResolvedEventHandler" Kind="Delegate" />
+      <Type Name="TxtRecord" Kind="Class" />
+      <Type Name="TxtRecordItem" Kind="Class" />
     </Namespace>
     <Namespace Name="Mono.Zeroconf.Providers">
-      <Type Name="IZeroconfProvider" />
-      <Type Name="ZeroconfProviderAttribute" />
+      <Type Name="IZeroconfProvider" Kind="Interface" />
+      <Type Name="ZeroconfProviderAttribute" Kind="Class" />
     </Namespace>
   </Types>
   <Title>Mono.Zeroconf</Title>
