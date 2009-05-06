@@ -35,7 +35,7 @@ dist-windows: all
 
 release:
 	(cd $(top_srcdir)/docs; make update-html) && \
-	@test -e $(PKV).tar.bz2 -a -e $(PKV).tar.gz -a -e $(PKV).zip || { echo "You must run distcheck and dist-windows before release"; exit 1; }; \
+	test -e $(PKV).tar.bz2 -a -e $(PKV).tar.gz -a -e $(PKV).zip -a -e $(PKB).zip || { echo "You must run distcheck and dist-windows before release"; exit 1; }; \
 	cp ChangeLog $(PKV).changes && \
 	sha1sum $(PKV).* $(PKB).* > $(PKV).sha1sum && \
 	touch LATEST-IS-$(VERSION) && \
