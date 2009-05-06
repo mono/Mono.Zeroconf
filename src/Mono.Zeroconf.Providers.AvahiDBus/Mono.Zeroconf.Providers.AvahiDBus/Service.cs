@@ -66,17 +66,17 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         
         public string Name {
             get { return name; }
-            protected set { name = value; }
+            set { name = value; }
         }
         
         public string RegType {
             get { return regtype; }
-            protected set { regtype = value; }
+            set { regtype = value; }
         }
         
         public string ReplyDomain {
             get { return reply_domain; }
-            protected set { reply_domain = value; }
+            set { reply_domain = value; }
         }
         
         public uint NetworkInterface {
