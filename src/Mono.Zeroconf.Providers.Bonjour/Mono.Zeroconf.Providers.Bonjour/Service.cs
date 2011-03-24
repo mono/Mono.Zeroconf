@@ -132,9 +132,9 @@ namespace Mono.Zeroconf.Providers.Bonjour
             set { UPort = (ushort)value; }
         }
 
-        public ushort UPort {
-            get { return (ushort)IPAddress.NetworkToHostOrder((int)port); }
-            set { port = (ushort)IPAddress.HostToNetworkOrder((int)value); }
-        }
+		public ushort UPort {
+			get { return port; }
+			set { port = value; }
+		}
     }
 }

@@ -106,7 +106,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
             
             ServiceError error = Native.DNSServiceRegister(out sd_ref, 
                 auto_rename ? ServiceFlags.None : ServiceFlags.NoAutoRename, InterfaceIndex,
-                Name, RegType, ReplyDomain, HostTarget, port, txt_rec_length, txt_rec,
+                Name, RegType, ReplyDomain, HostTarget, (ushort)System.Net.IPAddress.HostToNetworkOrder((short)port), txt_rec_length, txt_rec,
                 register_reply_handler, IntPtr.Zero);
 
             if(error != ServiceError.NoError) {
