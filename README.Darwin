@@ -1,0 +1,3 @@
+If building using Mono.framework from git:
+
+$ PKG_CONFIG_PATH=/Library/Frameworks/Mono.framework/Versions/Current/lib/pkgconfig ACLOCAL_FLAGS="-I /Library/Frameworks/Mono.framework/Versions/Current/share/aclocal" ./autogen.sh

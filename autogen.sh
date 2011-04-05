@@ -50,7 +50,7 @@ check_autotool_version aclocal 1.9
 check_autotool_version automake 1.9
 check_autotool_version autoconf 2.13
 
-run aclocal -I .
+run aclocal -I . $ACLOCAL_FLAGS
 run autoconf
 run automake -a --gnu
 
