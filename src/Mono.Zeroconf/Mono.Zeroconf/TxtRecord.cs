@@ -35,9 +35,9 @@ namespace Mono.Zeroconf
     public class TxtRecord : ITxtRecord
     {
         private ITxtRecord record;
-        
-        public TxtRecord()
-        {
+
+        public TxtRecord(IZeroconfProvider provider = null) {
+            ProviderFactory.SelectedProvider = provider;
             record = (ITxtRecord)Activator.CreateInstance(ProviderFactory.SelectedProvider.TxtRecord);
         }
         
