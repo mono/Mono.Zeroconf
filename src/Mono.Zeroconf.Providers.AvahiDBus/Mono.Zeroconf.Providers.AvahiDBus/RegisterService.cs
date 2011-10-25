@@ -28,7 +28,7 @@
 
 using System;
 using System.Threading;
-using NDesk.DBus;
+using DBus;
 
 namespace Mono.Zeroconf.Providers.AvahiDBus
 {
@@ -67,8 +67,7 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         {
             try {
                 Monitor.Enter (this);
-                DBusManager.Bus.TrapSignals ();
-                
+
                 if (entry_group != null) {
                     entry_group.Reset ();
                     return;
@@ -86,7 +85,6 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
                 entry_group.StateChanged += OnEntryGroupStateChanged;
             } finally {
                 Monitor.Exit (this);
-                DBusManager.Bus.UntrapSignals ();
             }
         }
         
