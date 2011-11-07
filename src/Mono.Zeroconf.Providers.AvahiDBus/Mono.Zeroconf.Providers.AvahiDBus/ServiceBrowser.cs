@@ -45,17 +45,21 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         public void Dispose ()
         {
             lock (this) {
+                IAvahiServiceBrowser service_browser = this.service_browser;
                 if (service_browser != null) {
+                    this.service_browser = null;
                     service_browser.ItemNew -= OnItemNew;
                     service_browser.ItemRemove -= OnItemRemove;
                     service_browser.Free ();
                 }
-                
+
                 if (services.Count > 0) {
-                    foreach (BrowseService service in services.Values) {
+                    List<BrowseService> services_list = new List<BrowseService> (services.Values);
+                    services.Clear (); // Clear first so we no-op if we Dispose() again
+
+                    foreach (BrowseService service in services_list) {
                         service.Dispose ();
                     }
-                    services.Clear ();
                 }
             }
         }
