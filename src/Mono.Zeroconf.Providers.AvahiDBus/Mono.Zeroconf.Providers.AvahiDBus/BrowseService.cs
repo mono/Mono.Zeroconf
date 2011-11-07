@@ -52,19 +52,23 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         public void Dispose ()
         {
             lock (this) {
-                disposed = true;
-                DisposeResolver ();
+                if (!disposed) {
+                    disposed = true;
+                    DisposeResolver ();
+                }
             }
         }
         
         private void DisposeResolver ()
         {
             lock (this) {
+                IAvahiServiceResolver resolver = this.resolver;
+
                 if (resolver != null) {
+                    this.resolver = null;
                     resolver.Failure -= OnResolveFailure;
                     resolver.Found -= OnResolveFound;
                     resolver.Free ();
-                    resolver = null;
                 }
             }
         }
