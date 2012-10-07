@@ -91,23 +91,27 @@ namespace Mono.Zeroconf.Providers
             }
             
             foreach(string directory in directories) {
-                foreach(string file in Directory.GetFiles(directory, "Mono.Zeroconf.Providers.*.dll")) {
-                    if(Path.GetFileName(file) != Path.GetFileName(this_asm_path)) {
-                        Assembly provider_asm = Assembly.LoadFile(file);
-                        foreach(Attribute attr in provider_asm.GetCustomAttributes(false)) {
-                            if(attr is ZeroconfProviderAttribute) {
-                                Type type = (attr as ZeroconfProviderAttribute).ProviderType;
-                                IZeroconfProvider provider = (IZeroconfProvider)Activator.CreateInstance(type);
-                                try {
-                                    provider.Initialize();
-                                    providers_list.Add(provider);
-                                } catch (Exception e) {
-                                    Console.WriteLine (e);
-                                }
-                            }
-                        }
-                    }
-                }
+				try
+				{
+					foreach(string file in Directory.GetFiles(directory, "Mono.Zeroconf.Providers.*.dll")) {
+						if(Path.GetFileName(file) != Path.GetFileName(this_asm_path)) {
+							Assembly provider_asm = Assembly.LoadFile(file);
+							foreach(Attribute attr in provider_asm.GetCustomAttributes(false)) {
+								if(attr is ZeroconfProviderAttribute) {
+									Type type = (attr as ZeroconfProviderAttribute).ProviderType;
+									IZeroconfProvider provider = (IZeroconfProvider)Activator.CreateInstance(type);
+									try {
+										provider.Initialize();
+										providers_list.Add(provider);
+									} catch (Exception e) {
+										Console.WriteLine (e);
+									}
+								}
+							}
+						}
+					}
+				}
+				catch {}
             }
             
             if(providers_list.Count == 0) {
