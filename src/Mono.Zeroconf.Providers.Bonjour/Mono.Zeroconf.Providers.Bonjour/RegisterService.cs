@@ -63,13 +63,13 @@ namespace Mono.Zeroconf.Providers.Bonjour
             Register(true);
         }
     
-        public void Register(bool async)
+        public void Register(bool @async)
         {
             if(thread != null) {
                 throw new InvalidOperationException("RegisterService registration already in process");
             }
             
-            if(async) {
+            if(@async) {
                 thread = new Thread(new ThreadStart(ThreadedRegister));
                 thread.IsBackground = true;
                 thread.Start();

@@ -87,13 +87,13 @@ namespace Mono.Zeroconf.Providers.Bonjour
             }
         }
         
-        private void Start(bool async)
+        private void Start(bool @async)
         {
             if(thread != null) {
                 throw new InvalidOperationException("ServiceBrowser is already started");
             }
             
-            if(async) {
+            if(@async) {
                 thread = new Thread(new ThreadStart(ThreadedStart));
                 thread.IsBackground = true;
                 thread.Start();
