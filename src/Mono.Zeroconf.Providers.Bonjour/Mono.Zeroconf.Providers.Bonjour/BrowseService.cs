@@ -134,7 +134,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
             
             if (AddressProtocol == AddressProtocol.Any || AddressProtocol == AddressProtocol.IPv6) {
                 ServiceError error = Native.DNSServiceQueryRecord(out sd_ref, ServiceFlags.None, interfaceIndex,
-                    hosttarget, ServiceType.A6, ServiceClass.IN, query_record_reply_handler, IntPtr.Zero);
+                    hosttarget, ServiceType.AAAA, ServiceClass.IN, query_record_reply_handler, IntPtr.Zero);
                 
                 if(error != ServiceError.NoError) {
                     throw new ServiceErrorException(error);
