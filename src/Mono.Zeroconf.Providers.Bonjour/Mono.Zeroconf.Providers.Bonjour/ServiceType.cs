@@ -56,7 +56,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         KEY       = 25,     /* Security key. */
         PX        = 26,     /* X.400 mail mapping. */
         GPOS      = 27,     /* Geographical position (withdrawn). */
-        AAAA      = 28,     /* Ip6 Address. */
+        AAAA      = 28,     /* IPv6 Address. */
         LOC       = 29,     /* Location Information. */
         NXT       = 30,     /* Next domain (security). */
         EID       = 31,     /* Endpoint identifier. */
@@ -66,7 +66,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         NAPTR     = 35,     /* Naming Authority PoinTeR */
         KX        = 36,     /* Key Exchange */
         CERT      = 37,     /* Certification record */
-        A6        = 38,     /* IPv6 address (deprecates AAAA) */
+        A6        = 38,     /* IPv6 Address (deprecated) */
         DNAME     = 39,     /* Non-terminal DNAME (for IPv6) */
         SINK      = 40,     /* Kitchen sink (experimentatl) */
         OPT       = 41,     /* EDNS0 option (meta-RR) */
