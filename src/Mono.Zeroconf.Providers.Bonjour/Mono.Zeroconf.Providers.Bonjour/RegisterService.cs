@@ -30,6 +30,7 @@ using System;
 using System.Net;
 using System.Threading;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Mono.Zeroconf.Providers.Bonjour
 {
@@ -107,7 +108,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
             
             ServiceError error = Native.DNSServiceRegister(out sd_ref, 
                 auto_rename ? ServiceFlags.None : ServiceFlags.NoAutoRename, InterfaceIndex,
-                Name, RegType, ReplyDomain, HostTarget, (ushort)IPAddress.HostToNetworkOrder((short)port), txt_rec_length, txt_rec,
+                Encoding.UTF8.GetBytes(Name), RegType, ReplyDomain, HostTarget, (ushort)IPAddress.HostToNetworkOrder((short)port), txt_rec_length, txt_rec,
                 register_reply_handler, IntPtr.Zero);
 
             if(error != ServiceError.NoError) {
@@ -128,7 +129,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         }
         
         private void OnRegisterReply(ServiceRef sdRef, ServiceFlags flags, ServiceError errorCode,
-            string name, string regtype, string domain, IntPtr context)
+            IntPtr name, string regtype, string domain, IntPtr context)
         {
             RegisterServiceEventArgs args = new RegisterServiceEventArgs();
             
@@ -137,7 +138,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
             args.ServiceError = (ServiceErrorCode)errorCode;
             
             if(errorCode == ServiceError.NoError) {
-                Name = name;
+                Name = Native.Utf8toString(name);
                 RegType = regtype;
                 ReplyDomain = domain;
                 args.IsRegistered = true;

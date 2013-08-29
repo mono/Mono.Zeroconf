@@ -80,7 +80,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         
             ServiceRef sd_ref;
             ServiceError error = Native.DNSServiceResolve(out sd_ref, ServiceFlags.None, 
-                InterfaceIndex, Name, RegType, ReplyDomain, resolve_reply_handler, IntPtr.Zero);
+                InterfaceIndex, Encoding.UTF8.GetBytes(Name), RegType, ReplyDomain, resolve_reply_handler, IntPtr.Zero);
                 
             if(error != ServiceError.NoError) {
                 throw new ServiceErrorException(error);
@@ -105,14 +105,14 @@ namespace Mono.Zeroconf.Providers.Bonjour
         }
         
         private void OnResolveReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,
-            ServiceError errorCode, string fullname, string hosttarget, ushort port, ushort txtLen, 
+            ServiceError errorCode, IntPtr fullname, string hosttarget, ushort port, ushort txtLen,
             IntPtr txtRecord, IntPtr contex)
         {
             is_resolved = true;
             resolve_pending = false;
-            
+
             InterfaceIndex = interfaceIndex;
-            FullName = fullname;
+            FullName = Native.Utf8toString(fullname);
             this.port = port;
             TxtRecord = new TxtRecord(txtLen, txtRecord);
 

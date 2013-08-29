@@ -168,11 +168,12 @@ namespace Mono.Zeroconf.Providers.Bonjour
         }
         
         private void OnBrowseReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex, ServiceError errorCode, 
-            string serviceName, string regtype, string replyDomain, IntPtr context)
+            IntPtr serviceName, string regtype, string replyDomain, IntPtr context)
         {
+            string name = Native.Utf8toString(serviceName);
             BrowseService service = new BrowseService();
             service.Flags = flags;
-            service.Name = serviceName;
+            service.Name = name;
             service.RegType = regtype;
             service.ReplyDomain = replyDomain;
             service.InterfaceIndex = interfaceIndex;
@@ -183,10 +184,10 @@ namespace Mono.Zeroconf.Providers.Bonjour
             
             if((flags & ServiceFlags.Add) != 0) {
                 lock (service_table) {
-                    if (service_table.ContainsKey (serviceName)) {
-                        service_table[serviceName] = service;
+                    if (service_table.ContainsKey (name)) {
+                        service_table[name] = service;
                     } else {
-                        service_table.Add (serviceName, service);
+                        service_table.Add (name, service);
                     }
                 }
                 
@@ -196,8 +197,8 @@ namespace Mono.Zeroconf.Providers.Bonjour
                 }
             } else {
                 lock (service_table) {
-                    if (service_table.ContainsKey (serviceName)) {
-                        service_table.Remove (serviceName);
+                    if (service_table.ContainsKey (name)) {
+                        service_table.Remove (name);
                     }
                 }
                 
