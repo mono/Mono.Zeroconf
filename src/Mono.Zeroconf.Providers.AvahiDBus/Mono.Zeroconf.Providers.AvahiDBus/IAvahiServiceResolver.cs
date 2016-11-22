@@ -27,7 +27,7 @@
 //
 
 using System;
-using NDesk.DBus;
+using DBus;
 
 namespace Mono.Zeroconf.Providers.AvahiDBus
 {   

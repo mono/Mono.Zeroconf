@@ -31,7 +31,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 
-using NDesk.DBus;
+using DBus;
 
 namespace Mono.Zeroconf.Providers.AvahiDBus
 {
