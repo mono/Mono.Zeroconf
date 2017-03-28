@@ -150,6 +150,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         {
             switch(rrtype) {
                 case ServiceType.A:
+                case ServiceType.AAAA:
                     IPAddress address;
 
                     if(rdlen == 4) {   
