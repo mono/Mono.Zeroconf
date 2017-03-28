@@ -142,8 +142,17 @@ namespace Mono.Zeroconf.Providers.Bonjour
             
                 sd_ref.Process();
             }
+
+            if (hostentry.AddressList != null)
+            {
+                ServiceResolvedEventHandler handler = Resolved;
+                if (handler != null)
+                {
+                    handler(this, new ServiceResolvedEventArgs(this));
+                }
+            }
         }
-     
+
         private void OnQueryRecordReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,
             ServiceError errorCode, string fullname, ServiceType rrtype, ServiceClass rrclass, ushort rdlen, 
             IntPtr rdata, uint ttl, IntPtr context)
@@ -180,11 +189,6 @@ namespace Mono.Zeroconf.Providers.Bonjour
                         hostentry.AddressList = list.ToArray(typeof(IPAddress)) as IPAddress [];
                     } else {
                         hostentry.AddressList = new IPAddress [] { address };
-                    }
-                    
-                    ServiceResolvedEventHandler handler = Resolved;
-                    if(handler != null) {
-                        handler(this, new ServiceResolvedEventArgs(this));
                     }
                     
                     break;
