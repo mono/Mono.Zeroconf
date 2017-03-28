@@ -198,8 +198,11 @@ namespace Mono.Zeroconf.Providers.Bonjour
                 default:
                     break;
             }
-            
-            sdRef.Deallocate();
+
+            if ((flags & ServiceFlags.MoreComing) != ServiceFlags.MoreComing)
+            {
+                sdRef.Deallocate();
+            }
         }
         
         public bool IsResolved {
