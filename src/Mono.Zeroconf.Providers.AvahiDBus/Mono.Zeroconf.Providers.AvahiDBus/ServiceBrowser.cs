@@ -45,17 +45,21 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         public void Dispose ()
         {
             lock (this) {
+                IAvahiServiceBrowser service_browser = this.service_browser;
                 if (service_browser != null) {
+                    this.service_browser = null;
                     service_browser.ItemNew -= OnItemNew;
                     service_browser.ItemRemove -= OnItemRemove;
                     service_browser.Free ();
                 }
-                
+
                 if (services.Count > 0) {
-                    foreach (BrowseService service in services.Values) {
+                    List<BrowseService> services_list = new List<BrowseService> (services.Values);
+                    services.Clear (); // Clear first so we no-op if we Dispose() again
+
+                    foreach (BrowseService service in services_list) {
                         service.Dispose ();
                     }
-                    services.Clear ();
                 }
             }
         }
@@ -117,10 +121,11 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         {
             lock (this) {
                 BrowseService service = new BrowseService (name, type, domain, @interface, protocol);
-                
-                if (services.ContainsKey (name)) {
-                    services[name].Dispose ();
+                BrowseService to_dispose;
+
+                if (services.TryGetValue (name, out to_dispose)) {
                     services[name] = service;
+                    to_dispose.Dispose ();
                 } else {
                     services.Add (name, service);
                 }
@@ -134,10 +139,12 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         {
             lock (this) {
                 BrowseService service = new BrowseService (name, type, domain, @interface, protocol);
-                
-                if (services.ContainsKey (name)) {
-                    services[name].Dispose ();
+                BrowseService to_dispose;
+
+                // handler may be called recursively, so remove service from services before disposing
+                if (services.TryGetValue (name, out to_dispose)) {
                     services.Remove (name);
+                    to_dispose.Dispose ();
                 }
                 
                 OnServiceRemoved (service);
