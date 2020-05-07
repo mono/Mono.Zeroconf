@@ -38,6 +38,9 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
         private IAvahiEntryGroup entry_group;
         
         public event RegisterServiceEventHandler Response;
+
+		private string originalName;
+		private int retryNameModifier = 2;
      
         public RegisterService ()
         {
@@ -95,12 +98,22 @@ namespace Mono.Zeroconf.Providers.AvahiDBus
             switch (state) {
                 case EntryGroupState.Collision:
                     if (!OnResponse (ErrorCode.Collision)) {
-                        throw new ApplicationException ();
+						if (originalName == null)
+							originalName = Name;
+						
+						Name = originalName + " (" + retryNameModifier + ")";
+						retryNameModifier++;
+						
+						Console.WriteLine("ZeroConf had a name collision, trying: " + Name);
+						
+						Register();
+                        //throw new ApplicationException ();
                     }
                     break;
                 case EntryGroupState.Failure:
                     if (!OnResponse (ErrorCode.Failure)) {
-                        throw new ApplicationException ();
+						Console.WriteLine("Mono.ZeroConf failed to register name with AvahiDBus");
+                        //throw new ApplicationException ();
                     }
                     break;
                 case EntryGroupState.Established:
