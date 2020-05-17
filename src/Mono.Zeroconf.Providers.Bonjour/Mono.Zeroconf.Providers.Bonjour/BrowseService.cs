@@ -58,11 +58,17 @@ namespace Mono.Zeroconf.Providers.Bonjour
         {
             resolve_reply_handler = new Native.DNSServiceResolveReply(OnResolveReply);
             query_record_reply_handler = new Native.DNSServiceQueryRecordReply(OnQueryRecordReply);
+            resolveAction = new Action<bool>(Resolve);
         }
 
+        private Action<bool> resolveAction;
         public void Resolve()
         {
-            Resolve(false);
+            // If people call this in a ServiceAdded eventhandler (which they genreally do)
+            // We need to invoke onto another thread otherwise we block processing any more results.
+
+            resolveAction.BeginInvoke(false, null, null);
+
         }
         
         public void Resolve(bool requery)
