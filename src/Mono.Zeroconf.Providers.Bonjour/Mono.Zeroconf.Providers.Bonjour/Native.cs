@@ -28,6 +28,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Text;
 
 namespace Mono.Zeroconf.Providers.Bonjour
 {
@@ -50,7 +51,7 @@ namespace Mono.Zeroconf.Providers.Bonjour
         // DNSServiceBrowse
         
         public delegate void DNSServiceBrowseReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,
-            ServiceError errorCode, string serviceName, string regtype, string replyDomain, 
+            ServiceError errorCode, IntPtr serviceName, string regtype, string replyDomain,
             IntPtr context);
             
         [DllImport("dnssd.dll")]
@@ -61,22 +62,22 @@ namespace Mono.Zeroconf.Providers.Bonjour
         // DNSServiceResolve
         
         public delegate void DNSServiceResolveReply(ServiceRef sdRef, ServiceFlags flags, uint interfaceIndex,
-            ServiceError errorCode, string fullname, string hosttarget, ushort port, ushort txtLen, 
+            ServiceError errorCode, IntPtr fullname, string hosttarget, ushort port, ushort txtLen,
             IntPtr txtRecord, IntPtr context);
             
         [DllImport("dnssd.dll")]
         public static extern ServiceError DNSServiceResolve(out ServiceRef sdRef, ServiceFlags flags,
-            uint interfaceIndex, string name, string regtype, string domain, DNSServiceResolveReply callBack,
+            uint interfaceIndex, byte[] name, string regtype, string domain, DNSServiceResolveReply callBack,
             IntPtr context);
         
         // DNSServiceRegister
     
         public delegate void DNSServiceRegisterReply(ServiceRef sdRef, ServiceFlags flags, ServiceError errorCode,
-            string name, string regtype, string domain, IntPtr context);
+            IntPtr name, string regtype, string domain, IntPtr context);
     
         [DllImport("dnssd.dll")]
         public static extern ServiceError DNSServiceRegister(out ServiceRef sdRef, ServiceFlags flags,
-            uint interfaceIndex, string name, string regtype, string domain, string host, ushort port,
+            uint interfaceIndex, byte[] name, string regtype, string domain, string host, ushort port,
             ushort txtLen, byte [] txtRecord, DNSServiceRegisterReply callBack, IntPtr context);
 
         // DNSServiceQueryRecord
@@ -117,5 +118,15 @@ namespace Mono.Zeroconf.Providers.Bonjour
         
         [DllImport("dnssd.dll")]
         public static extern ushort TXTRecordGetCount(ushort txtLen, IntPtr txtRecord);
+
+        public static string Utf8toString(IntPtr ptr) {
+            int len = 0;
+            while (Marshal.ReadByte(ptr, len) != 0) {
+                len++;
+            }
+            byte[] raw = new byte[len];
+            Marshal.Copy(ptr, raw, 0, len);
+            return Encoding.UTF8.GetString(raw);
+        }
     }
 }
