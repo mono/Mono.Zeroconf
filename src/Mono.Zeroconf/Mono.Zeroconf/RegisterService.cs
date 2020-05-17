@@ -35,8 +35,9 @@ namespace Mono.Zeroconf
     {
         private IRegisterService register_service;
         
-        public RegisterService()
+        public RegisterService(IZeroconfProvider provider = null)
         {
+            ProviderFactory.SelectedProvider = provider;
             register_service = (IRegisterService)Activator.CreateInstance(
                 ProviderFactory.SelectedProvider.RegisterService);
         }

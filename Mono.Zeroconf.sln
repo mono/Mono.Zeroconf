@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual C# Express 2005
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MZClient", "src\MZClient\MZClient.csproj", "{839D9048-31CF-4010-B427-6A8362556485}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mono.Zeroconf", "src\Mono.Zeroconf\Mono.Zeroconf.csproj", "{5CF88E3A-13DD-4114-BAD9-DA826946516F}"
@@ -14,21 +14,21 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{839D9048-31CF-4010-B427-6A8362556485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{839D9048-31CF-4010-B427-6A8362556485}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{5CF88E3A-13DD-4114-BAD9-DA826946516F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{623325E2-5821-4701-A40C-3759097008DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{623325E2-5821-4701-A40C-3759097008DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{839D9048-31CF-4010-B427-6A8362556485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{839D9048-31CF-4010-B427-6A8362556485}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF6ED6D1-D201-42ED-B680-5A77641BEB77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EF6ED6D1-D201-42ED-B680-5A77641BEB77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		name = Mono.Zeroconf
 		version = 0.1
 		StartupItem = src\MZClient\MZClient.csproj
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal

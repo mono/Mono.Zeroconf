@@ -36,8 +36,9 @@ namespace Mono.Zeroconf
     {
         private IServiceBrowser browser;
         
-        public ServiceBrowser ()
+        public ServiceBrowser (IZeroconfProvider provider = null)
         {
+            ProviderFactory.SelectedProvider = provider;
             browser = (IServiceBrowser)Activator.CreateInstance (ProviderFactory.SelectedProvider.ServiceBrowser);
         }
         
